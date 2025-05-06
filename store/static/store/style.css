@@ -37,10 +37,3 @@ nav ul li a {
     display: flex;
     overflow: hidden;
 }
-
-.product-slide img {
-    width: 200px;
-    height: auto;
-    margin: 10px;
-    cursor: pointer;
-}
