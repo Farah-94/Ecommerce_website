@@ -1,0 +1,46 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #1a001a; /* Dark blackish-purple */
+}
+
+.logo {
+    width: 120px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.signin-btn {
+    background-color: purple;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.slider {
+    display: flex;
+    overflow: hidden;
+}
+
+.product-slide img {
+    width: 200px;
+    height: auto;
+    margin: 10px;
+    cursor: pointer;
+}
