@@ -1,39 +1,199 @@
 body {
-    background-color: black;
+    background-color: rgb(222, 220, 235);
     color: white;
     font-family: Arial, sans-serif;
 }
 
 header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    background-color: #1a001a; /* Dark blackish-purple */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    text-align: center;
+    padding: 20px;
+    background-color: #441344; /* Dark background */
+}
+
+h1 {
+    text-align: center;
+    width: auto; /* Ensures it only takes necessary space */
+    margin: 10px auto; /* Centers it within header */
 }
 
 .logo {
     width: 120px;
 }
 
-nav ul {
+
+
+.sidebar {
+    width: 250px;
+    background-color: #1a001a;
+    padding: 20px;
+    height: 100vh;
+    position: fixed; /* Keeps sidebar in place */
+    left: 0; /* Aligns it to the left */
+    top: 0;
+}
+
+
+
+.sidebar nav ul {
     list-style: none;
-    display: flex;
-    gap: 20px;
+    padding: 0;
 }
 
-nav ul li a {
-    color: white;
+.sidebar nav ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar nav ul li a {
     text-decoration: none;
-}
-
-.signin-btn {
-    background-color: purple;
-    padding: 8px 15px;
+    color: white;
+    display: block;
+    padding: 10px;
+    background-color: #333;
     border-radius: 5px;
 }
 
+.content {
+    margin-left: 270px; /* Creates space for sidebar */
+    padding: 20px;
+}
+
+
+.signin-btn {
+    background-color: rgb(26, 24, 26);
+    padding: 8px 15px;
+    border-radius: 5px;
+    
+}
+
 .slider {
+    position: relative;
+    overflow: hidden; /* Keeps images within the slider */
+    width: 100%; /* Full width */
+
+}
+.slider-container {
     display: flex;
-    overflow: hidden;
+    width: 100%; /* Start by making it full width */
+    max-width: 300%; /* Adjust based on the number of slides */
+    transition: transform 1.5s ease-in-out; /* Smoother animation */
+}
+.product-slide {
+    min-width: 100%; /* Ensures each image stays within its frame */
+    text-align: center; /* Centers images */
+}
+
+
+
+
+.slider .product-slide:first-child {
+    display: block;
+}
+.slider .product-slide img {
+    width: auto; /* Prevent excessive horizontal stretching */
+    max-width: 100%; /* Fit within parent container */
+    height: auto; /* Keep original proportions */
+    max-height: 300px; /* Adjust as needed */
+    object-fit: contain; /* Keeps entire image visible */
+}
+.slider .product-slide.active {
+    display: block;
+    text-align: center;
+}
+
+.navigation {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.navigation button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.navigation button:hover {
+    background-color: #666;
+}
+
+
+.dropdown {
+   position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #67496a;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0;
+    left: 0;
+    top: 100%; /* Added missing semicolon */
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #555;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.form-container {
+    margin-top:6px;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #4c2f4c;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+input {
+    width: 50%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: purple;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }

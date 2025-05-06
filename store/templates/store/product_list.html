@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">  <!-- This should be at the very top -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Product List</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'store/style.css' %}">
+    </head>
+<body>
+    <header>
+        <img src="{% static 'store/images/logo1.png' %}" alt="brand logo" class="logo">
+        <h1>Welcome to Our Store</h1>     
+    </header>
+    <div class="dropdown">
+        <button class="dropbtn">Menu</button>
+        <div class="dropdown-content">
+            <a href="#">Latest Items</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+            <a href="{% url 'signin' %}" class="signin-btn">Sign In</a>        </div>
+    </div>
+
+        <div class="slider">
+            <div class="slider-container">
+                <div class="product-slide">
+                    <img src="{% static 'store/images/product1.jpg' %}" alt="Product 1">
+                </div>
+                <div class="product-slide">
+                    <img src="{% static 'store/images/product2.jpg' %}" alt="Product 2">
+                </div>
+            </div>
+        </div>
+    
+
+    <script src="{% static 'store/script.js' %}"></script>
+</body>
+</html>
