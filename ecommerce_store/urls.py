@@ -18,6 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 from store.views import product_list 
 from store.views import logout_view  
+from django.conf import settings
+from django.conf.urls.static import static
+
+
 
 urlpatterns = [
     path('', product_list, name='home'),  # Redirect empty path to product list
@@ -25,4 +29,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('logout/', logout_view, name='logout'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

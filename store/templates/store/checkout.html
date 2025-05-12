@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- store/templates/store/checkout.html -->
+<h1>Checkout</h1>
+<form method="post">
+  {% csrf_token %}
+  
+  <h2>Shipping Address</h2>
+  <input type="text" name="address" placeholder="Street Address" required>
+  <input type="text" name="city" placeholder="City" required>
+
+  <h2>Payment</h2>
+  <input type="text" name="card_number" placeholder="Card Number" required>
+  <input type="text" name="expiry" placeholder="MM/YY" required>
+
+  <button type="submit">Place Order</button>
+</form>
+</body>
+</html>

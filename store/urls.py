@@ -1,10 +1,18 @@
 from django.urls import path
-from .views import logout_view, product_list, signup, signin
+from .views import logout_view, product_list, signup, signin, buy_product
+from .views import CustomLoginView
+from .views import add_to_cart, cart, checkout, order_success
+from .views import category_products 
 
 urlpatterns = [
     path('logout/', logout_view, name='logout'),
-    path('products/', product_list, name='product_list'),
+    path('products/', product_list, name='product_list'),  # ✅ Keep only one definition
     path('signup/', signup, name='signup'),
     path('signin/', signin, name='signin'),
-    
+    path('buy/<int:product_id>/', buy_product, name='buy_product'),
+    path('category/<slug:category_slug>/', category_products, name='category_products'),
+    path('add-to-cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
+    path('cart/', cart, name='cart'),
+    path('checkout/', checkout, name='checkout'),
+    path('order-success/<int:order_id>/', order_success, name='order_success'),
 ]

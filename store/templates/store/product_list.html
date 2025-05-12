@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">  <!-- This should be at the very top -->
+        <meta charset="UTF-8">  
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Product List</title>
         {% load static %}
@@ -15,23 +15,54 @@
     <div class="dropdown">
         <button class="dropbtn">Menu</button>
         <div class="dropdown-content">
-            <a href="#">Latest Items</a>
-            <a href="#">About Us</a>
-            <a href="#">Contact Us</a>
-            <a href="{% url 'signin' %}" class="signin-btn">Sign In</a>        </div>
+            <ul>
+                <li>
+                    <a href="#">Latest Items</a>
+                    <ul>
+                        <li>
+                            <a href="#">Women</a>
+                            <ul class="sub-dropdown">
+                                <li><a href="{% url 'category_products' 1 %}">Women Jeans</a></li>
+                                <li><a href="{% url 'category_products' 2 %}">Women T-Shirt</a></li>
+                                <li><a href="{% url 'category_products' 3 %}">Women Watch</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="{% url 'signin' %}" class="signin-btn">Sign In</a></li>
+                <li><a href="{% url 'admin:index' %}" class="admin-link">Admin Panel</a></li>
+            </ul>
+        </div>
     </div>
 
-        <div class="slider">
-            <div class="slider-container">
-                <div class="product-slide">
-                    <img src="{% static 'store/images/product1.jpg' %}" alt="Product 1">
-                </div>
-                <div class="product-slide">
-                    <img src="{% static 'store/images/product2.jpg' %}" alt="Product 2">
-                </div>
+    <div class="slider">
+        <div class="slider-container">
+            <div class="product-slide">
+                <img src="{% static 'store/images/product1.jpg' %}" alt="Product 1">
+            </div>
+            <div class="product-slide">
+                <img src="{% static 'store/images/product2.jpg' %}" alt="Product 2">
             </div>
         </div>
+    </div>
+
+    <!-- ✅ Grouping Products Under Categories -->
+    <div class="product-container">
+        {% for product in products %}
+            <div class="product-card">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">                <p>{{ product.description }}</p>
+                <p>Stock Available: {{ product.stock }}</p>
     
+                {% if user.is_authenticated %}
+                    <a href="{% url 'buy_product' product.id %}" class="buy-btn">Buy Now</a>
+                {% else %}
+                    <a href="{% url 'signin' %}" class="login-btn">Sign In to Buy</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
 
     <script src="{% static 'store/script.js' %}"></script>
 </body>

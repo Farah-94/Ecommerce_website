@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- store/templates/store/cart.html -->
+<h1>Your Cart</h1>
+{% for item in cart_items %}
+  <div class="cart-item">
+    <img src="{{ item.product.image.url }}" width="100" alt="{{ item.product.name }}">
+    <h3>{{ item.product.name }}</h3>
+    <p>Size: {{ item.size }}</p>
+    <p>Quantity: {{ item.quantity }}</p>
+    <p>Total: ${{ item.total_price }}</p>
+  </div>
+{% endfor %}
+
+<a href="{% url 'checkout' %}" class="checkout-btn">Proceed to Checkout</a>
+</body>
+</html>

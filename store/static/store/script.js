@@ -16,3 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setInterval(nextSlide, 5000); // Moves the images every 5 seconds
 });
+
+
+document.querySelector('.dropbtn').addEventListener('click', function() {
+    this.nextElementSibling.classList.toggle('show');
+});
