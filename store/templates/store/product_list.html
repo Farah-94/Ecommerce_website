@@ -16,11 +16,11 @@
         <button class="dropbtn">Menu</button>
         <div class="dropdown-content">
             <ul>
-                <li>
-                    <a href="#">Latest Items</a>
-                    <ul>
-                        <li>
-                            <a href="#">Women</a>
+                <li class="has-submenu">
+                    <a href="#">Latest Items ▼</a>
+                    <ul class="submenu">
+                        <li class="has-submenu">
+                            <a href="#">Women ▼</a>
                             <ul class="sub-dropdown">
                                 <li><a href="{% url 'category_products' 1 %}">Women Jeans</a></li>
                                 <li><a href="{% url 'category_products' 2 %}">Women T-Shirt</a></li>
@@ -48,15 +48,16 @@
         </div>
     </div>
 
-    <!-- ✅ Grouping Products Under Categories -->
+    <!--  Grouping Products Under Categories -->
     <div class="product-container">
         {% for product in products %}
             <div class="product-card">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}">                <p>{{ product.description }}</p>
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">               
+                <p>{{ product.description }}</p>
                 <p>Stock Available: {{ product.stock }}</p>
     
                 {% if user.is_authenticated %}
-                    <a href="{% url 'buy_product' product.id %}" class="buy-btn">Buy Now</a>
+                    <a class="buy-btn" href="{% url 'buy_product' product.id %}" class="buy-btn">Buy Now</a>
                 {% else %}
                     <a href="{% url 'signin' %}" class="login-btn">Sign In to Buy</a>
                 {% endif %}
@@ -64,6 +65,37 @@
         {% endfor %}
     </div>
 
-    <script src="{% static 'store/script.js' %}"></script>
+    
+
+
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>About Us</h4>
+            <p>Your go-to store for amazing products. Quality guaranteed!</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Follow Us</h4>
+            <ul>
+            <li><a href="https://facebook.com">Facebook</a></li>
+            <li><a href="https://instagram.com">Instagram</a></li>
+            <li><a href="https://twitter.com">Twitter</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Kafshy | All Rights Reserved</p>
+        </div>
+    </div>
+</footer>
+
+<script src="{% static 'store/script.js' %}"></script>
 </body>
 </html>

@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'store/styles.css' %}">
 </head>
 <body>
-    <!-- store/templates/store/order_success.html -->
+<div class ="order-success">
 <h1>🎉 Order Successful!</h1>
 <p>Your order #{{ order.id }} is being processed.</p>
 <p>We'll ship to: {{ order.shipping_address }}</p>
 <a href="{% url 'product_list' %}">Continue Shopping</a>
-
+</div>
 </body>
 </html>
