@@ -26,7 +26,7 @@ def logout_view(request):
 
 def product_list(request):
     products = Product.objects.all()
-    return render(request, 'store/product_list.html', {'products': products})
+    return render(request, 'store/index.html', {'products': products})
 
 @login_required
 def buy_product(request, product_id):
@@ -55,7 +55,7 @@ def signin(request):
 def category_products(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     products = Product.objects.filter(category=category)
-    return render(request, 'store/product_list.html', {
+    return render(request, 'store/index.html', {
         'products': products,
         'category': category  # Pass category to highlight active filter
     })
@@ -65,7 +65,7 @@ class CustomLoginView(LoginView):
     redirect_authenticated_user = True  # Redirect if already logged in
 
     def get_success_url(self):
-        return reverse('product_list') 
+        return reverse('index') 
     
 @login_required
 def add_to_cart(request, product_id):

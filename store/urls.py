@@ -7,7 +7,7 @@ from .views import update_cart, remove_from_cart
 
 urlpatterns = [
     path('logout/', logout_view, name='logout'),
-    path('products/', product_list, name='product_list'),  # ✅ Keep only one definition
+    path('products/', product_list, name='index'),  # ✅ Keep only one definition
     path('signup/', signup, name='signup'),
     path('signin/', signin, name='signin'),
     path('buy/<int:product_id>/', buy_product, name='buy_product'),
