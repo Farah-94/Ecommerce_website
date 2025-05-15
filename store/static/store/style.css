@@ -138,7 +138,7 @@ header h1 {
 
 
 .dropbtn {
-    background-color: #510f47;
+    background-color: #63295a;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -198,7 +198,7 @@ header h1 {
 }
 
 .dropdown ul li a:hover {
-    background-color: #2d0722;
+    background-color: #5a5759;
     color: white;
 }
 
@@ -298,11 +298,11 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
-.admin-link {
+.admin-link a {
     display: block;
     text-align: center;
     padding: 10px;
-    background-color:  #510f47;
+    background-color:  #5a3e55;
     color: white;
     text-decoration: none;
     font-weight: bold;
