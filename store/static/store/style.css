@@ -13,8 +13,11 @@ header {
     padding: 20px;
     background-color: #5e2e57; /* Dark background */
 background-image: url("{% static 'store/images/back1.jpg' %}");
-
-
+ background-position: center;
+    background-repeat: no-repeat; /* Prevent repeating */
+    background-size: cover; /* Cover the entire header */
+    height: 200px; /* Set a fixed height for the header */
+    color: white;       
 }
 
 header h1 {
