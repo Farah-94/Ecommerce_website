@@ -63,7 +63,7 @@ header h1 {
 
 
 .signin-btn {
-    background-color: rgb(39, 35, 39);
+    background-color:  #510f47;
     padding: 8px 15px;
     border-radius: 5px;
     
@@ -257,7 +257,7 @@ header h1 {
 
 
 .dropdown-content a:hover {
-    background-color: #351635;
+    background-color: #3f3d3f;
 }
 
 .dropdown:hover .dropdown-content {
@@ -301,7 +301,7 @@ button {
     display: block;
     text-align: center;
     padding: 10px;
-    background-color: #201d1e;
+    background-color:  #510f47;
     color: white;
     text-decoration: none;
     font-weight: bold;
