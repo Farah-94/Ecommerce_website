@@ -11,16 +11,25 @@
 
 
   <h1>Your Cart</h1>
-  {% for item in cart_items %}
-  <div class="cart-item">
-  
-
+{% for item in cart_items %}
+<div class="cart-item">
     <img src="{{ item.product.image.url }}" width="100" alt="{{ item.product.name }}">
     <h3>{{ item.product.name }}</h3>
     <p>Size: {{ item.size }}</p>
     <p>Quantity: {{ item.quantity }}</p>
     <p>Total: ${{ item.total_price }}</p>
-  </div>
+
+    <!-- Quantity Update Buttons -->
+    <a href="{% url 'update_cart' item.id 'decrease' %}">➖</a>
+    <span>{{ item.quantity }}</span>
+    <a href="{% url 'update_cart' item.id 'increase' %}">➕</a>
+
+    <!-- Remove Item from Cart -->
+    <a href="{% url 'remove_from_cart' item.id %}" class="remove-btn">🗑️ Remove</a>
+
+    <!-- Back to Product Page -->
+    <a href="{% url 'product_detail' item.product.id %}">🔙 Back to Product</a>
+</div>
 {% endfor %}
 
 <a href="{% url 'checkout' %}" class="checkout-btn">Proceed to Checkout</a>

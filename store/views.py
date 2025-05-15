@@ -133,3 +133,21 @@ def payment_success(request):
     request.user.cart_items.all().delete()
     
     return render(request, 'store/payment_success.html')
+
+@login_required
+def update_cart(request, cart_item_id, action):
+    cart_item = get_object_or_404(CartItem, id=cart_item_id, user=request.user)
+
+    if action == "increase":
+        cart_item.quantity += 1
+    elif action == "decrease" and cart_item.quantity > 1:
+        cart_item.quantity -= 1
+
+    cart_item.save()
+    return redirect("cart")
+
+@login_required
+def remove_from_cart(request, cart_item_id):
+    cart_item = get_object_or_404(CartItem, id=cart_item_id, user=request.user)
+    cart_item.delete()
+    return redirect("cart")

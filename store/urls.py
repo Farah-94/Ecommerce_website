@@ -3,6 +3,7 @@ from .views import logout_view, product_list, signup, signin, buy_product
 from .views import CustomLoginView
 from .views import add_to_cart, cart, checkout, order_success
 from .views import category_products 
+from .views import update_cart, remove_from_cart
 
 urlpatterns = [
     path('logout/', logout_view, name='logout'),
@@ -15,4 +16,7 @@ urlpatterns = [
     path('cart/', cart, name='cart'),
     path('checkout/', checkout, name='checkout'),
     path('order-success/<int:order_id>/', order_success, name='order_success'),
+
+    path("cart/update/<int:cart_item_id>/<str:action>/", update_cart, name="update_cart"),
+    path("cart/remove/<int:cart_item_id>/", remove_from_cart, name="remove_from_cart"),
 ]
