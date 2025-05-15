@@ -12,7 +12,9 @@ header {
     text-align: center;
     padding: 20px;
     background-color: #5e2e57; /* Dark background */
-    background-image: url('store/images/back1.jpg');
+background-image: url("{% static 'store/images/back1.jpg' %}");
+
+
 }
 
 header h1 {
