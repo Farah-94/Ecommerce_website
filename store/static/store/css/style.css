@@ -100,7 +100,8 @@ header h1 {
     display: flex;
     width: 100%; /* Start by making it full width */
     max-width: 300%; /* Adjust based on the number of slides */
-    transition: transform 1.5s ease-in-out; /* Smoother animation */
+    transition: transform 1.5s ease-in-out; 
+    overflow: hidden;
 }
 .product-slide {
     min-width: 100%; /* Ensures each image stays within its frame */
