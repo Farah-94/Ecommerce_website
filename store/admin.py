@@ -1,20 +1,13 @@
 from django.contrib import admin
-from django import forms
-from .models import Product, Category  # Importing models to register them in Admin
+from django import forms  # <-- This import was missing
+from .models import Product, Category
+
 IMAGE_CHOICES = [
     ('pro1', 'Product Image 1'),
     ('pro2', 'Product Image 2'),
     ('pro3', 'Product Image 3'),
     # Add more as needed
 ]
-
-
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name',)  # Shows category names
-    search_fields = ('name',)  # Enables search for categories
-
-admin.site.register(Category, CategoryAdmin)
-
 
 class ProductAdminForm(forms.ModelForm):
     class Meta:
@@ -25,6 +18,15 @@ class ProductAdminForm(forms.ModelForm):
     image_code = forms.ChoiceField(choices=IMAGE_CHOICES)
     image_code_alt1 = forms.ChoiceField(choices=[('', '---------')] + IMAGE_CHOICES, required=False)
     image_code_alt2 = forms.ChoiceField(choices=[('', '---------')] + IMAGE_CHOICES, required=False)
+
+class ProductInline(admin.TabularInline):
+    model = Product
+    extra = 1  # Allows adding 1 extra blank product per category
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('name',)  # Shows category names
+    search_fields = ('name',)  # Enables search for categories
+    inlines = [ProductInline]
 
 class ProductAdmin(admin.ModelAdmin):
     form = ProductAdminForm
@@ -48,11 +50,6 @@ class ProductAdmin(admin.ModelAdmin):
         }),
     ]
 
+# Register your models here
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
-
-class ProductInline(admin.TabularInline):
-    model = Product
-    extra = 1  # Allows adding 1 extra blank product per category
-
-class CategoryAdmin(admin.ModelAdmin):
-    inlines = [ProductInline]

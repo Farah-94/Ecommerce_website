@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'store/style.css' %}">
+    <link rel="stylesheet" href="{% static 'store/store/style.css' %}">
 </head>
 <body>
     <div class="product-details">
@@ -17,19 +17,19 @@
      <div class="product-slider">
     <div class="product-slides">
         <!-- Main Image -->
-        <img src="{% static 'store/images/' %}{{ product.image_code }}.jpg" 
+        <img src="{% static 'store/store/images/tshirt.jpg' %}{{ product.image_code }}.jpg" 
              alt="{{ product.name }}" 
              class="slide active">
         
         <!-- Additional Images -->
         {% if product.image_code_alt1 %}
-        <img src="{% static 'store/images/' %}{{ product.image_code_alt1 }}.jpg" 
+        <img src="{% static 'store/store/images/pro1' %}{{ product.image_code_alt1 }}.jpg" 
              alt="{{ product.name }} view 2" 
              class="slide">
         {% endif %}
         
         {% if product.image_code_alt2 %}
-        <img src="{% static 'store/images/' %}{{ product.image_code_alt2 }}.jpg" 
+        <img src="{% static 'store/store/images/pro2' %}{{ product.image_code_alt2 }}.jpg" 
              alt="{{ product.name }} view 3" 
              class="slide">
         {% endif %}
@@ -64,6 +64,6 @@
         </form>
     </div>
     
-    <script src="{% static 'store/script.js' %}" defer></script>
+    <script src="{% static 'store/store/script.js' %}" defer></script>
 </body>
 </html>
