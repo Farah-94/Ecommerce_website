@@ -12,7 +12,7 @@ header {
     text-align: center;
     padding: 20px;
     background-color: #5e2e57; /* Dark background */
-background-image: url("{% static '../images/back1.jpg' %}");
+
  background-position: center;
     background-repeat: no-repeat; /* Prevent repeating */
     background-size: cover; /* Cover the entire header */
