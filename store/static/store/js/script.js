@@ -1,89 +1,187 @@
-console.log("script.js is loading!");
+// Storefront Main JavaScript
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("Kafshy Storefront initialized");
 
-// Wait for the DOM to load before running scripts
-document.addEventListener("DOMContentLoaded", function () {
-    // **Index Page Slider**
-    const homeSlider = document.querySelector(".slider-container");
-    const homeSlides = document.querySelectorAll(".product-slide");
-
-    console.log("Home Slider container:", homeSlider);
-    console.log("Home Slides count:", homeSlides.length);
-
-    if (homeSlider && homeSlides.length > 0) {
-        let currentHomeSlide = 0;
-
-        function nextHomeSlide() {
-            currentHomeSlide = (currentHomeSlide + 1) % homeSlides.length;
-            homeSlider.style.transform = `translateX(-${currentHomeSlide * 100}%)`;
-        }
-
-        setInterval(nextHomeSlide, 5000);
-    }
-
-    // **Buy Product Page Slider**
-    const productSlider = document.querySelector(".product-slides");
-    const productSlides = productSlider?.querySelectorAll(".slide");
-
-    console.log("Product Slider container:", productSlider);
-    console.log("Product Slides count:", productSlides?.length);
-
-    if (productSlider && productSlides.length > 0) {
-        let currentProductSlide = 0;
-
-        function showProductSlide(index) {
-            productSlides.forEach((slide, i) => {
-                slide.classList.toggle("active", i === index);
-            });
-        }
-
-        window.moveSlide = function (n) {
-            currentProductSlide = (currentProductSlide + n + productSlides.length) % productSlides.length;
-            showProductSlide(currentProductSlide);
-        };
-
-        if (productSlides.length > 1) {
-            setInterval(() => moveSlide(1), 5000);
-        }
-
-        showProductSlide(currentProductSlide);
-    }
-
-    // **Dropdown Menu Toggle**
-    const dropBtn = document.querySelector(".dropbtn");
-    const dropContent = document.querySelector(".dropdown-content");
-
-    if (dropBtn && dropContent) {
-        dropBtn.addEventListener("click", function () {
-            dropContent.classList.toggle("show");
+    // ======================
+    // 1. MOBILE NAVIGATION
+    // ======================
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mainNavigation = document.querySelector('.main-navigation');
+    
+    if (mobileMenuToggle && mainNavigation) {
+        mobileMenuToggle.addEventListener('click', function() {
+            this.setAttribute('aria-expanded', 
+                this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
+            mainNavigation.classList.toggle('active');
         });
     }
 
-    // **Submenu Toggle with Improved Behavior**
-    const submenus = document.querySelectorAll(".has-submenu > a");
+    // ======================
+    // 2. HERO SLIDER
+    // ======================
+    const heroSlider = document.querySelector('.hero-slider .slider-container');
+    const heroSlides = document.querySelectorAll('.hero-slider .hero-slide');
+    
+    if (heroSlider && heroSlides.length > 0) {
+        let currentHeroSlide = 0;
+        let heroInterval;
+        
+        function updateHeroSlider() {
+            heroSlider.style.transform = `translateX(-${currentHeroSlide * 100}%)`;
+        }
+        
+        function nextHeroSlide() {
+            currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+            updateHeroSlider();
+        }
+        
+        // Auto-advance every 5 seconds
+        heroInterval = setInterval(nextHeroSlide, 5000);
+        
+        // Pause on hover
+        heroSlider.addEventListener('mouseenter', () => clearInterval(heroInterval));
+        heroSlider.addEventListener('mouseleave', () => {
+            heroInterval = setInterval(nextHeroSlide, 5000);
+        });
+    }
 
-    submenus.forEach(submenu => {
-        submenu.addEventListener("click", function (event) {
-            event.preventDefault();
-
-            const nextSubmenu = this.nextElementSibling;
-
-            document.querySelectorAll(".submenu, .sub-dropdown").forEach(menu => {
-                if (menu !== nextSubmenu) {
-                    menu.style.display = "none";
-                }
+    // ======================
+    // 3. MEGA MENU SYSTEM
+    // ======================
+    const megaMenuTriggers = document.querySelectorAll('.has-submenu > a');
+    
+    megaMenuTriggers.forEach(trigger => {
+        trigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            const parent = this.parentElement;
+            const isOpen = parent.classList.contains('open');
+            
+            // Close all other menus first
+            document.querySelectorAll('.has-submenu').forEach(item => {
+                if (item !== parent) item.classList.remove('open');
             });
-
-            nextSubmenu.style.display = nextSubmenu.style.display === "block" ? "none" : "block";
+            
+            // Toggle current
+            parent.classList.toggle('open');
+            
+            // Close if clicking the same menu item
+            if (isOpen) parent.classList.remove('open');
         });
     });
 
-    // **Close dropdowns if clicking outside**
-    window.addEventListener("click", function (event) {
-        if (!event.target.closest(".dropdown") && !event.target.closest(".has-submenu")) {
-            dropContent?.classList.remove("show");
-            document.querySelectorAll(".submenu, .sub-dropdown").forEach(menu => {
-                menu.style.display = "none";
+    // Close menus when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.has-submenu')) {
+            document.querySelectorAll('.has-submenu').forEach(item => {
+                item.classList.remove('open');
             });
         }
     });
+
+    // ======================
+    // 4. PRODUCT GRID INTERACTIONS
+    // ======================
+    const productCards = document.querySelectorAll('.product-card');
+    
+    productCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.classList.add('hover');
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.classList.remove('hover');
+        });
+    });
+
+    // ======================
+    // 5. SORTING FUNCTIONALITY
+    // ======================
+    const sortSelect = document.getElementById('sort-by');
+    
+    if (sortSelect) {
+        sortSelect.addEventListener('change', function() {
+            // In a real implementation, this would make an AJAX call or redirect
+            console.log('Sorting by:', this.value);
+            // window.location.href = `?sort=${this.value}`;
+        });
+    }
+
+    // ======================
+    // 6. CART ACTIONS
+    // ======================
+    document.querySelectorAll('.add-to-cart-form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate AJAX add to cart
+            const button = this.querySelector('button');
+            const originalText = button.innerHTML;
+            
+            button.disabled = true;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Adding...';
+            
+            // Simulate API call
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-check"></i> Added!';
+                updateCartCount(1);
+                
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                }, 2000);
+            }, 800);
+        });
+    });
+
+    function updateCartCount(change) {
+        const cartCount = document.querySelector('.cart-count');
+        if (cartCount) {
+            const current = parseInt(cartCount.textContent.match(/\d+/)[0]) || 0;
+            cartCount.textContent = `Cart (${current + change})`;
+            
+            // Add visual feedback
+            cartCount.classList.add('updated');
+            setTimeout(() => cartCount.classList.remove('updated'), 300);
+        }
+    }
+
+    // ======================
+    // 7. NEWSLETTER FORM
+    // ======================
+    const newsletterForm = document.querySelector('.newsletter-form');
+    
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const emailInput = this.querySelector('input[type="email"]');
+            
+            if (emailInput.value.includes('@')) {
+                // Simulate subscription
+                this.innerHTML = `
+                    <div class="success-message">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Thank you for subscribing!</p>
+                    </div>
+                `;
+            }
+        });
+    }
+
+    // ======================
+    // 8. RESPONSIVE BEHAVIORS
+    // ======================
+    function handleResponsive() {
+        const isMobile = window.innerWidth < 768;
+        
+        // Adjust mega menu for mobile
+        if (isMobile) {
+            document.querySelectorAll('.mega-menu-column').forEach(column => {
+                column.style.width = '100%';
+            });
+        }
+    }
+    
+    window.addEventListener('resize', handleResponsive);
+    handleResponsive();
 });

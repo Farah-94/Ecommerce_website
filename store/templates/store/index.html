@@ -1,187 +1,268 @@
-// Storefront Main JavaScript
-document.addEventListener("DOMContentLoaded", function() {
-    console.log("Kafshy Storefront initialized");
-
-    // ======================
-    // 1. MOBILE NAVIGATION
-    // ======================
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const mainNavigation = document.querySelector('.main-navigation');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Our Products | Kafshy{% endblock %}</title>
+    <meta name="description" content="Browse our collection of high-quality products">
     
-    if (mobileMenuToggle && mainNavigation) {
-        mobileMenuToggle.addEventListener('click', function() {
-            this.setAttribute('aria-expanded', 
-                this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
-            mainNavigation.classList.toggle('active');
-        });
-    }
-
-    // ======================
-    // 2. HERO SLIDER
-    // ======================
-    const heroSlider = document.querySelector('.hero-slider .slider-container');
-    const heroSlides = document.querySelectorAll('.hero-slider .hero-slide');
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    <link rel="preload" href="{% static 'store/css/style.css' %}" as="style">
     
-    if (heroSlider && heroSlides.length > 0) {
-        let currentHeroSlide = 0;
-        let heroInterval;
-        
-        function updateHeroSlider() {
-            heroSlider.style.transform = `translateX(-${currentHeroSlide * 100}%)`;
-        }
-        
-        function nextHeroSlide() {
-            currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
-            updateHeroSlider();
-        }
-        
-        // Auto-advance every 5 seconds
-        heroInterval = setInterval(nextHeroSlide, 5000);
-        
-        // Pause on hover
-        heroSlider.addEventListener('mouseenter', () => clearInterval(heroInterval));
-        heroSlider.addEventListener('mouseleave', () => {
-            heroInterval = setInterval(nextHeroSlide, 5000);
-        });
-    }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <a href="{% url 'product_list' %}" class="logo-link">
+                <img src="{% static 'store/images/products/logo1.png' %}" 
+                     alt="Kafshy Logo" 
+                     class="logo"
+                     width="120" 
+                     height="auto">
+            </a>
+            
+            <h1 class="store-title">Welcome to Our Store</h1>
 
-    // ======================
-    // 3. MEGA MENU SYSTEM
-    // ======================
-    const megaMenuTriggers = document.querySelectorAll('.has-submenu > a');
-    
-    megaMenuTriggers.forEach(trigger => {
-        trigger.addEventListener('click', function(e) {
-            e.preventDefault();
-            const parent = this.parentElement;
-            const isOpen = parent.classList.contains('open');
-            
-            // Close all other menus first
-            document.querySelectorAll('.has-submenu').forEach(item => {
-                if (item !== parent) item.classList.remove('open');
-            });
-            
-            // Toggle current
-            parent.classList.toggle('open');
-            
-            // Close if clicking the same menu item
-            if (isOpen) parent.classList.remove('open');
-        });
-    });
-
-    // Close menus when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.has-submenu')) {
-            document.querySelectorAll('.has-submenu').forEach(item => {
-                item.classList.remove('open');
-            });
-        }
-    });
-
-    // ======================
-    // 4. PRODUCT GRID INTERACTIONS
-    // ======================
-    const productCards = document.querySelectorAll('.product-card');
-    
-    productCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.classList.add('hover');
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.classList.remove('hover');
-        });
-    });
-
-    // ======================
-    // 5. SORTING FUNCTIONALITY
-    // ======================
-    const sortSelect = document.getElementById('sort-by');
-    
-    if (sortSelect) {
-        sortSelect.addEventListener('change', function() {
-            // In a real implementation, this would make an AJAX call or redirect
-            console.log('Sorting by:', this.value);
-            // window.location.href = `?sort=${this.value}`;
-        });
-    }
-
-    // ======================
-    // 6. CART ACTIONS
-    // ======================
-    document.querySelectorAll('.add-to-cart-form').forEach(form => {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simulate AJAX add to cart
-            const button = this.querySelector('button');
-            const originalText = button.innerHTML;
-            
-            button.disabled = true;
-            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Adding...';
-            
-            // Simulate API call
-            setTimeout(() => {
-                button.innerHTML = '<i class="fas fa-check"></i> Added!';
-                updateCartCount(1);
+            <div class="header-actions">
+                {% if user.is_authenticated %}
+                <a href="{% url 'account' %}" class="account-link">
+                    <i class="fas fa-user"></i> My Account
+                </a>
+                {% endif %}
                 
-                // Reset button after 2 seconds
-                setTimeout(() => {
-                    button.innerHTML = originalText;
-                    button.disabled = false;
-                }, 2000);
-            }, 800);
-        });
-    });
+                <a href="{% url 'cart' %}" class="cart-link">
+                    <i class="fas fa-shopping-cart"></i> 
+                    <span class="cart-count">Cart ({{ cart_items.count }})</span>
+                </a>
+                
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
 
-    function updateCartCount(change) {
-        const cartCount = document.querySelector('.cart-count');
-        if (cartCount) {
-            const current = parseInt(cartCount.textContent.match(/\d+/)[0]) || 0;
-            cartCount.textContent = `Cart (${current + change})`;
-            
-            // Add visual feedback
-            cartCount.classList.add('updated');
-            setTimeout(() => cartCount.classList.remove('updated'), 300);
-        }
-    }
-
-    // ======================
-    // 7. NEWSLETTER FORM
-    // ======================
-    const newsletterForm = document.querySelector('.newsletter-form');
-    
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const emailInput = this.querySelector('input[type="email"]');
-            
-            if (emailInput.value.includes('@')) {
-                // Simulate subscription
-                this.innerHTML = `
-                    <div class="success-message">
-                        <i class="fas fa-check-circle"></i>
-                        <p>Thank you for subscribing!</p>
+    <nav class="main-navigation">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li class="has-submenu">
+                    <a href="#" class="nav-link">Shop <i class="fas fa-chevron-down"></i></a>
+                    <div class="mega-menu">
+                        {% for category in categories %}
+                        <div class="mega-menu-column">
+                            <h3>{{ category.name }}</h3>
+                            <ul>
+                                {% for subcategory in category.subcategories.all %}
+                                <li>
+                                    <a href="{% url 'category_products' subcategory.id %}">
+                                        {{ subcategory.name }}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endfor %}
                     </div>
-                `;
-            }
-        });
-    }
+                </li>
+                <li><a href="{% url 'about' %}" class="nav-link">About Us</a></li>
+                <li><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+                
+                {% if user.is_authenticated %}
+                    {% if user.is_staff %}
+                    <li><a href="{% url 'admin:index' %}" class="nav-link admin-link">Admin</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'signin' %}" class="nav-link signin-btn">Sign In</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
 
-    // ======================
-    // 8. RESPONSIVE BEHAVIORS
-    // ======================
-    function handleResponsive() {
-        const isMobile = window.innerWidth < 768;
+    <main class="main-content">
+        <section class="hero-slider">
+            <div class="slider-container">
+                {% for slide in slides %}
+                <div class="hero-slide">
+                    <img src="{{ slide.image.url }}" 
+                         alt="{{ slide.alt_text }}" 
+                         loading="lazy"
+                         class="slide-image">
+                    {% if slide.heading or slide.button_text %}
+                    <div class="slide-content">
+                        {% if slide.heading %}
+                        <h2>{{ slide.heading }}</h2>
+                        {% endif %}
+                        {% if slide.subheading %}
+                        <p>{{ slide.subheading }}</p>
+                        {% endif %}
+                        {% if slide.button_text %}
+                        <a href="{{ slide.button_link }}" class="slide-button">
+                            {{ slide.button_text }}
+                        </a>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="product-section">
+            <div class="section-header">
+                <h2>Featured Products</h2>
+                <div class="sort-options">
+                    <label for="sort-by">Sort by:</label>
+                    <select id="sort-by" class="sort-select">
+                        <option value="popular">Most Popular</option>
+                        <option value="newest">Newest Arrivals</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="product-grid">
+                {% for product in products %}
+                <article class="product-card">
+                    <a href="{% url 'product_detail' product.id %}" class="product-link">
+                        <div class="product-image-container">
+                            <img src="{{ product.image.url }}" 
+                                 alt="{{ product.name }}" 
+                                 loading="lazy"
+                                 class="product-image">
+                            {% if product.is_new %}
+                            <span class="product-badge new">New</span>
+                            {% endif %}
+                            {% if product.discount_price %}
+                            <span class="product-badge discount">
+                                -{{ product.discount_percentage }}%
+                            </span>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="product-info">
+                            <h3 class="product-title">{{ product.name }}</h3>
+                            <p class="product-description">{{ product.short_description }}</p>
+                            
+                            <div class="product-price">
+                                {% if product.discount_price %}
+                                <span class="original-price">${{ product.price }}</span>
+                                <span class="discounted-price">${{ product.discount_price }}</span>
+                                {% else %}
+                                <span>${{ product.price }}</span>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="product-actions">
+                                {% if user.is_authenticated %}
+                                <form action="{% url 'add_to_cart' product.id %}" method="post" class="add-to-cart-form">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="add-to-cart-btn">
+                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                    </button>
+                                </form>
+                                {% else %}
+                                <a href="{% url 'signin' %}" class="login-to-buy">
+                                    <i class="fas fa-sign-in-alt"></i> Sign In to Buy
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                {% empty %}
+                <div class="no-products">
+                    <p>No products available in this category.</p>
+                    <a href="{% url 'product_list' %}" class="browse-all">Browse All Products</a>
+                </div>
+                {% endfor %}
+            </div>
+
+            {% if is_paginated %}
+            <div class="pagination">
+                {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">
+                    <i class="fas fa-chevron-left"></i> Previous
+                </a>
+                {% endif %}
+                
+                <span class="current-page">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+                
+                {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="page-link">
+                    Next <i class="fas fa-chevron-right"></i>
+                </a>
+                {% endif %}
+            </div>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Shop</h4>
+                <ul>
+                    {% for category in categories|slice:":5" %}
+                    <li><a href="{% url 'category_products' category.id %}">{{ category.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                    <li><a href="{% url 'faq' %}">FAQs</a></li>
+                    <li><a href="{% url 'shipping' %}">Shipping & Returns</a></li>
+                    <li><a href="{% url 'size_guide' %}">Size Guide</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>About Kafshy</h4>
+                <ul>
+                    <li><a href="{% url 'about' %}">Our Story</a></li>
+                    <li><a href="{% url 'sustainability' %}">Sustainability</a></li>
+                    <li><a href="{% url 'careers' %}">Careers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section newsletter">
+                <h4>Stay Connected</h4>
+                <p>Subscribe for updates and promotions</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+        </div>
         
-        // Adjust mega menu for mobile
-        if (isMobile) {
-            document.querySelectorAll('.mega-menu-column').forEach(column => {
-                column.style.width = '100%';
-            });
-        }
-    }
-    
-    window.addEventListener('resize', handleResponsive);
-    handleResponsive();
-});
+        <div class="footer-bottom">
+            <div class="payment-methods">
+                <i class="fab fa-cc-visa" aria-hidden="true"></i>
+                <i class="fab fa-cc-mastercard" aria-hidden="true"></i>
+                <i class="fab fa-cc-amex" aria-hidden="true"></i>
+                <i class="fab fa-cc-paypal" aria-hidden="true"></i>
+            </div>
+            <p>&copy; 2025 Kafshy. All Rights Reserved. | <a href="{% url 'privacy' %}">Privacy Policy</a> | <a href="{% url 'terms' %}">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script src="{% static 'store/js/script.js' %}" defer></script>
+</body>
+</html>
