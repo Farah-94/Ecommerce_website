@@ -1,12 +1,14 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Our Products | Kafshy{% endblock %}</title>
     <meta name="description" content="Browse our collection of high-quality products">
     
     <!-- Preload critical resources -->
+     {% load static %} 
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
     <link rel="preload" href="{% static 'store/css/style.css' %}" as="style">
     

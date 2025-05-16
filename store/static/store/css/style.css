@@ -759,3 +759,32 @@ img {
     text-align: center;
     padding: 10px;
 }
+/* Add to store/static/store/css/style.css */
+
+/* Mobile menu */
+.main-navigation {
+    transition: all 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+}
+.main-navigation.active {
+    max-height: 1000px;
+}
+
+/* Cart counter animation */
+.cart-count.updated {
+    animation: pulse 0.5s ease;
+    color: #4CAF50;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Product card hover */
+.product-card.hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
