@@ -1,5 +1,12 @@
 from django.contrib import admin
+from django import forms
 from .models import Product, Category  # Importing models to register them in Admin
+IMAGE_CHOICES = [
+    ('pro1', 'Product Image 1'),
+    ('pro2', 'Product Image 2'),
+    ('pro3', 'Product Image 3'),
+    # Add more as needed
+]
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -9,13 +16,39 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Category, CategoryAdmin)
 
 
+class ProductAdminForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
+    
+    # Convert the CharFields to dropdowns
+    image_code = forms.ChoiceField(choices=IMAGE_CHOICES)
+    image_code_alt1 = forms.ChoiceField(choices=[('', '---------')] + IMAGE_CHOICES, required=False)
+    image_code_alt2 = forms.ChoiceField(choices=[('', '---------')] + IMAGE_CHOICES, required=False)
+
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price', 'stock')  # Shows these columns in Admin
-    search_fields = ('name',)  # Adds search functionality
-    list_filter = ('price', 'stock')  # Filters for easier navigation
+    form = ProductAdminForm
+    list_display = ('name', 'price', 'stock', 'display_main_image')
+    search_fields = ('name',)
+    list_filter = ('price', 'stock', 'category')
+    
+    # Display image code in list view
+    def display_main_image(self, obj):
+        return obj.image_code
+    display_main_image.short_description = 'Main Image'
+    
+    # Group fields nicely
+    fieldsets = [
+        ('Product Information', {
+            'fields': ('name', 'price', 'stock', 'description', 'category')
+        }),
+        ('Product Images', {
+            'fields': ('image_code', 'image_code_alt1', 'image_code_alt2'),
+            'description': 'Select from existing static images (pro1, pro2, pro3)'
+        }),
+    ]
 
 admin.site.register(Product, ProductAdmin)
-
 
 class ProductInline(admin.TabularInline):
     model = Product

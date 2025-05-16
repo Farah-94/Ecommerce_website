@@ -14,16 +14,33 @@
         
         <h1><strong><em>{{ product.name }}</em></strong></h1>
         
-        <!-- Product Image Slider -->
-        <div class="product-slider">
-            <div class="product-slides">
-                <img src="{% static 'store/images/tshirt.jpg' %}" alt="{{ product.name }} Image 1" class="product-slide">
-                <img src="{% static 'store/images/pro1.jpg' %}" alt="{{ product.name }} Image 2" class="product-slide">
-                <img src="{% static 'store/images/pro3.jpg' %}" alt="{{ product.name }} Image 3" class="product-slide">
-            </div>
-            <button class="product-prev" onclick="moveProductSlide(-1)">&#10094;</button>
-            <button class="product-next" onclick="moveProductSlide(1)">&#10095;</button>
-        </div>
+     <div class="product-slider">
+    <div class="product-slides">
+        <!-- Main Image -->
+        <img src="{% static 'store/images/' %}{{ product.image_code }}.jpg" 
+             alt="{{ product.name }}" 
+             class="slide active">
+        
+        <!-- Additional Images -->
+        {% if product.image_code_alt1 %}
+        <img src="{% static 'store/images/' %}{{ product.image_code_alt1 }}.jpg" 
+             alt="{{ product.name }} view 2" 
+             class="slide">
+        {% endif %}
+        
+        {% if product.image_code_alt2 %}
+        <img src="{% static 'store/images/' %}{{ product.image_code_alt2 }}.jpg" 
+             alt="{{ product.name }} view 3" 
+             class="slide">
+        {% endif %}
+    </div>
+    
+    <!-- Navigation arrows -->
+    {% if product.image_code_alt1 or product.image_code_alt2 %}
+    <button class="prev" onclick="moveSlide(-1)">❮</button>
+    <button class="text-white next" onclick="moveSlide(1)">❯</button>
+    {% endif %}
+</div>
 
         <p>Price: ${{ product.price }}</p>
 

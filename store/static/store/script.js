@@ -52,3 +52,24 @@ window.addEventListener("click", function (event) {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.product-slide');
+    
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+        });
+    }
+    
+    window.moveSlide = function(n) {
+        currentSlide = (currentSlide + n + slides.length) % slides.length;
+        showSlide(currentSlide);
+    }
+    
+    // Auto-rotate every 5 seconds if multiple images
+    if (slides.length > 1) {
+        setInterval(() => moveSlide(1), 5000);
+    }
+});
