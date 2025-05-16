@@ -1,2 +1,2 @@
-web: gunicorn ecommerce_store.wsgi --timeout 120 --workers=3 --threads=3 --worker-class=gthread
+web: gunicorn ecommerce_store.wsgi --log-file -
 release: python manage.py migrate

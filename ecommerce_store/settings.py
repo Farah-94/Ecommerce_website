@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import dj_database_url
+import django_heroku
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -79,10 +80,11 @@ WSGI_APPLICATION = 'ecommerce_store.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-
-  'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
-
-
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
     # 'default': {
     #     'ENGINE': 'django.db.backends.postgresql',
@@ -92,7 +94,6 @@ DATABASES = {
     #     'HOST': 'localhost',
     #     'PORT': '5432',
     # }
-}
 
 
 
@@ -132,17 +133,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'store/static'),  # Points to store/static/
-]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# settings.py
 STATIC_URL = '/static/'
-# Media files (user uploads)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Only define once
 
-# Storage backend
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'store/static')
+]
+django_heroku.settings(locals())
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# For production
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 # Default primary key
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

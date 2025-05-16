@@ -1,22 +1,28 @@
 from django.urls import path
-from .views import logout_view, product_list, signup, signin, buy_product
-from .views import CustomLoginView
-from .views import add_to_cart, cart, checkout, order_success
-from .views import category_products 
-from .views import update_cart, remove_from_cart
+from . import views
+
+app_name = 'store'
 
 urlpatterns = [
-    path('logout/', logout_view, name='logout'),
-    path('products/', product_list, name='index'),  # ✅ Keep only one definition
-    path('signup/', signup, name='signup'),
-    path('signin/', signin, name='signin'),
-    path('buy/<int:product_id>/', buy_product, name='buy_product'),
-    path('category/<slug:category_slug>/', category_products, name='category_products'),
-    path('add-to-cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
-    path('cart/', cart, name='cart'),
-    path('checkout/', checkout, name='checkout'),
-    path('order-success/<int:order_id>/', order_success, name='order_success'),
-
-    path("cart/update/<int:cart_item_id>/<str:action>/", update_cart, name="update_cart"),
-    path("cart/remove/<int:cart_item_id>/", remove_from_cart, name="remove_from_cart"),
+    # Main pages
+    path('', views.product_list, name='index'),  # Homepage (now at root URL)
+    
+    # Products
+    path('product/<int:pk>/', views.product_detail, name='product_detail'),
+    path('category/<int:category_id>/', views.category_products, name='category_products'),
+    
+    # Authentication
+    path('signup/', views.signup, name='signup'),
+    path('signin/', views.signin, name='signin'),
+    path('logout/', views.logout_view, name='logout'),
+    
+    # Cart
+    path('cart/', views.cart, name='cart'),
+    path('add-to-cart/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
+    path('cart/update/<int:cart_item_id>/<str:action>/', views.update_cart, name='update_cart'),
+    path('cart/remove/<int:cart_item_id>/', views.remove_from_cart, name='remove_from_cart'),
+    
+    # Checkout
+    path('checkout/', views.checkout, name='checkout'),
+    path('order-success/<int:order_id>/', views.order_success, name='order_success'),
 ]

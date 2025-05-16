@@ -16,19 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from store.views import product_list 
-from store.views import logout_view  
 from django.conf import settings
 from django.conf.urls.static import static
 
-
-
 urlpatterns = [
-    path('', product_list, name='home'),  # Redirect empty path to product list
-    path('store/', include('store.urls')),  # Store app URLs
     path('admin/', admin.site.urls),
-    path('logout/', logout_view, name='logout'),
-]
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+    path('', include('store.urls')),  # Main store URLs at root
+    path('logout/', include('store.urls')),  # Let store.urls handle logout
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
