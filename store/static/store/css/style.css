@@ -12,7 +12,7 @@ header {
     text-align: center;
     padding: 20px;
     background-color: #5e2e57; /* Dark background */
-background-image: url("{% static 'store/images/back1.jpg' %}");
+background-image: url("{% static '../images/back1.jpg' %}");
  background-position: center;
     background-repeat: no-repeat; /* Prevent repeating */
     background-size: cover; /* Cover the entire header */
@@ -82,7 +82,7 @@ header h1 {
 
 
 .signin-btn {
-    background-color: #4f3249;
+    background-color: #5b3e55;
     padding: 8px 15px;
     border-radius: 5px;
     text-align: center;
@@ -318,7 +318,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
-.admin-link a {
+.admin-link li {
     display: block;
     text-align: center;
     padding: 10px;
