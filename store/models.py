@@ -13,11 +13,11 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField()
     stock = models.IntegerField(default=0)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)  
-    image = models.ImageField(upload_to='store/images/')
-        
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
+    image1 = models.ImageField(upload_to='store/images/', help_text="Main product image")
+    image2 = models.ImageField(upload_to='store/images/', blank=True, null=True, help_text="Alternate view 1")
+    image3 = models.ImageField(upload_to='store/images/', blank=True, null=True, help_text="Alternate view 2")
     
-
     def __str__(self):
         return self.name
     
