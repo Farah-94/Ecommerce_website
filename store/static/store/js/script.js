@@ -185,3 +185,25 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('resize', handleResponsive);
     handleResponsive();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    mobileMenuToggle.addEventListener('click', function() {
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !isExpanded);
+        navMenu.classList.toggle('active');
+    });
+});
+
+function handleSortChange(selectElement) {
+    const sortValue = selectElement.value;
+    const currentUrl = new URL(window.location.href);
+    
+    // Update or add the sort parameter
+    currentUrl.searchParams.set('sort', sortValue);
+    
+    // Reload the page with the new sort parameter
+    window.location.href = currentUrl.toString();
+}
