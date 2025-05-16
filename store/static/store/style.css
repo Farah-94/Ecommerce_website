@@ -619,3 +619,34 @@ button {
 .footer-section :hover {
     color: #b37fad;
 }
+
+.product-slider {
+    position: relative;
+    max-width: 400px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.product-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.product-slide {
+    width: 100%;
+    border-radius: 10px;
+}
+
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.product-prev { left: 5px; }
+.product-next { right: 5px; }
