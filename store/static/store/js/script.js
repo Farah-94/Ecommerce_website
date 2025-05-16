@@ -1,20 +1,25 @@
 console.log("script.js is loading!");
 
-// Product Slider Logic
 document.addEventListener("DOMContentLoaded", function () {
     let sliderContainer = document.querySelector(".slider-container");
     let slides = document.querySelectorAll(".product-slide");
-    let totalSlides = slides.length;
-    let currentSlide = 0;
 
+    console.log("Slider container:", sliderContainer);
+    console.log("Slides:", slides.length);
+
+    if (!sliderContainer || slides.length === 0) {
+        console.error("Slider elements not found!");
+        return;
+    }
+
+    let currentSlide = 0;
     function nextSlide() {
-        currentSlide = (currentSlide + 1) % totalSlides;
+        currentSlide = (currentSlide + 1) % slides.length;
         sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
 
-    setInterval(nextSlide, 5000); // Moves the images every 5 seconds
+    setInterval(nextSlide, 5000);
 });
-
 // Dropdown Menu Toggle
 document.querySelector(".dropbtn").addEventListener("click", function () {
     document.querySelector(".dropdown-content").classList.toggle("show");

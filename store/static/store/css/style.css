@@ -102,6 +102,7 @@ header h1 {
     max-width: 300%; /* Adjust based on the number of slides */
     transition: transform 1.5s ease-in-out; 
     overflow: hidden;
+    
 }
 .product-slide {
     min-width: 100%; /* Ensures each image stays within its frame */
