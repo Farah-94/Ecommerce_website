@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product Details</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'store/style.css' %}">
-  
 </head>
 <body>
     <div class="product-details">
@@ -14,16 +13,27 @@
         <p>Here you can view the product details and add it to your cart.</p>
         
         <h1><strong><em>{{ product.name }}</em></strong></h1>
-        <img src="{{ product.image.url }}" alt="{{ product.name }}" width="200">
+        
+        <!-- Product Image Slider -->
+        <div class="product-slider">
+            <div class="product-slides">
+                <img src="{% static 'store/images/tshirt.jpg' %}" alt="{{ product.name }} Image 1" class="product-slide">
+                <img src="{% static 'store/images/pro1.jpg' %}" alt="{{ product.name }} Image 2" class="product-slide">
+                <img src="{% static 'store/images/pro3.jpg' %}" alt="{{ product.name }} Image 3" class="product-slide">
+            </div>
+            <button class="product-prev" onclick="moveProductSlide(-1)">&#10094;</button>
+            <button class="product-next" onclick="moveProductSlide(1)">&#10095;</button>
+        </div>
+
         <p>Price: ${{ product.price }}</p>
-    
+
         <form method="post" action="{% url 'add_to_cart' product.id %}">
             {% csrf_token %}
             
             <!-- Quantity -->
             <label>Quantity:</label>
             <input type="number" name="quantity" min="1" max="10" value="1" placeholder="Enter quantity" title="Quantity">
-    
+
             <!-- Sizes -->
             <label>Size:</label>
             <select name="size" title="Select a size">
@@ -36,7 +46,7 @@
             <button type="submit">Add to Cart</button>
         </form>
     </div>
+    
+    <script src="{% static 'store/script.js' %}" defer></script>
 </body>
 </html>
-
-
