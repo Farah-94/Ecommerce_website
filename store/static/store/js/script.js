@@ -46,9 +46,17 @@ document.addEventListener("DOMContentLoaded", function () {
 // Close dropdowns if clicking outside
 window.addEventListener("click", function (event) {
     if (!event.target.closest(".dropdown") && !event.target.closest(".has-submenu")) {
-        document.querySelector(".dropdown-content").classList.remove("show");
-        document.querySelectorAll(".submenu, .sub-dropdown").forEach(menu => {
-            menu.style.display = "none";
+        const dropdownContent = document.querySelector(".dropdown-content");
+        const menus = document.querySelectorAll(".submenu, .sub-dropdown");
+
+        if (dropdownContent) {
+            dropdownContent.classList.remove("show");
+        }
+
+        menus.forEach(menu => {
+            if (menu) {
+                menu.style.display = "none";
+            }
         });
     }
 });
