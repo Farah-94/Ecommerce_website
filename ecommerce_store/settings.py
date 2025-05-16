@@ -132,11 +132,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For collectstatic
 STATICFILES_DIRS = [
-     os.path.join(BASE_DIR, 'store/static/store'),  # Points to your store app's static files
-    # os.path.join(BASE_DIR, 'static')   # Your local static files
+    os.path.join(BASE_DIR, 'store/static'),  # Points to store/static/
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Media files (user uploads)
 MEDIA_URL = '/media/'
