@@ -1,12 +1,14 @@
 from django.contrib import admin
 from django import forms  # <-- This import was missing
 from .models import Product, Category
-
 IMAGE_CHOICES = [
-    ('pro1', 'Product Image 1'),
-    ('pro2', 'Product Image 2'),
-    ('pro3', 'Product Image 3'),
-    # Add more as needed
+    ('pro1', 'Product 1 (pro1.jpg)'),
+    ('pro2', 'Product 2 (pro2.jpg)'), 
+    ('pro3', 'Product 3 (pro3.jpg)'),
+    ('tshirt', 'T-Shirt (tshirt.jpg)'),
+    ('watch', 'Watch (watch.jpg)'),
+    ('jeans', 'Jeans (jeans.png)'),
+    # Add all your actual image files here
 ]
 
 class ProductAdminForm(forms.ModelForm):
@@ -30,23 +32,27 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class ProductAdmin(admin.ModelAdmin):
     form = ProductAdminForm
-    list_display = ('name', 'price', 'stock', 'display_main_image')
-    search_fields = ('name',)
-    list_filter = ('price', 'stock', 'category')
+    list_display = ('name', 'price', 'stock', 'category', 'display_main_image')
+    list_editable = ('price', 'stock')  # Allow quick editing
+    search_fields = ('name', 'description')
+    list_filter = ('category', 'price', 'stock')
     
-    # Display image code in list view
     def display_main_image(self, obj):
-        return obj.image_code
+        if obj.image_code:
+            return f"{obj.image_code}.jpg"
+        return "-"
     display_main_image.short_description = 'Main Image'
     
-    # Group fields nicely
     fieldsets = [
-        ('Product Information', {
-            'fields': ('name', 'price', 'stock', 'description', 'category')
+        ('Basic Info', {
+            'fields': ('name', 'category', 'price', 'stock', 'description')
         }),
         ('Product Images', {
             'fields': ('image_code', 'image_code_alt1', 'image_code_alt2'),
-            'description': 'Select from existing static images (pro1, pro2, pro3)'
+            'description': '''
+                Select images from static/store/images/products/<br>
+                Files must exist with .jpg extension
+            '''
         }),
     ]
 

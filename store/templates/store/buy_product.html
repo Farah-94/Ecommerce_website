@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'store/store/style.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
 </head>
 <body>
     <div class="product-details">
@@ -14,34 +14,33 @@
         
         <h1><strong><em>{{ product.name }}</em></strong></h1>
         
-     <div class="product-slider">
+       <div class="product-slider">
     <div class="product-slides">
         <!-- Main Image -->
-        <img src="{% static 'store/store/images/tshirt.jpg' %}{{ product.image_code }}.jpg" 
+        <img src="{% static 'store/images/products/tshirt.jpg' %}{{ product.image_code }}.jpg" 
              alt="{{ product.name }}" 
              class="slide active">
         
         <!-- Additional Images -->
         {% if product.image_code_alt1 %}
-        <img src="{% static 'store/store/images/pro1' %}{{ product.image_code_alt1 }}.jpg" 
-             alt="{{ product.name }} view 2" 
+        <img src="{% static 'store/images/products/pro1.jpg' %}{{ product.image_code_alt1 }}.jpg" 
+             alt="{{ product.name }} alternate view" 
              class="slide">
         {% endif %}
         
         {% if product.image_code_alt2 %}
-        <img src="{% static 'store/store/images/pro2' %}{{ product.image_code_alt2 }}.jpg" 
-             alt="{{ product.name }} view 3" 
+        <img src="{% static 'store/images/products/pro2.jpg' %}{{ product.image_code_alt2 }}.jpg" 
+             alt="{{ product.name }} detail view" 
              class="slide">
         {% endif %}
     </div>
     
-    <!-- Navigation arrows -->
+    <!-- Navigation arrows (only show if alternate images exist) -->
     {% if product.image_code_alt1 or product.image_code_alt2 %}
     <button class="prev" onclick="moveSlide(-1)">❮</button>
-    <button class="text-white next" onclick="moveSlide(1)">❯</button>
+    <button class="next" onclick="moveSlide(1)">❯</button>
     {% endif %}
 </div>
-
         <p>Price: ${{ product.price }}</p>
 
         <form method="post" action="{% url 'add_to_cart' product.id %}">
@@ -64,6 +63,6 @@
         </form>
     </div>
     
-    <script src="{% static 'store/store/script.js' %}" defer></script>
+    <script src="{% static 'store/js/script.js' %}" defer></script>
 </body>
 </html>
