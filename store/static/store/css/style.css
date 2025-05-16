@@ -21,8 +21,8 @@ background-image: url("{% static 'store/images/back1.jpg' %}");
 }
 .cart-link {
     font-size: 18px;
-    color: #333;
-    text-decoration: none;
+    color: white;
+    text-decoration: underline;
     font-weight: bold;
     margin-left: auto;
     padding: 10px;
@@ -82,10 +82,11 @@ header h1 {
 
 
 .signin-btn {
-    background-color:  #510f47;
+    background-color: #4f3249;
     padding: 8px 15px;
     border-radius: 5px;
     text-align: center;
+    color: white;
     
 }
 
@@ -321,7 +322,7 @@ button {
     display: block;
     text-align: center;
     padding: 10px;
-    background-color:  #5a3e55;
+    background-color:  #4f3249;
     color: white;
     text-decoration: none;
     font-weight: bold;
