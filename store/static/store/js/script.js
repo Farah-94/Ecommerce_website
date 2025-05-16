@@ -45,19 +45,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Close dropdowns if clicking outside
 window.addEventListener("click", function (event) {
+    // Check if the click is outside the dropdown or submenu
     if (!event.target.closest(".dropdown") && !event.target.closest(".has-submenu")) {
         const dropdownContent = document.querySelector(".dropdown-content");
         const menus = document.querySelectorAll(".submenu, .sub-dropdown");
 
-        if (dropdownContent) {
-            dropdownContent.classList.remove("show");
-        }
+        // Hide dropdown content if it exists
+        dropdownContent?.classList.remove("show");
 
-        menus.forEach(menu => {
-            if (menu) {
-                menu.style.display = "none";
-            }
-        });
+        // Hide all submenus safely
+        menus.forEach(menu => menu?.style.display = "none");
     }
 });
 
