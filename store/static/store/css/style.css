@@ -66,7 +66,7 @@ header {
     width: 100%; /* Makes the image scale within the container */
     height: auto; /* Keeps aspect ratio */
     object-fit: cover; /* Ensures proper fit */
-    max-height: 500px; /* Adjust height as needed */
+    max-height: 300px; /* Adjust height as needed */
 }
 
 
