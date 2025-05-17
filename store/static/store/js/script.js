@@ -22,31 +22,32 @@ document.addEventListener("DOMContentLoaded", function() {
     // ======================
     // 2. HERO SLIDER
     // ======================
-    const heroSlider = document.querySelector('.hero-slider .slider-container');
-    const heroSlides = document.querySelectorAll('.hero-slider .hero-slide');
-    
+   document.addEventListener("DOMContentLoaded", function () {
+    const heroSlider = document.querySelector(".hero-slider .slider-container");
+    const heroSlides = document.querySelectorAll(".hero-slider .hero-slide");
+
     if (heroSlider && heroSlides.length > 0) {
         let currentHeroSlide = 0;
         let heroInterval;
-        
+
         function updateHeroSlider() {
             heroSlider.style.transform = `translateX(-${currentHeroSlide * 100}%)`;
         }
-        
+
         function nextHeroSlide() {
             currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
             updateHeroSlider();
         }
-        
-        // Auto-advance every 5 seconds
+
         heroInterval = setInterval(nextHeroSlide, 5000);
-        
-        // Pause on hover
-        heroSlider.addEventListener('mouseenter', () => clearInterval(heroInterval));
-        heroSlider.addEventListener('mouseleave', () => {
+
+        // Pause slider on hover
+        heroSlider.addEventListener("mouseenter", () => clearInterval(heroInterval));
+        heroSlider.addEventListener("mouseleave", () => {
             heroInterval = setInterval(nextHeroSlide, 5000);
         });
     }
+});
 
     // ======================
     // 3. MEGA MENU SYSTEM

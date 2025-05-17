@@ -13,37 +13,40 @@ header {
     padding: 15px;
     text-align: center;
 }
-
-/* Navigation Menu */
-.main-navigation {
-    background-color: #444;
+/* -------------- */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     padding: 10px;
+    width: 200px;
 }
 
-.main-navigation ul {
-    list-style: none;
-    padding: 0;
+.dropdown-content.open {
+    display: block; /* Shows menu when JavaScript toggles the `open` class */
+}
+
+/* ---------------- */
+.hero-slider {
+    overflow: hidden;
+    width: 100%;
+}
+
+.slider-container {
     display: flex;
-    justify-content: center;
+    transition: transform 0.5s ease-in-out;
+    width: 300%; /* Adjust based on number of slides */
 }
 
-.main-navigation li {
-    margin: 0 15px;
+.hero-slide {
+    flex: 1;
+    min-width: 100%;
 }
 
-.main-navigation a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-}
+/* -------------- */
 
 /* Product Grid */
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
 
 .product-card {
     background: white;
@@ -57,7 +60,7 @@ header {
     height: auto;
     border-radius: 5px;
 }
-
+/* -------------- */
 /* Footer */
 footer {
     background-color: #333;
