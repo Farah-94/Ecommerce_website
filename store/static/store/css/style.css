@@ -17,16 +17,27 @@ header {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #fff;
+    background: white;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     padding: 10px;
-    width: 200px;
 }
 
 .dropdown-content.open {
-    display: block; /* Shows menu when JavaScript toggles the `open` class */
+    display: block; /* Shows menu when toggled */
 }
 
+.submenu, .sub-dropdown {
+    display: none;
+    margin-left: 15px;
+}
+
+.has-submenu.open .submenu {
+    display: block; /* Shows submenus when parent is clicked */
+}
+
+.has-submenu.open .sub-dropdown {
+    display: block; /* Shows sub-submenus when parent is clicked */
+}
 /* ---------------- */
 .hero-slider {
     overflow: hidden;
