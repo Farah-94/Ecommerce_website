@@ -5,19 +5,19 @@ console.log("Kafshy Storefront JavaScript File Loaded");
 document.addEventListener("DOMContentLoaded", function() {
    
 
-    // ======================
-    // 1. MOBILE NAVIGATION
-    // ======================
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const mainNavigation = document.querySelector('.main-navigation');
+    // // ======================
+    // // 1. MOBILE NAVIGATION
+    // // ======================
+    // const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    // const mainNavigation = document.querySelector('.main-navigation');
     
-    if (mobileMenuToggle && mainNavigation) {
-        mobileMenuToggle.addEventListener('click', function() {
-            this.setAttribute('aria-expanded', 
-                this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
-            mainNavigation.classList.toggle('active');
-        });
-    }
+    // if (mobileMenuToggle && mainNavigation) {
+    //     mobileMenuToggle.addEventListener('click', function() {
+    //         this.setAttribute('aria-expanded', 
+    //             this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
+    //         mainNavigation.classList.toggle('active');
+    //     });
+    // }
 
     // ======================
     // 2. HERO SLIDER
