@@ -3,49 +3,67 @@ console.log("javascript is loading")
 
 // Automatic Image Slider for Kafshy E-commerce Site
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Get slider elements
-    const sliderContainer = document.querySelector('.slider-container');
-    const slides = document.querySelectorAll('.hero-slide');
+// document.addEventListener('DOMContentLoaded', function() {
+//     // Get slider elements
+//     const sliderContainer = document.querySelector('.slider-container');
+//     const slides = document.querySelectorAll('.hero-slide');
     
-    // If there are no slides, exit the function
-    if (slides.length === 0) return;
+//     // If there are no slides, exit the function
+//     if (slides.length === 0) return;
     
-    let currentSlide = 0;
+//     let currentSlide = 0;
+//     const slideCount = slides.length;
+    
+//     // Set initial positions
+//     function setupSlides() {
+//         slides.forEach((slide, index) => {
+//             slide.style.position = 'absolute';
+//             slide.style.left = '0';
+//             slide.style.width = '100%';
+//             slide.style.opacity = index === currentSlide ? '1' : '0';
+//             slide.style.zIndex = index === currentSlide ? '1' : '0';
+//             slide.style.transition = 'opacity 1s ease';
+//         });
+//     }
+    
+//     // Function to move to the next slide
+//     function moveToNextSlide() {
+//         // Hide current slide
+//         slides[currentSlide].style.opacity = '0';
+//         slides[currentSlide].style.zIndex = '0';
+        
+//         // Move to next slide (loop back to first slide if at the end)
+//         currentSlide = (currentSlide + 1) % slideCount;
+        
+//         // Show new current slide
+//         slides[currentSlide].style.opacity = '1';
+//         slides[currentSlide].style.zIndex = '1';
+//     }
+    
+//     // Initialize slides
+//     setupSlides();
+    
+//     // Start automatic sliding every 5 seconds
+//     setInterval(moveToNextSlide, 5000);
+// });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const slider = document.querySelector(".slider-container");
+    const slides = document.querySelectorAll(".hero-slide");
+    let currentIndex = 0;
     const slideCount = slides.length;
-    
-    // Set initial positions
-    function setupSlides() {
-        slides.forEach((slide, index) => {
-            slide.style.position = 'absolute';
-            slide.style.left = '0';
-            slide.style.width = '100%';
-            slide.style.opacity = index === currentSlide ? '1' : '0';
-            slide.style.zIndex = index === currentSlide ? '1' : '0';
-            slide.style.transition = 'opacity 1s ease';
-        });
+
+    function slideImages() {
+        currentIndex = (currentIndex + 1) % slideCount;
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
     }
-    
-    // Function to move to the next slide
-    function moveToNextSlide() {
-        // Hide current slide
-        slides[currentSlide].style.opacity = '0';
-        slides[currentSlide].style.zIndex = '0';
-        
-        // Move to next slide (loop back to first slide if at the end)
-        currentSlide = (currentSlide + 1) % slideCount;
-        
-        // Show new current slide
-        slides[currentSlide].style.opacity = '1';
-        slides[currentSlide].style.zIndex = '1';
-    }
-    
-    // Initialize slides
-    setupSlides();
-    
-    // Start automatic sliding every 5 seconds
-    setInterval(moveToNextSlide, 5000);
+
+    setInterval(slideImages, 10000); // Changes image every 10 seconds
 });
+
+
+
 
 // ----------------
 document.addEventListener('DOMContentLoaded', function() {
