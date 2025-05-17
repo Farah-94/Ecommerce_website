@@ -47,27 +47,27 @@ header {
 }
 /* ---------------- */
 .hero-slider {
-    width: 100%;
-    max-width: 1200px; /* Adjust max width if needed */
     overflow: hidden;
+    width: 100%;
     position: relative;
-    margin: auto; /* Centers the slider */
 }
-
-
 
 .slider-container {
     display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 300%; /* Adjust based on number of slides */
+    transition: transform 1s ease-in-out;
+    width: 300%;
+}
+
+.hero-slide {
+    flex: 0 0 100%; /* Ensures each slide takes full width */
 }
 
 .hero-slide img {
-    width: 100%; /* Makes the image scale within the container */
-    height: auto; /* Keeps aspect ratio */
-    object-fit: cover; /* Ensures proper fit */
-    max-height: 300px; /* Adjust height as needed */
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
+
 
 
 

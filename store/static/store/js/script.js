@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let slideInterval;
 
     function updateHeroSlider() {
+        heroSlider.style.transition = "transform 1s ease-in-out"; // Smooth sliding effect
         heroSlider.style.transform = `translateX(-${currentHeroSlide * 100}%)`;
     }
 
@@ -16,10 +17,10 @@ document.addEventListener("DOMContentLoaded", function () {
         updateHeroSlider();
     }
 
-    // Auto-advance every 5 seconds
+    // Auto-slide every 5 seconds
     slideInterval = setInterval(nextHeroSlide, 5000);
 
-    // Pause on hover and resume when mouse leaves
+    // Pause slider on hover and resume when mouse leaves
     heroSlider.addEventListener("mouseenter", () => clearInterval(slideInterval));
     heroSlider.addEventListener("mouseleave", () => {
         slideInterval = setInterval(nextHeroSlide, 5000);
