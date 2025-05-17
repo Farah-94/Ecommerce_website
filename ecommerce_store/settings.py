@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 
 
-import os
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -82,10 +82,14 @@ WSGI_APPLICATION = 'ecommerce_store.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+import os
 import dj_database_url
+
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://postgres:farahakbar1@localhost:5432/ecommerce_db')
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
+
+
 
 
 #     'default': {
