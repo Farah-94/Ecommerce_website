@@ -8,7 +8,7 @@ body {
 
 /* Header */
 header {
-    background-color: #4d2525;
+    /* background-color: #4d2525; */
     color: white;
     padding: 15px;
     text-align: center;
@@ -50,41 +50,34 @@ header {
 
 .hero-slider {
     position: relative;
-    width: 100%;
+    width: 100vw;
+    height: 100vh; /* Full-screen height */
     overflow: hidden;
-    margin: 20px 0;
-    height: 400px; /* Adjust height as needed */
 }
 
 .slider-container {
-    position: relative;
-    width: 100%;
+    display: flex;
+    width: 300%;
     height: 100%;
-    overflow: hidden;
+    animation: slideAnimation 9s infinite;
 }
 
 .hero-slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: opacity 1s ease;
+    width: 100vw;
+    height: 100vh;
+    flex: 0 0 100%;
 }
 
 .hero-slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    display: block;
+    object-fit: cover; /* Ensures images fit properly */
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .hero-slider {
-        height: 250px;
-    }
+@keyframes slideAnimation {
+    0%, 33% { transform: translateX(0%); }
+    34%, 66% { transform: translateX(-100%); }
+    67%, 100% { transform: translateX(-200%); }
 }
 
 
