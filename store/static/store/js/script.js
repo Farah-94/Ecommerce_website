@@ -1,68 +1,121 @@
 console.log("javascript is loading")
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    const heroSlider = document.querySelector(".slider-container");
-    const heroSlides = document.querySelectorAll(".hero-slide");
-    let currentHeroSlide = 0;
-    let slideInterval;
+// Automatic Image Slider for Kafshy E-commerce Site
 
-    function updateHeroSlider() {
-        heroSlider.style.transition = "transform 1s ease-in-out"; // Smooth sliding effect
-        heroSlider.style.transform = `translateX(-${currentHeroSlide * 100}%)`;
+document.addEventListener('DOMContentLoaded', function() {
+    // Get slider elements
+    const sliderContainer = document.querySelector('.slider-container');
+    const slides = document.querySelectorAll('.hero-slide');
+    
+    // If there are no slides, exit the function
+    if (slides.length === 0) return;
+    
+    let currentSlide = 0;
+    const slideCount = slides.length;
+    
+    // Set initial positions
+    function setupSlides() {
+        slides.forEach((slide, index) => {
+            slide.style.position = 'absolute';
+            slide.style.left = '0';
+            slide.style.width = '100%';
+            slide.style.opacity = index === currentSlide ? '1' : '0';
+            slide.style.zIndex = index === currentSlide ? '1' : '0';
+            slide.style.transition = 'opacity 1s ease';
+        });
     }
-
-    function nextHeroSlide() {
-        currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
-        updateHeroSlider();
+    
+    // Function to move to the next slide
+    function moveToNextSlide() {
+        // Hide current slide
+        slides[currentSlide].style.opacity = '0';
+        slides[currentSlide].style.zIndex = '0';
+        
+        // Move to next slide (loop back to first slide if at the end)
+        currentSlide = (currentSlide + 1) % slideCount;
+        
+        // Show new current slide
+        slides[currentSlide].style.opacity = '1';
+        slides[currentSlide].style.zIndex = '1';
     }
-
-    // Auto-slide every 5 seconds
-    slideInterval = setInterval(nextHeroSlide, 5000);
-
-    // Pause slider on hover and resume when mouse leaves
-    heroSlider.addEventListener("mouseenter", () => clearInterval(slideInterval));
-    heroSlider.addEventListener("mouseleave", () => {
-        slideInterval = setInterval(nextHeroSlide, 5000);
-    });
+    
+    // Initialize slides
+    setupSlides();
+    
+    // Start automatic sliding every 5 seconds
+    setInterval(moveToNextSlide, 5000);
 });
 
 // ----------------
-document.addEventListener("DOMContentLoaded", function () {
-    const menuButton = document.querySelector(".dropbtn");
-    const dropdownContent = document.querySelector(".dropdown-content");
-
-    // Toggle main dropdown menu
-    if (menuButton && dropdownContent) {
-        menuButton.addEventListener("click", function () {
-            dropdownContent.classList.toggle("open");
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener("click", function (event) {
-            if (!menuButton.contains(event.target) && !dropdownContent.contains(event.target)) {
-                dropdownContent.classList.remove("open");
-            }
-        });
-    }
-
-
-
-    // Toggle submenus when clicking on parent categories
-    const submenuTriggers = document.querySelectorAll(".has-submenu > a");
-
-    submenuTriggers.forEach(trigger => {
-        trigger.addEventListener("click", function (event) {
-            event.preventDefault();
-            const parent = this.parentElement;
-            parent.classList.toggle("open");
-
-            // Close other submenus
-            document.querySelectorAll(".has-submenu").forEach(item => {
-                if (item !== parent) item.classList.remove("open");
+document.addEventListener('DOMContentLoaded', function() {
+    // Main dropdown menu button
+    const dropdownBtn = document.querySelector('.dropbtn');
+    const dropdownContent = document.querySelector('.dropdown-content');
+    
+    // Toggle main dropdown when clicking the menu button
+    dropdownBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        dropdownContent.classList.toggle('show');
+    });
+    
+    // Handle submenu toggles for "Latest Items"
+    const hasSubmenuItems = document.querySelectorAll('.has-submenu > a');
+    
+    hasSubmenuItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Toggle the immediate submenu of the clicked item
+            const submenu = this.nextElementSibling;
+            
+            // First close all other submenus at the same level
+            const siblings = this.parentElement.parentElement.querySelectorAll('.submenu, .sub-dropdown');
+            siblings.forEach(menu => {
+                if (menu !== submenu && menu.classList.contains('show')) {
+                    menu.classList.remove('show');
+                }
             });
+            
+            // Then toggle the clicked submenu
+            submenu.classList.toggle('show');
         });
     });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        // Close all dropdowns when clicking outside
+        if (!e.target.matches('.dropbtn') && !e.target.closest('.dropdown-content')) {
+            dropdownContent.classList.remove('show');
+            
+            // Also close all submenus
+            const allSubmenus = document.querySelectorAll('.submenu, .sub-dropdown');
+            allSubmenus.forEach(menu => {
+                menu.classList.remove('show');
+            });
+        }
+    });
+    
+    // Prevent clicks inside dropdown from closing it
+    dropdownContent.addEventListener('click', function(e) {
+        // Only prevent if it's not a direct link click
+        if (!e.target.matches('a') || e.target.nextElementSibling) {
+            e.stopPropagation();
+        }
+    });
+    
+    // Add touch support for mobile devices
+    if ('ontouchstart' in window) {
+        hasSubmenuItems.forEach(item => {
+            item.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const submenu = this.nextElementSibling;
+                submenu.classList.toggle('show');
+            });
+        });
+    }
 });
-
 // -----------------
