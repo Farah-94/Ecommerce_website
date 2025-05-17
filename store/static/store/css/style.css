@@ -6,17 +6,6 @@ body {
     background-color: #f4f4f4;
 }
 
-/* Logo centered at the top */
-.logo {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    height: auto;
-    width: 200px;
-    z-index: 15; /* Ensures it stays above other elements */
-}
-
 /* Full-Screen Background Slider */
 .hero-slider {
     position: fixed;
@@ -43,10 +32,34 @@ body {
 .hero-slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Ensures proper fit */
 }
 
-/* Positioning Menu & Cart on Top of Slider */
+/* Header with Centered Logo & Title */
+header {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: transparent;
+    z-index: 10;
+    top: 20px;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+}
+
+.header-title {
+    font-size: 24px;
+    color: white;
+    margin-top: 10px; /* Space between logo and title */
+}
+
+/* Positioning Menu & Cart Over Slider */
 .cart-link {
     position: absolute;
     top: 20px;
@@ -87,25 +100,12 @@ body {
     display: block; /* Shows menu when toggled */
 }
 
-.submenu, .sub-dropdown {
-    display: none;
-    margin-left: 15px;
-}
-
-.has-submenu.open .submenu {
-    display: block; /* Shows submenus when parent is clicked */
-}
-
-.has-submenu.open .sub-dropdown {
-    display: block; /* Shows sub-submenus when parent is clicked */
-}
-
-/* Footer */
+/* Footer - Reduced Height */
 footer {
     background-color: rgba(51, 51, 51, 0.8);
     color: white;
     text-align: center;
-    padding: 15px;
+    padding: 10px; /* Reduced height */
     position: absolute;
     bottom: 0;
     width: 100%;
