@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function slideImages() {
         currentIndex = (currentIndex + 1) % slideCount;
-        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        slider.style.transform = `translateX(-${currentIndex * 100}vw)`;
     }
 
     setInterval(slideImages, 10000); // Changes image every 10 seconds
