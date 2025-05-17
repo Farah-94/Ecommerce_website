@@ -11,14 +11,15 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-import dj_database_url
+
 
 import os
-import django_heroku
-django_heroku.settings(locals())
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -81,24 +82,21 @@ WSGI_APPLICATION = 'ecommerce_store.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
+import dj_database_url
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(default='postgres://postgres:farahakbar1@localhost:5432/ecommerce_db')
 }
 
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'ecommerce_db',
-    #     'USER': 'postgres',
-    #     'PASSWORD': 'farahakbar1',
-    #     'HOST': 'localhost',
-    #     'PORT': '5432',
-    # }
 
-
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'ecommerce_db',
+#         'USER': 'postgres',
+#         'PASSWORD': 'farahakbar1',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# 
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -140,16 +138,15 @@ USE_TZ = True
 LOGIN_URL = '/signin/'
 
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'store/static')
-]
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
+
 # For production
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Default primary key
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+import django_heroku
+django_heroku.settings(locals())
 
