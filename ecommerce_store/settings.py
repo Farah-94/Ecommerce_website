@@ -14,7 +14,8 @@ from pathlib import Path
 import dj_database_url
 
 import os
-
+import django_heroku
+django_heroku.settings(locals())
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -136,6 +137,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 
 # settings.py
+LOGIN_URL = '/signin/'
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
