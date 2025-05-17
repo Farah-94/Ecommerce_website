@@ -1,3 +1,6 @@
+print("Kafshy Storefront JavaScript File Loaded");
+
+
 // Storefront Main JavaScript
 document.addEventListener("DOMContentLoaded", function() {
     console.log("Kafshy Storefront initialized");
