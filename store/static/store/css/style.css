@@ -8,12 +8,13 @@ body {
 
 /* Header */
 header {
-    background-color: #333; /* Dark background */
-    color: white; /* Text color */
-    padding: 15px;
-    text-align: center;
-    font-style: italic;
+    position: absolute;
+    width: 100%;
+    height: 100vh; /* Full-screen height */
+    background: transparent; /* Transparent header */
+    z-index: 10; /* Keeps elements on top */
 }
+
 
 .logo{
     height: auto;
@@ -21,37 +22,11 @@ header {
 }
 
 /* -------------- */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background: white;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    padding: 10px;
-}
-
-.dropdown-content.open {
-    display: block; /* Shows menu when toggled */
-}
-
-.submenu, .sub-dropdown {
-    display: none;
-    margin-left: 15px;
-}
-
-.has-submenu.open .submenu {
-    display: block; /* Shows submenus when parent is clicked */
-}
-
-.has-submenu.open .sub-dropdown {
-    display: block; /* Shows sub-submenus when parent is clicked */
-}
-/* ---------------- */
-/* CSS styles for the auto-sliding hero slider */
-
 .hero-slider {
-    position: relative;
+    position: absolute;
     width: 100vw;
-    height: 100vh; /* Full-screen height */
+    height: 100vh; /* Full-screen */
+    top: 0; /* Aligns with header */
     overflow: hidden;
 }
 
@@ -59,7 +34,7 @@ header {
     display: flex;
     width: 300%;
     height: 100%;
-    animation: slideAnimation 9s infinite;
+    transition: transform 1s ease-in-out;
 }
 
 .hero-slide {
@@ -71,14 +46,15 @@ header {
 .hero-slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures images fit properly */
+    object-fit: cover; /* Prevents distortion */
 }
 
+/* 
 @keyframes slideAnimation {
     0%, 33% { transform: translateX(0%); }
     34%, 66% { transform: translateX(-100%); }
     67%, 100% { transform: translateX(-200%); }
-}
+} */
 
 
 
