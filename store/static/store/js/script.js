@@ -190,16 +190,16 @@ document.addEventListener("DOMContentLoaded", function() {
     handleResponsive();
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
+// document.addEventListener('DOMContentLoaded', function() {
+//     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+//     const navMenu = document.querySelector('.nav-menu');
     
-    mobileMenuToggle.addEventListener('click', function() {
-        const isExpanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', !isExpanded);
-        navMenu.classList.toggle('active');
-    });
-});
+//     mobileMenuToggle.addEventListener('click', function() {
+//         const isExpanded = this.getAttribute('aria-expanded') === 'true';
+//         this.setAttribute('aria-expanded', !isExpanded);
+//         navMenu.classList.toggle('active');
+//     });
+// });
 
 function handleSortChange(selectElement) {
     const sortValue = selectElement.value;
