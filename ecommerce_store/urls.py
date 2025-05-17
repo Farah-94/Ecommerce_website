@@ -21,6 +21,6 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('store.urls')),  # Main store URLs at root
-    path('logout/', include('store.urls')),  # Let store.urls handle logout
+    path('', include('store.urls', namespace='store')),  # Ensure namespace is included  # Main store URLs at root
+     # Let store.urls handle logout
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

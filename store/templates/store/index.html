@@ -15,9 +15,9 @@
         <img src="{% static 'store/images/products/logo1.png' %}" alt="brand logo" class="logo">
         <h1>Welcome to Our Store</h1>     
 
-    <!-- <a href="{% url 'cart' %}" class="cart-link">
-        🛒 Cart ({{ cart_items.count }})
-    </a> -->
+ <a href="{% url 'store:cart' %}" class="cart-link">
+    🛒 Cart ({{ cart_items.count }})
+</a>
 </header>
 
 
