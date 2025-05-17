@@ -106,15 +106,19 @@ header {
 footer {
     background-color: rgba(84, 82, 82, 0.8);
     color: white;
-    text-align: center;
+  
     padding: 10px; /* Reduced height */
     position: absolute;
     bottom: 0;
     width: 100%;
     display:flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
 }
 .footer section{
     width :30%;
-    display: inline-block;
+    
 
 }
