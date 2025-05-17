@@ -31,6 +31,7 @@ header {
 .hero-slider {
     overflow: hidden;
     width: 100%;
+    position: relative;
 }
 
 .slider-container {
