@@ -8,11 +8,18 @@ body {
 
 /* Header */
 header {
-    background-color: #432b2b;
+    background-color: #4d2525;
     color: white;
     padding: 15px;
     text-align: center;
+    font-style: italic;
 }
+
+.logo{
+    height: auto;
+    width: 200px;
+}
+
 /* -------------- */
 .dropdown-content {
     display: none;
@@ -40,10 +47,14 @@ header {
 }
 /* ---------------- */
 .hero-slider {
-    overflow: hidden;
     width: 100%;
+    max-width: 1200px; /* Adjust max width if needed */
+    overflow: hidden;
     position: relative;
+    margin: auto; /* Centers the slider */
 }
+
+
 
 .slider-container {
     display: flex;
@@ -51,10 +62,14 @@ header {
     width: 300%; /* Adjust based on number of slides */
 }
 
-.hero-slide {
-    flex: 1;
-    min-width: 100%;
+.hero-slide img {
+    width: 100%; /* Makes the image scale within the container */
+    height: auto; /* Keeps aspect ratio */
+    object-fit: cover; /* Ensures proper fit */
+    max-height: 500px; /* Adjust height as needed */
 }
+
+
 
 /* -------------- */
 

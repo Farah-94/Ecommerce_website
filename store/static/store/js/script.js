@@ -1,3 +1,6 @@
+console.log("javascript is loading")
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const heroSlider = document.querySelector(".slider-container");
     const heroSlides = document.querySelectorAll(".hero-slide");
