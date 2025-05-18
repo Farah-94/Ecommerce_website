@@ -10,7 +10,7 @@ body {
     justify-content: space-between;
 }
 
-/* Swiper Slider */
+/* Fullscreen Swiper Background */
 .swiper {
     position: fixed;
     top: 0;
@@ -20,6 +20,7 @@ body {
     z-index: -1;
 }
 
+/* Ensure video and images fill the background */
 .swiper-slide img,
 .swiper-slide video {
     width: 100%;
@@ -28,12 +29,12 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 0;
 }
 
 /* Header */
 header {
-    position: relative;
+    position: absolute;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
@@ -94,7 +95,7 @@ header {
     transform: translateY(0);
 }
 
-/* Fix submenu display */
+/* Ensure submenu toggles correctly */
 .submenu, .sub-dropdown {
     display: none;
     padding-left: 15px;
@@ -123,16 +124,19 @@ header {
 /* Footer Fix */
 footer {
     height: auto;
-    background-color: rgba(223, 213, 213, 0.8);
+    background-color: rgba(223, 213, 213, 0.9);
     color: white;
     text-align: center;
     padding: 15px;
     width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
-    position: relative;
+    z-index: 10;
 }
 
 /* Footer Sections */
