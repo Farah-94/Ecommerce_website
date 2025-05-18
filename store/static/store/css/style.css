@@ -179,3 +179,16 @@ footer a {
     height: auto;
     border-radius: 5px;
 }
+.product-link {
+    text-decoration: none; /* ✅ Removes underline */
+    color: inherit; /* ✅ Keeps text color normal */
+    display: block; /* ✅ Makes the whole card clickable */
+}
+
+.product-card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.product-card:hover {
+    transform: scale(1.05); /* ✅ Adds a hover effect */
+}
