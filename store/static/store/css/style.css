@@ -72,7 +72,7 @@ header {
     background: rgba(98, 44, 85, 0.8);
     color: white;
     padding: 10px 15px;
-    border: none;
+    border: 5px;
     cursor: pointer;
     z-index: 10;
 }
