@@ -8,22 +8,23 @@
     <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
 </head>
 <body>
-<h2>Debugging Output:</h2>
-<p>Products variable: {{ products }}</p>  <!-- 🚀 Check if this prints anything -->
 
 
 
-{% for product in products %}
-    <div class="product-card">
-        <h2>{{ product.name }}</h2>
-        {% if product.image %}
-{% load static %}
-<img src="{% static 'store/images/products/tshirt.jpg' %}" alt="T-shirt">
-        {% else %}
-            <p>No image available</p>
-        {% endif %}
-    </div>
-{% endfor %}
+<div class="product-container">
+    {% for product in products %}
+        <div class="product-card">
+            <h2>{{ product.name }}</h2>
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% else %}
+                <p>No image available</p>
+            {% endif %}
+            <p class="product-description">{{ product.description }}</p>
+            <a href="{% url 'buy_product' product.id %}" class="buy-button">Buy Now</a>
+        </div>
+    {% endfor %}
+</div>
 
 
 

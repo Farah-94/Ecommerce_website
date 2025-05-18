@@ -158,24 +158,27 @@ footer a {
     text-decoration: none;
     font-size: large;
 }
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
 .product-card {
-    border: 1px solid #ddd;
+    width: 250px;
     padding: 15px;
-    margin: 10px;
-    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     text-align: center;
 }
-
 .product-card img {
     max-width: 100%;
-    height: auto;
-    border-radius: 8px;
+    border-radius: 5px;
 }
-
-.product-card a {
+.buy-button {
     display: inline-block;
-    padding: 8px 12px;
-    background: #007bff;
+    padding: 8px 16px;
+    background-color: #007bff;
     color: white;
     text-decoration: none;
     border-radius: 5px;
