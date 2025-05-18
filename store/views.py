@@ -46,24 +46,24 @@ def index(request):
     return render(request, "store/index.html")
 
 
-from store.models import Category
+from django.shortcuts import render
+from store.models import Category, Product
 
 def product_list(request):
     category_name = request.GET.get("category", None)
-    print("🔍 Requested Category:", category_name)  
 
     category = Category.objects.filter(name__iexact=category_name).first()
-    print("✅ Matched Category:", category)
 
     if category:
         products = Product.objects.filter(category=category)
     else:
         products = Product.objects.none()
 
-    print("🛒 Products Sent to Template:", products)  # ✅ Debugging output
-    return render(request, "store/productlist.html", {"products": products})
+    return render(request, "store/productlist.html", {"products": products})  # ✅ Correct placementequired
 
-@login_required
+
+
+
 def buy_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     if request.method == "POST":

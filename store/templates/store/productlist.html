@@ -8,21 +8,17 @@
     <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
 </head>
 <body>
-{% for product in products %}
+<h2>Debugging Output:</h2>
+<p>Products variable: {{ products }}</p>  <!-- 🚀 Check if this prints anything -->
+
+{% for product in product_list %}
     <div class="product-card">
         <h2>{{ product.name }}</h2>
         <p>{{ product.description }}</p>
-        <p>Stock Available: {{ product.stock }}</p>
-        {% if product.image %}
-            <img src="{{ product.image.url }}" alt="{{ product.name }}">
-        {% else %}
-            <p>No image available.</p>
-        {% endif %}
     </div>
 {% empty %}
-    <p>No products available.</p>  <!-- 🚨 This will appear if Django thinks products is empty -->
+    <p>No products available.</p>  <!-- 🚨 If this appears, Django thinks `products` is empty -->
 {% endfor %}
-
 
 
 
