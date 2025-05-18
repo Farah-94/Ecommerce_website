@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     font-style: italic;
+    overflow: hidden; /* Prevents scrolling */
 }
 
 /* Fullscreen Swiper Slider as Background */
@@ -43,7 +44,7 @@ header {
     height: auto;
 }
 
-/* Cart Positioned on the Right */
+/* Cart Positioned on the Right Corner */
 .cart-link {
     position: absolute;
     top: 20px;
@@ -67,6 +68,35 @@ header {
     font-size: 16px;
     border-radius: 5px;
     z-index: 10;
+    cursor: pointer;
+}
+
+/* Ensure the dropdown is hidden until clicked */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: 20px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    min-width: 150px;
+    z-index: 10;
+}
+
+/* Toggle dropdown visibility when opened */
+.dropdown-content.open {
+    display: block; 
+}
+
+/* Ensure submenus start hidden */
+.submenu, .sub-dropdown {
+    display: none;
+    padding-left: 15px;
+}
+
+/* Show when toggled */
+.submenu.open, .sub-dropdown.open {
+    display: block; 
 }
 
 /* Navigation Buttons */
