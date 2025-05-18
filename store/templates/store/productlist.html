@@ -10,19 +10,17 @@
 <body>
 
 
-
 <div class="product-container">
     {% for product in products %}
         <div class="product-card">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
             <h2>{{ product.name }}</h2>
-            {% if product.image %}
-                <img src="{{ product.image.url }}" alt="{{ product.name }}">
-            {% else %}
-                <p>No image available</p>
-            {% endif %}
-            <p class="product-description">{{ product.description }}</p>
-            <a href="{% url 'buy_product' product.id %}" class="buy-button">Buy Now</a>
+            <p>{{ product.description }}</p>
+            <p>Price: ${{ product.price }}</p>
+            <button>Add to Cart</button>
         </div>
+    {% empty %}
+        <p>No products available.</p>
     {% endfor %}
 </div>
 

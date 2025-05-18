@@ -161,25 +161,21 @@ footer a {
 .product-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    justify-content: center; /* ✅ Centers content */
+    gap: 20px; /* ✅ Adds space between cards */
 }
+
 .product-card {
-    width: 250px;
+    width: 250px; /* ✅ Sets consistent card width */
     padding: 15px;
-    border: 1px solid #ddd;
+    background: #fff;
     border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
+
 .product-card img {
-    max-width: 100%;
-    border-radius: 5px;
-}
-.buy-button {
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
+    width: 100%;
+    height: auto;
     border-radius: 5px;
 }
