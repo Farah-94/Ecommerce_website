@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 from store.views import index
 
 urlpatterns = [
-    path('', index, name='index'),  # ✅ Correctly sets homepage route
     path('admin/', admin.site.urls),
-    path('store/', include('store.urls', namespace='store')),  # ✅ Avoids conflict
+    path('', index, name='index'),  # ✅ Homepage route
+    path('store/', include('store.urls', namespace='store')),  # ✅ Includes store URLs
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

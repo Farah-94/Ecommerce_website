@@ -41,10 +41,12 @@ class CustomLoginView(LoginView):
 
 
 # --- Homepage & Product Views ---
-from django.shortcuts import render
+
+
+from django.http import HttpResponse
 
 def index(request):
-    return render(request, 'store/index.html')  # Ensure this template exists
+    return HttpResponse("Homepage is working!")  # Quick test  # Ensure this template exists
 
 
 from store.models import Category
