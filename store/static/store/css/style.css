@@ -84,7 +84,7 @@ header {
     z-index: 10;
 } */
 
-.drpdown button {
+.dropbtn{
 
     position: absolute;
     left: 20px; /* Moved to the left */
@@ -138,7 +138,7 @@ header {
 /* Footer - Reduced Height & Flex */
 footer {
     height: 20%;
-    background-color: rgba(190, 180, 180, 0.8);
+    background-color: rgba(223, 213, 213, 0.8);
     color: white;
     text-align: center;
     padding: 15px; /* Reduced height */
