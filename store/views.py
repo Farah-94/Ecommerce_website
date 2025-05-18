@@ -54,22 +54,17 @@ from store.models import Category
 
 def product_list(request):
     category_name = request.GET.get('category', None)
-    print("Category Name:", category_name)  # ✅ Debugging output
 
     if category_name:
-        category = Category.objects.filter(name=category_name).first()
-        print("Category Found:", category)  # ✅ See if a category exists
-
+        category = Category.objects.filter(name__icontains=category_name).first()  # ✅ Case-insensitive match
         if category:
             products = Product.objects.filter(category=category)
         else:
-            products = Product.objects.none()
+            products = Product.objects.none()  # No matching category found
     else:
         products = Product.objects.all()
 
-    print("Products Found:", products)  # ✅ Check if products exist
     return render(request, "store/productlist.html", {"products": products})
-
 
 @login_required
 def buy_product(request, product_id):
