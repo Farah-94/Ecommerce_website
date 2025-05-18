@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 
 
-
+SECURE_SSL_REDIRECT = False
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
