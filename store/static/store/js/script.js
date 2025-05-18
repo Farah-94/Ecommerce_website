@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("JavaScript is loading...");
+    console.log("JavaScript loaded successfully!");
 
-    // ✅ FIX: Swiper Slider Initialization
+    // ✅ Fix: Ensure Swiper Slider is initialized only if available
     if (typeof Swiper !== "undefined") {
-        var swiper = new Swiper(".mySwiper", {
+        const swiper = new Swiper(".mySwiper", {
             loop: true,
             autoplay: {
                 delay: 10000, // 10-second transitions
@@ -19,50 +19,41 @@ document.addEventListener("DOMContentLoaded", function () {
                 prevEl: ".swiper-button-prev"
             }
         });
-        console.log("Swiper initialized successfully.");
+        console.log("✅ Swiper initialized successfully.");
     } else {
-        console.error("Swiper.js not found. Make sure it's loaded before script.js.");
+        console.error("⚠️ Swiper.js not found. Ensure it's properly loaded before `script.js`.");
     }
 
-    // ✅ FIX: Dropdown Menu Functionality
+    // ✅ Dropdown Menu Functionality
     const menuButton = document.querySelector(".dropbtn");
     const menuContent = document.querySelector(".dropdown-content");
-    const latestItem = document.querySelector(".has-submenu > a");
-    const womanMenu = document.querySelector(".submenu .has-submenu > a");
-    const submenu = document.querySelector(".submenu");
-    const subDropdown = document.querySelector(".sub-dropdown");
 
-    if (menuButton) {
-        menuButton.addEventListener("click", function (event) {
+    if (menuButton && menuContent) {
+        menuButton.addEventListener("click", (event) => {
             event.stopPropagation();
             menuContent.classList.toggle("open");
         });
-    }
 
-    if (latestItem) {
-        latestItem.addEventListener("click", function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-            submenu.classList.toggle("open");
+        // Close dropdown when clicking outside
+        document.addEventListener("click", (event) => {
+            if (!menuButton.contains(event.target) && !menuContent.contains(event.target)) {
+                menuContent.classList.remove("open");
+                document.querySelectorAll(".submenu, .sub-dropdown").forEach(sub => sub.classList.remove("open"));
+            }
         });
-    }
 
-    if (womanMenu) {
-        womanMenu.addEventListener("click", function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-            subDropdown.classList.toggle("open");
+        // Handle submenus efficiently
+        document.querySelectorAll(".has-submenu > a").forEach(item => {
+            item.addEventListener("click", (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                const submenu = item.nextElementSibling;
+                submenu.classList.toggle("open");
+            });
         });
+
+        console.log("✅ Dropdown functionality initialized.");
+    } else {
+        console.error("⚠️ Dropdown elements not found. Check your HTML structure.");
     }
-
-    // ✅ FIX: Close dropdown when clicking outside
-    document.addEventListener("click", function (event) {
-        if (!menuButton.contains(event.target) && !menuContent.contains(event.target)) {
-            menuContent.classList.remove("open");
-            submenu.classList.remove("open");
-            subDropdown.classList.remove("open");
-        }
-    });
-
-    console.log("Dropdown functionality initialized.");
 });
