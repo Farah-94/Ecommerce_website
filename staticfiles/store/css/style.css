@@ -1,0 +1,182 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-style: italic;
+    min-height: 100vh;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+/* ✅ Fullscreen Swiper Background */
+.swiper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+/* ✅ Ensure video and images fill the background */
+.swiper-slide img,
+.swiper-slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+/* ✅ Header - Centered Logo */
+header {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 100;
+    color: white;
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+}
+
+/* ✅ Cart Positioned in the Top-Right Corner */
+.cart-link {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(112, 41, 85, 0.8);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    z-index: 100;
+}
+
+/* ✅ Menu Positioned on the Left */
+.dropbtn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(98, 44, 85, 0.8);
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    z-index: 100;
+    cursor: pointer;
+}
+
+/* ✅ Dropdown Menu - Hidden Initially */
+.dropdown-content {
+    position: absolute;
+    left: 20px;
+    top: 50px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    width: 200px;
+    z-index: 100;
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* ✅ Opens when toggled */
+.dropdown-content.open {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ✅ Ensure submenu toggles correctly */
+.submenu, .sub-dropdown {
+    display: none;
+    padding-left: 15px;
+}
+
+.submenu.open, .sub-dropdown.open {
+    display: block;
+}
+
+/* ✅ Swiper Navigation Buttons */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background: rgba(255, 102, 0, 0.8);
+}
+
+/* ✅ Footer Fix */
+footer {
+    background-color: rgba(223, 213, 213, 0.9);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    z-index: 100;
+}
+
+/* ✅ Footer Sections */
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.footer-section {
+    flex: 1;
+    padding: 10px;
+    min-width: 150px;
+}
+
+footer a {
+    color: rgb(88, 24, 59);
+    text-decoration: none;
+    font-size: large;
+}
+.product-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product-card a {
+    display: inline-block;
+    padding: 8px 12px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}

@@ -47,9 +47,10 @@
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <video controls>
-    <source src="video1.mp4" type="video/mp4">
-</video>
+          
+   {% load static %}
+<video src="{% static 'store/images/products/video1.mp4' %}" controls></video>
+
         </div>
         <div class="swiper-slide">
             <img src="{% static 'store/images/products/pro1.jpg' %}" alt="Product 1">
