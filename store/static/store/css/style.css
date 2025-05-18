@@ -159,6 +159,7 @@ footer a {
     font-size: large;
 }
 .product-container {
+    padding: 15px;;
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /* ✅ Centers content */
