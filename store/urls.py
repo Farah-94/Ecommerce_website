@@ -2,6 +2,8 @@ from django.urls import path
 from . import views
 from store.views import product_list
 from .views import index
+from store.views import buy_product
+
 
 app_name = 'store'
 
@@ -14,7 +16,7 @@ urlpatterns = [
     # path('category/<int:category_id>/', views.category_products, name='category_products'),
     path('', index, name='index'),
     path('products/', product_list, name='product_list'),
- 
+    path("buy/<int:product_id>/", buy_product, name="buy_product"),
 
     # Authentication
     path('signup/', views.signup, name='signup'),
