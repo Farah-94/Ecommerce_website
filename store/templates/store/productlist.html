@@ -8,17 +8,22 @@
     <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
 </head>
 <body>
- {% for product in products %}
+{% for product in products %}
     <div class="product-card">
         <h2>{{ product.name }}</h2>
         <p>{{ product.description }}</p>
         <p>Stock Available: {{ product.stock }}</p>
-        <img src="{{ product.image.url }}" alt="{{ product.name }}">
-        <a href="{% url 'buy_product' product.id %}">Buy Now</a>
+        {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% else %}
+            <p>No image available.</p>
+        {% endif %}
     </div>
 {% empty %}
-    <p>No products available.</p>
+    <p>No products available.</p>  <!-- 🚨 This will appear if Django thinks products is empty -->
 {% endfor %}
+
+
 
 
 

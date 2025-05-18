@@ -46,24 +46,22 @@ def index(request):
     return render(request, "store/index.html")
 
 
+from store.models import Category
+
 def product_list(request):
-    category_name = request.GET.get('category', None)
-    print(f"🔍 Requested Category: {category_name}")  # ✅ Debugging output
+    category_name = request.GET.get("category", None)
+    print("🔍 Requested Category:", category_name)  
 
-    if category_name:
-        category = Category.objects.filter(Q(name__icontains=category_name) | Q(name__iexact=category_name)).first()
-        print(f"✅ Matched Category: {category}")  # Debugging output
+    category = Category.objects.filter(name__iexact=category_name).first()
+    print("✅ Matched Category:", category)
 
-        if category:
-            products = Product.objects.filter(category=category)
-        else:
-            products = Product.objects.none()
+    if category:
+        products = Product.objects.filter(category=category)
     else:
-        products = Product.objects.all()
+        products = Product.objects.none()
 
-    print(f"🛒 Products Found: {products}")  # ✅ Check if products exist
+    print("🛒 Products Sent to Template:", products)  # ✅ Debugging output
     return render(request, "store/productlist.html", {"products": products})
-
 
 @login_required
 def buy_product(request, product_id):

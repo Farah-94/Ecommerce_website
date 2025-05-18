@@ -1,25 +1,11 @@
 from django.contrib import admin
-from django import forms  # <-- This import was missing
+from django import forms
 from .models import Product, Category
-IMAGE_CHOICES = [
-    ('pro1', 'Product 1 (pro1.jpg)'),
-    ('pro2', 'Product 2 (pro2.jpg)'), 
-    ('pro3', 'Product 3 (pro3.jpg)'),
-    ('tshirt', 'T-Shirt (tshirt.jpg)'),
-    ('watch', 'Watch (watch.jpg)'),
-    ('jeans', 'Jeans (jeans.png)'),
-    # Add all your actual image files here
-]
 
 class ProductAdminForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = '__all__'
-    
-    # Convert the CharFields to dropdowns
-    image_code = forms.ChoiceField(choices=IMAGE_CHOICES)
-    image_code_alt1 = forms.ChoiceField(choices=[('', '---------')] + IMAGE_CHOICES, required=False)
-    image_code_alt2 = forms.ChoiceField(choices=[('', '---------')] + IMAGE_CHOICES, required=False)
+        fields = '__all__'  # ✅ No need for `image_code` dropdown anymore
 
 class ProductInline(admin.TabularInline):
     model = Product
@@ -36,23 +22,22 @@ class ProductAdmin(admin.ModelAdmin):
     list_editable = ('price', 'stock')  # Allow quick editing
     search_fields = ('name', 'description')
     list_filter = ('category', 'price', 'stock')
-    
+
     def display_main_image(self, obj):
-        if obj.image_code:
-            return f"{obj.image_code}.jpg"
-        return "-"
+        if obj.image and obj.image.url:
+            return f'<img src="{obj.image.url}" width="50">'  # ✅ Correct image field
+        return "No Image"
+
+    display_main_image.allow_tags = True
     display_main_image.short_description = 'Main Image'
-    
+
     fieldsets = [
         ('Basic Info', {
             'fields': ('name', 'category', 'price', 'stock', 'description')
         }),
         ('Product Images', {
-            'fields': ('image_code', 'image_code_alt1', 'image_code_alt2'),
-            'description': '''
-                Select images from static/store/images/products/<br>
-                Files must exist with .jpg extension
-            '''
+            'fields': ('image',),  # ✅ Using actual ImageField now
+            'description': 'Upload product images.'
         }),
     ]
 
