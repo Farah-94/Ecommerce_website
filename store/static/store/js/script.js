@@ -1,6 +1,23 @@
 console.log("javascript is loading")
 
 
+
+    var swiper = new Swiper(".mySwiper", {
+        loop: true, // Infinite loop
+        autoplay: {
+            delay: 10000, // 10 seconds between transitions
+            disableOnInteraction: false, // Keeps autoplay running even after user interaction
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+
 // Automatic Image Slider for Kafshy E-commerce Site
 
 // document.addEventListener('DOMContentLoaded', function() {
@@ -48,21 +65,21 @@ console.log("javascript is loading")
 // });
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    const slider = document.querySelector(".slider-container");
-    const slides = document.querySelectorAll(".hero-slide");
-    const videos = document.querySelectorAll("video");
-    let currentIndex = 0;
+// document.addEventListener("DOMContentLoaded", function () {
+//     const slider = document.querySelector(".slider-container");
+//     const slides = document.querySelectorAll(".hero-slide");
+//     const videos = document.querySelectorAll("video");
+//     let currentIndex = 0;
 
-    function slideVideos() {
-        videos.forEach(video => video.pause()); // Pause all videos
-        currentIndex = (currentIndex + 1) % slides.length;
-        slider.style.transform = `translateX(-${currentIndex * 100}vw)`;
-        videos[currentIndex].play(); // Play only the current video
-    }
+//     function slideVideos() {
+//         videos.forEach(video => video.pause()); // Pause all videos
+//         currentIndex = (currentIndex + 1) % slides.length;
+//         slider.style.transform = `translateX(-${currentIndex * 100}vw)`;
+//         videos[currentIndex].play(); // Play only the current video
+//     }
 
-    setInterval(slideVideos, 10000); // Change video every 10 seconds
-});
+//     setInterval(slideVideos, 10000); // Change video every 10 seconds
+// });
 
 
 

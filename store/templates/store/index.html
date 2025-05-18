@@ -1,76 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">  
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Product List</title>
-        
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<head>
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
 
-       {% load static %}
-<link rel="stylesheet" href="{% static 'store/css/style.css' %}">
-    </head>
+    <!-- Swiper.js Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.0/swiper-bundle.min.css">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
+</head>
 <body>
-    <header>
-        <img src="{% static 'store/images/products/logo1.png' %}" alt="brand logo" class="logo">
-        <h1>Welcome to Our Store</h1>     
 
- <a href="{% url 'store:cart' %}" class="cart-link">
-    🛒 Cart ({{ cart_items.count }})
-</a>
+<header>
+    <img src="{% static 'store/images/products/logo1.png' %}" alt="brand logo" class="logo">
+    <h1>Welcome to Our Store</h1>     
+
+    <a href="{% url 'store:cart' %}" class="cart-link">🛒 Cart ({{ cart_items.count }})</a>
 </header>
 
-
-    <div class="dropdown">
-        <button type="button" class="dropbtn">Menu</button>
-        <div class="dropdown-content">
-            <ul>
-                <li class="has-submenu">
-                    <a href="#">Latest Items ▼</a>
-                    <ul class="submenu">
-                        <li class="has-submenu">
-                            <a href="#">Women ▼</a>
-                           <ul class="sub-dropdown">
-   
-                    <li><a href="{% url 'store:product_list' %}?category=women-tshirt">Women T-Shirts</a></li>   
-</ul>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="{% url 'store:signin' %}" class="signin-btn">Sign In</a></li>
-                <li><a href="{% url 'admin:index' %}" class="admin-link">Admin Panel</a></li>
-            </ul>
-        </div>
+<!-- Dropdown Menu -->
+<div class="dropdown">
+    <button type="button" class="dropbtn">Menu</button>
+    <div class="dropdown-content">
+        <ul>
+            <li class="has-submenu">
+                <a href="#">Latest Items ▼</a>
+                <ul class="submenu">
+                    <li class="has-submenu">
+                        <a href="#">Women ▼</a>
+                        <ul class="sub-dropdown">
+                            <li><a href="{% url 'store:product_list' %}?category=women-tshirt">Women T-Shirts</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="{% url 'store:signin' %}" class="signin-btn">Sign In</a></li>
+            <li><a href="{% url 'admin:index' %}" class="admin-link">Admin Panel</a></li>
+        </ul>
     </div>
+</div>
 
-    <div class="hero-slider">
-    <div class="slider-container">
-        <div class="hero-slide">
+<!-- Hero Slider -->
+<div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
             <video autoplay muted loop>
                 <source src="{% static 'store/images/products/video1.mp4' %}" type="video/mp4">
             </video>
         </div>
-        <div class="hero-slide">
-           
-                <img src="{% static 'store/images/products/pro1.jpg' %}" alt="Product 1">
-            
-
+        <div class="swiper-slide">
+            <img src="{% static 'store/images/products/pro1.jpg' %}" alt="Product 1">
         </div>
-        <!-- <div class="hero-slide">
-            <video autoplay muted loop>
-                <source src="{% static 'store/videos/video3.mp4' %}" type="video/mp4">
-            </video>
-        </div> -->
     </div>
+    <!-- Pagination & Navigation -->
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
 </div>
-
-
-   
-    
-
-
 
 <footer>
     <div class="footer-container">
@@ -88,9 +78,9 @@
         <div class="footer-section">
             <h4>Follow Us</h4>
             <ul>
-            <li><a href="https://facebook.com">Facebook</a></li>
-            <li><a href="https://instagram.com">Instagram</a></li>
-            <li><a href="https://twitter.com">Twitter</a></li>
+                <li><a href="https://facebook.com">Facebook</a></li>
+                <li><a href="https://instagram.com">Instagram</a></li>
+                <li><a href="https://twitter.com">Twitter</a></li>
             </ul>
         </div>
         <div class="footer-bottom">
@@ -98,6 +88,8 @@
         </div>
     </div>
 </footer>
+
+
 
 <script src="{% static 'store/js/script.js' %}"></script>
 </body>
