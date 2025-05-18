@@ -58,7 +58,7 @@ header {
     padding: 10px 15px;
     border-radius: 5px;
     text-decoration: none;
-    z-index: 100;
+    z-index: 10;
 }
 
 /* Dropdown Menu */
