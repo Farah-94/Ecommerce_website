@@ -143,23 +143,36 @@ document.addEventListener("DOMContentLoaded", function () {
 // -----------------
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Select parent menu items
+    // Select all menu elements
+    const menuButton = document.querySelector(".dropbtn");
+    const menuContent = document.querySelector(".dropdown-content");
     const latestItem = document.querySelector(".has-submenu > a");
     const womanMenu = document.querySelector(".submenu .has-submenu > a");
     const submenu = document.querySelector(".submenu");
     const subDropdown = document.querySelector(".sub-dropdown");
 
-    // Toggle "Women" when "Latest Items" is clicked
-    latestItem.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent default link behavior
-        submenu.classList.toggle("open");
-    });
+    // Toggle main dropdown menu
+    if (menuButton && menuContent) {
+        menuButton.addEventListener("click", function () {
+            menuContent.classList.toggle("open");
+        });
+    }
 
-    // Toggle subcategories when "Women" is clicked
-    womanMenu.addEventListener("click", function (event) {
-        event.preventDefault();
-        subDropdown.classList.toggle("open");
-    });
+    // Toggle "Women" menu when clicking "Latest Items"
+    if (latestItem && submenu) {
+        latestItem.addEventListener("click", function (event) {
+            event.preventDefault();
+            submenu.classList.toggle("open");
+        });
+    }
+
+    // Toggle subcategories when clicking "Women"
+    if (womanMenu && subDropdown) {
+        womanMenu.addEventListener("click", function (event) {
+            event.preventDefault();
+            subDropdown.classList.toggle("open");
+        });
+    }
 });
 
 

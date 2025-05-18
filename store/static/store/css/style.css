@@ -84,33 +84,30 @@ header {
     z-index: 10;
 } */
 
-.dropdown-content.open {
-    display: block; /* Shows menu when toggled */
+.dropdown button{
+    background: rgba(112, 41, 85, 0.8);
+    border: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;   
+    padding: 10px 15px; 
 }
 
 
 
-/* Dropdown Styling */
 .dropdown-content {
     display: none;
     position: absolute;
-    left: 20px;
-    background: rgb(109, 105, 105);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 10px;
     min-width: 150px;
     z-index: 10;
 }
 
-.dropdown button{
-    background: rgba(112, 41, 85, 0.8);
-    border: 5px;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;   
-    padding: 10px 15px; 
+.dropdown-content.open {
+    display: block; /* Shows menu when toggled */
 }
-
 
 .submenu, .sub-dropdown {
     display: none;
@@ -118,8 +115,9 @@ header {
 }
 
 .submenu.open, .sub-dropdown.open {
-    display: block; /* Shows when toggled */
+    display: block; /* Reveals submenu when toggled */
 }
+
 
 
 .cart-link {
