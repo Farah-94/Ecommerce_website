@@ -46,25 +46,29 @@ class CustomLoginView(LoginView):
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse("Homepage is working!")  # Quick test  # Ensure this template exists
+     return render(request, "store/index.html")
+  # Quick test  # Ensure this template exists
 
 
 from store.models import Category
 
 def product_list(request):
     category_name = request.GET.get('category', None)
+    print("Category Name:", category_name)  # ✅ Debugging output
 
     if category_name:
         category = Category.objects.filter(name=category_name).first()
+        print("Category Found:", category)  # ✅ See if a category exists
+
         if category:
             products = Product.objects.filter(category=category)
         else:
-            products = Product.objects.none()  # No matching category found
+            products = Product.objects.none()
     else:
         products = Product.objects.all()
 
-    return render(request, 'store/productlist.html', {'products': products})
-
+    print("Products Found:", products)  # ✅ Check if products exist
+    return render(request, "store/productlist.html", {"products": products})
 
 
 @login_required
