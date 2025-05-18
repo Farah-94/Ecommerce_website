@@ -11,13 +11,18 @@
 <h2>Debugging Output:</h2>
 <p>Products variable: {{ products }}</p>  <!-- 🚀 Check if this prints anything -->
 
-{% for product in product_list %}
+
+
+{% for product in products %}
     <div class="product-card">
         <h2>{{ product.name }}</h2>
-        <p>{{ product.description }}</p>
+        {% if product.image %}
+{% load static %}
+<img src="{% static 'store/images/products/tshirt.jpg' %}" alt="T-shirt">
+        {% else %}
+            <p>No image available</p>
+        {% endif %}
     </div>
-{% empty %}
-    <p>No products available.</p>  <!-- 🚨 If this appears, Django thinks `products` is empty -->
 {% endfor %}
 
 

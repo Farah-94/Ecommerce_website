@@ -46,8 +46,6 @@ def index(request):
     return render(request, "store/index.html")
 
 
-from django.shortcuts import render
-from store.models import Category, Product
 
 from django.shortcuts import render
 from store.models import Product, Category
@@ -55,11 +53,11 @@ from store.models import Product, Category
 def product_list(request):
     category_name = request.GET.get("category", None)  # ✅ Get category from URL
 
-    if category_name:  # ✅ If a category is provided
+    if category_name:
         category = Category.objects.filter(name__iexact=category_name).first()
         products = Product.objects.filter(category=category) if category else Product.objects.none()
-    else:  # 🚀 If no category is provided, show all products
-        products = Product.objects.all()
+    else:
+        products = Product.objects.all()  # ✅ Show all products if no category filter
 
     return render(request, "store/productlist.html", {"products": products})
 
