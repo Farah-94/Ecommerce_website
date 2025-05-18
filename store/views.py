@@ -52,6 +52,7 @@ from store.models import Product, Category
 
 def product_list(request):
     category_name = request.GET.get("category", None)  # ✅ Get category from URL
+    print(f"🔎 Category Requested: {category_name}")  # 🚀 Debugging print statement
 
     if category_name:
         category = Category.objects.filter(name__iexact=category_name).first()
@@ -59,7 +60,9 @@ def product_list(request):
     else:
         products = Product.objects.all()  # ✅ Show all products if no category filter
 
+    print(f"🛒 Retrieved Products: {products}")  # 🚀 Debugging print statement
     return render(request, "store/productlist.html", {"products": products})
+
 
 
 def buy_product(request, product_id):
