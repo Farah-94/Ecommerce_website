@@ -13,28 +13,30 @@ body {
     height: 100vh;
     top: 0;
     left: 0;
-    z-index: -1; /* Pushes it behind other elements */
+    z-index: -1;
+    overflow: hidden;
 }
+
 .slider-container {
     display: flex;
-    width: 300%;
+    width: 300vw; /* Ensures space for all images */
     height: 100%;
     transition: transform 1s ease-in-out;
 }
+
 .hero-slide {
-    width: 100vw;
+    width: 100vw; /* Each slide takes full width */
     height: 100vh;
     flex: 0 0 100%;
+    position: relative;
 }
 
 .hero-slide img {
-    width: 100vw;
-    height: 100vh;
-    object-fit: contain; /* Ensures the whole image is visible */
-    position: absolute;
-    top: 0;
-    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image fits properly */
 }
+
 
 
 /* Header with Centered Logo & Title */
@@ -104,10 +106,11 @@ header {
 
 /* Footer - Reduced Height */
 footer {
+    height: 20%;
     background-color: rgba(51, 51, 51, 0.8);
     color: white;
     text-align: center;
-    padding: 10px; /* Reduced height */
+    padding: 5px; /* Reduced height */
     position: absolute;
     bottom: 0;
     width: 100%;
