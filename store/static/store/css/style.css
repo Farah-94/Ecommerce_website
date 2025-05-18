@@ -85,7 +85,7 @@ header {
 } */
 
 .dropbtn {
-    position: absolute;
+
     top: 20px;
     left: 20px;
     background: rgba(98, 44, 85, 0.8);
@@ -95,9 +95,6 @@ header {
     
     font-size: 16px;
 }
-
-
-
 
 .dropdown-content {
     display: none;
@@ -141,7 +138,7 @@ header {
 /* Footer - Reduced Height & Flex */
 footer {
     height: 20%;
-    background-color: rgba(87, 86, 86, 0.8);
+    background-color: rgba(190, 180, 180, 0.8);
     color: white;
     text-align: center;
     padding: 15px; /* Reduced height */
