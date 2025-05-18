@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // -----------------
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Select menu items
+    // Select parent menu items
     const latestItem = document.querySelector(".has-submenu > a");
     const womanMenu = document.querySelector(".submenu .has-submenu > a");
     const submenu = document.querySelector(".submenu");
