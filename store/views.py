@@ -62,6 +62,7 @@ def product_list(request):
     return render(request, 'store/productlist.html', {'products': products})
 
 
+
 @login_required
 def buy_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
