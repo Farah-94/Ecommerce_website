@@ -49,19 +49,19 @@ def index(request):
 from django.shortcuts import render
 from store.models import Category, Product
 
+from django.shortcuts import render
+from store.models import Product, Category
+
 def product_list(request):
-    category_name = request.GET.get("category", None)
+    category_name = request.GET.get("category", None)  # ✅ Get category from URL
 
-    category = Category.objects.filter(name__iexact=category_name).first()
+    if category_name:  # ✅ If a category is provided
+        category = Category.objects.filter(name__iexact=category_name).first()
+        products = Product.objects.filter(category=category) if category else Product.objects.none()
+    else:  # 🚀 If no category is provided, show all products
+        products = Product.objects.all()
 
-    if category:
-        products = Product.objects.filter(category=category)
-    else:
-        products = Product.objects.none()
-
-    return render(request, "store/productlist.html", {"products": products})  # ✅ Correct placementequired
-
-
+    return render(request, "store/productlist.html", {"products": products})
 
 
 def buy_product(request, product_id):
