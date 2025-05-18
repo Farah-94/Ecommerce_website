@@ -14,31 +14,29 @@ body {
     height: 100vh;
     top: 0;
     left: 0;
-    z-index: -1;
+    z-index: -1; /* Background */
     overflow: hidden;
 }
 
 .slider-container {
     display: flex;
-    width: 300vw; /* Ensures space for all images */
+    width: 300vw; /* Space for all videos */
     height: 100%;
     transition: transform 1s ease-in-out;
 }
 
 .hero-slide {
-    width: 100vw; /* Each slide takes full width */
+    width: 100vw;
     height: 100vh;
     flex: 0 0 100%;
     position: relative;
 }
 
-.hero-slide img {
+.hero-slide video {
     width: 100vw;
     height: 100vh;
-    object-fit: cover; /* Adjusts to fit screen without cutting */
-    display: block; /* Ensures proper placement */
+    object-fit: cover; /* Fills the screen */
 }
-
 
 
 
