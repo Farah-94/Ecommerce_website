@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for product in products %}
+    <div class="product-card">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        <p>{{ product.description }}</p>
+        <p>Stock Available: {{ product.stock }}</p>
+        <a class="buy-btn" href="{% url 'buy_product' product.id %}">Buy Now</a>
+    </div>
+{% empty %}
+    <p>No products available.</p>
+{% endfor %}
+
+</body>
+</html>

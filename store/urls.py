@@ -1,16 +1,17 @@
 from django.urls import path
 from . import views
+from store.views import productlist
 
 app_name = 'store'
 
 urlpatterns = [
     # Main pages
-    path('', views.product_list, name='index'),  # Homepage (now at root URL)
+
     
     # Products
-    path('product/<int:pk>/', views.product_detail, name='product_detail'),
-    path('category/<int:category_id>/', views.category_products, name='category_products'),
-
+    # path('product/<int:pk>/', views.product_detail, name='product_detail'),
+    # path('category/<int:category_id>/', views.category_products, name='category_products'),
+    path('products/', productlist, name='product_list'),
 
 
     # Authentication

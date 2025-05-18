@@ -12,16 +12,23 @@ def logout_view(request):
     return redirect('signin')
 
 def product_list(request):
-    products = Product.objects.all()
-    return render(request, 'store/index.html', {'products': products})
+    category = request.GET.get('category', None)
+    
+    if category:
+        products = Product.objects.filter(category=category)
+    else:
+        products = Product.objects.all()
 
-def product_detail(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    related_products = Product.objects.filter(category=product.category).exclude(pk=pk)[:4]
-    return render(request, 'store/product_detail.html', {
-        'product': product,
-        'related_products': related_products
-    })
+    return render(request, 'store/product_list.html', {'products': products})
+
+
+# def product_detail(request, pk):
+#     product = get_object_or_404(Product, pk=pk)
+#     related_products = Product.objects.filter(category=product.category).exclude(pk=pk)[:4]
+#     return render(request, 'store/product_detail.html', {
+#         'product': product,
+#         'related_products': related_products
+#     })
 
 @login_required
 def buy_product(request, product_id):

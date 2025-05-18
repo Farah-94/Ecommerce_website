@@ -31,9 +31,8 @@
                         <li class="has-submenu">
                             <a href="#">Women ▼</a>
                            <ul class="sub-dropdown">
-    <li><a href="{% url 'store:category_products' 1 %}">Women Jeans</a></li>
-    <li><a href="{% url 'store:category_products' 2 %}">Women T-Shirt</a></li>
-    <li><a href="{% url 'store:category_products' 3 %}">Women Watch</a></li>
+   
+                    <li><a href="{% url 'store:productlist' %}?category=women-tshirt">Women T-Shirts</a></li>   
 </ul>
                         </li>
                     </ul>
@@ -67,23 +66,7 @@
 </div>
 
 
-    <!--  Grouping Products Under Categories -->
-    <div class="product-container">
-        {% for product in products %}
-            <div class="product-card">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}">               
-                <p>{{ product.description }}</p>
-                <p>Stock Available: {{ product.stock }}</p>
-    
-                {% if user.is_authenticated %}
-                    <a class="buy-btn" href="{% url 'buy_product' product.id %}" class="buy-btn">Buy Now</a>
-                {% else %}
-                    <a href="{% url 'signin' %}" class="login-btn">Sign In to Buy</a>
-                {% endif %}
-            </div>
-        {% endfor %}
-    </div>
-
+   
     
 
 
