@@ -78,7 +78,7 @@ header {
 
 /* Ensure the dropdown is hidden until clicked */
 .dropdown-content {
-    display: none;
+    display: none; /* Hidden by default */
     position: absolute;
     left: 20px;
     background: white;
@@ -87,7 +87,6 @@ header {
     min-width: 150px;
     z-index: 10;
 }
-
 /* Toggle dropdown visibility when opened */
 .dropdown-content.open {
     display: block; 
