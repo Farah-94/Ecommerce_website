@@ -11,15 +11,18 @@ def logout_view(request):
     logout(request)
     return redirect('signin')
 
+from django.shortcuts import render
+from store.models import Product
+
 def product_list(request):
     category = request.GET.get('category', None)
-    
+
     if category:
         products = Product.objects.filter(category=category)
     else:
         products = Product.objects.all()
 
-    return render(request, 'store/product_list.html', {'products': products})
+    return render(request, 'store/productlist.html', {'products': products})
 
 
 # def product_detail(request, pk):
