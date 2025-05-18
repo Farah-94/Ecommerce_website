@@ -45,15 +45,21 @@ def index(request):
     return render(request, "store/index.html")
 
 
-def product_list(request):
-    category = request.GET.get("category", None)
+from store.models import Category
 
-    if category:
-        products = Product.objects.filter(category=category)
+def product_list(request):
+    category_name = request.GET.get('category', None)
+
+    if category_name:
+        category = Category.objects.filter(name=category_name).first()
+        if category:
+            products = Product.objects.filter(category=category)
+        else:
+            products = Product.objects.none()  # No matching category found
     else:
         products = Product.objects.all()
 
-    return render(request, "store/productlist.html", {"products": products})
+    return render(request, 'store/productlist.html', {'products': products})
 
 
 @login_required
