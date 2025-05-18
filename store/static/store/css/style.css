@@ -84,13 +84,18 @@ header {
     z-index: 10;
 } */
 
-.dropbtn{
-    background: rgba(112, 41, 85, 0.8);
-    border: 5px;
+.dropbtn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(98, 44, 85, 0.8);
     color: white;
+    padding: 12px 20px; /* Adjusted padding */
+    border: 5px;
+    
     font-size: 16px;
-    padding: 10px 15px; 
 }
+
 
 
 
