@@ -67,29 +67,22 @@ header {
 }
 
 /* Positioning Menu (Left) & Cart (Right) Over Slider */
-.dropbtn {
+.dropdown-content {
+    display: none;
     position: absolute;
-    top: 20px;
-    left: 20px; /* Moved to the left */
-    background: rgba(98, 44, 85, 0.8);
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
+    left: 20px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    min-width: 150px;
     z-index: 10;
 }
 
-.cart-link {
-    position: absolute;
-    top: 20px;
-    right: 20px; /* Moved to the right */
-    background: rgba(112, 41, 85, 0.8);
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    z-index: 10;
+.dropdown-content.open {
+    display: block; /* Shows menu when toggled */
 }
+
+
 
 /* Dropdown Styling */
 .dropdown-content {
@@ -106,6 +99,20 @@ header {
 .dropdown-content.open {
     display: block; /* Shows menu when toggled */
 }
+
+.cart-link {
+    position: absolute;
+    top: 20px;
+    right: 20px; /* Moved to the right */
+    background: rgba(112, 41, 85, 0.8);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    z-index: 10;
+}
+
+
 
 /* Footer - Reduced Height & Flex */
 footer {

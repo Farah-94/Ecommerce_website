@@ -70,74 +70,85 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // ----------------
-document.addEventListener('DOMContentLoaded', function() {
-    // Main dropdown menu button
-    const dropdownBtn = document.querySelector('.dropbtn');
-    const dropdownContent = document.querySelector('.dropdown-content');
+// document.addEventListener('DOMContentLoaded', function() {
+//     // Main dropdown menu button
+//     const dropdownBtn = document.querySelector('.dropbtn');
+//     const dropdownContent = document.querySelector('.dropdown-content');
     
-    // Toggle main dropdown when clicking the menu button
-    dropdownBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        dropdownContent.classList.toggle('show');
-    });
+//     // Toggle main dropdown when clicking the menu button
+//     dropdownBtn.addEventListener('click', function(e) {
+//         e.stopPropagation();
+//         dropdownContent.classList.toggle('show');
+//     });
     
-    // Handle submenu toggles for "Latest Items"
-    const hasSubmenuItems = document.querySelectorAll('.has-submenu > a');
+//     // Handle submenu toggles for "Latest Items"
+//     const hasSubmenuItems = document.querySelectorAll('.has-submenu > a');
     
-    hasSubmenuItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
+//     hasSubmenuItems.forEach(item => {
+//         item.addEventListener('click', function(e) {
+//             e.preventDefault();
+//             e.stopPropagation();
             
-            // Toggle the immediate submenu of the clicked item
-            const submenu = this.nextElementSibling;
+//             // Toggle the immediate submenu of the clicked item
+//             const submenu = this.nextElementSibling;
             
-            // First close all other submenus at the same level
-            const siblings = this.parentElement.parentElement.querySelectorAll('.submenu, .sub-dropdown');
-            siblings.forEach(menu => {
-                if (menu !== submenu && menu.classList.contains('show')) {
-                    menu.classList.remove('show');
-                }
-            });
+//             // First close all other submenus at the same level
+//             const siblings = this.parentElement.parentElement.querySelectorAll('.submenu, .sub-dropdown');
+//             siblings.forEach(menu => {
+//                 if (menu !== submenu && menu.classList.contains('show')) {
+//                     menu.classList.remove('show');
+//                 }
+//             });
             
-            // Then toggle the clicked submenu
-            submenu.classList.toggle('show');
-        });
-    });
+//             // Then toggle the clicked submenu
+//             submenu.classList.toggle('show');
+//         });
+//     });
     
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-        // Close all dropdowns when clicking outside
-        if (!e.target.matches('.dropbtn') && !e.target.closest('.dropdown-content')) {
-            dropdownContent.classList.remove('show');
+//     // Close dropdown when clicking outside
+//     document.addEventListener('click', function(e) {
+//         // Close all dropdowns when clicking outside
+//         if (!e.target.matches('.dropbtn') && !e.target.closest('.dropdown-content')) {
+//             dropdownContent.classList.remove('show');
             
-            // Also close all submenus
-            const allSubmenus = document.querySelectorAll('.submenu, .sub-dropdown');
-            allSubmenus.forEach(menu => {
-                menu.classList.remove('show');
-            });
-        }
-    });
+//             // Also close all submenus
+//             const allSubmenus = document.querySelectorAll('.submenu, .sub-dropdown');
+//             allSubmenus.forEach(menu => {
+//                 menu.classList.remove('show');
+//             });
+//         }
+//     });
     
-    // Prevent clicks inside dropdown from closing it
-    dropdownContent.addEventListener('click', function(e) {
-        // Only prevent if it's not a direct link click
-        if (!e.target.matches('a') || e.target.nextElementSibling) {
-            e.stopPropagation();
-        }
-    });
+//     // Prevent clicks inside dropdown from closing it
+//     dropdownContent.addEventListener('click', function(e) {
+//         // Only prevent if it's not a direct link click
+//         if (!e.target.matches('a') || e.target.nextElementSibling) {
+//             e.stopPropagation();
+//         }
+//     });
     
-    // Add touch support for mobile devices
-    if ('ontouchstart' in window) {
-        hasSubmenuItems.forEach(item => {
-            item.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
+//     // Add touch support for mobile devices
+//     if ('ontouchstart' in window) {
+//         hasSubmenuItems.forEach(item => {
+//             item.addEventListener('touchstart', function(e) {
+//                 e.preventDefault();
+//                 e.stopPropagation();
                 
-                const submenu = this.nextElementSibling;
-                submenu.classList.toggle('show');
-            });
-        });
-    }
-});
+//                 const submenu = this.nextElementSibling;
+//                 submenu.classList.toggle('show');
+//             });
+//         });
+//     }
+// });
 // -----------------
+
+document.addEventListener("DOMContentLoaded", function () {
+    const menuButton = document.querySelector(".dropbtn");
+    const menuContent = document.querySelector(".dropdown-content");
+
+    menuButton.addEventListener("click", function () {
+        menuContent.classList.toggle("open"); // Toggles menu visibility
+    });
+});
+
+
