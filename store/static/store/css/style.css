@@ -86,8 +86,7 @@ header {
 
 .dropbtn {
 
-    top: 20px;
-    left: 20px;
+  
     background: rgba(98, 44, 85, 0.8);
     color: white;
     padding: 12px 20px; /* Adjusted padding */
