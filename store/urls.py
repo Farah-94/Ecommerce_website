@@ -12,7 +12,7 @@ urlpatterns = [
     # path('product/<int:pk>/', views.product_detail, name='product_detail'),
     # path('category/<int:category_id>/', views.category_products, name='category_products'),
     path('products/', product_list, name='product_list'),
-
+ 
 
     # Authentication
     path('signup/', views.signup, name='signup'),

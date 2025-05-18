@@ -11,6 +11,11 @@ def logout_view(request):
     logout(request)
     return redirect('signin')
 
+
+def index(request):
+    return render(request, 'store/index.html')
+
+
 from django.shortcuts import render
 from store.models import Product
 
