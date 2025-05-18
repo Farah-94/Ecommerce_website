@@ -57,6 +57,8 @@ header {
     background: transparent;
     z-index: 10;
     top: 20px;
+    color: white;
+    
 }
 
 .logo {
