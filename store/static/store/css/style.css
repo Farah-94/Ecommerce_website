@@ -84,12 +84,11 @@ header {
     z-index: 10;
 } */
 
-.dropdown button{
+.dropbtn{
     background: rgba(112, 41, 85, 0.8);
     border: 5px;
     color: white;
     font-size: 16px;
-    cursor: pointer;   
     padding: 10px 15px; 
 }
 
