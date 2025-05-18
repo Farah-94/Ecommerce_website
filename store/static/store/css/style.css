@@ -84,9 +84,10 @@ header {
     z-index: 10;
 } */
 
-.dropbtn {
+.drpdown button {
 
-  
+    position: absolute;
+    left: 20px; /* Moved to the left */
     background: rgba(98, 44, 85, 0.8);
     color: white;
     padding: 12px 20px; /* Adjusted padding */
