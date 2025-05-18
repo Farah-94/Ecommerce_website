@@ -4,17 +4,17 @@ body {
     margin: 0;
     padding: 0;
     font-style: italic;
-    overflow: hidden; /* Prevent scrolling */
+    overflow: auto; /* Allow scrolling */
 }
 
-/* Fullscreen Swiper Slider as Background */
+/* Fullscreen Swiper Slider */
 .swiper {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1;
+    z-index: 1;
 }
 
 .swiper-slide img,
@@ -25,7 +25,9 @@ body {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 2;
 }
+
 /* Centered Logo */
 header {
     position: absolute;
@@ -42,7 +44,7 @@ header {
     height: auto;
 }
 
-/* Properly Positioned Cart in the Top-Right Corner */
+/* Cart Button */
 .cart-link {
     position: absolute;
     top: 20px;
@@ -55,7 +57,7 @@ header {
     z-index: 100;
 }
 
-/* Menu Positioned on the Left */
+/* Dropdown Menu */
 .dropbtn {
     position: absolute;
     top: 20px;
@@ -66,12 +68,14 @@ header {
     font-size: 16px;
     border-radius: 5px;
     z-index: 10;
-    
 }
 
-/* Ensure the dropdown is hidden until clicked */
+/* Dropdown Animations */
 .dropdown-content {
     display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
     position: absolute;
     left: 20px;
     background: white;
@@ -83,9 +87,11 @@ header {
 
 .dropdown-content.open {
     display: block;
+    opacity: 1;
+    transform: translateY(0);
 }
 
-/* ✅ FIX: Ensure submenus remain hidden until clicked */
+/* Fix submenu display */
 .submenu, .sub-dropdown {
     display: none;
     padding-left: 15px;
@@ -95,7 +101,7 @@ header {
     display: block;
 }
 
-/* Navigation Buttons */
+/* Swiper Navigation */
 .swiper-button-next,
 .swiper-button-prev {
     color: #fff;
@@ -113,13 +119,12 @@ header {
 
 /* Footer */
 footer {
-    height: 20%;
+    height: auto;
     background-color: rgba(223, 213, 213, 0.8);
     color: white;
     text-align: center;
     padding: 15px;
-    position: absolute;
-    bottom: 0;
+    position: relative;
     width: 100%;
     display: flex;
     justify-content: center;

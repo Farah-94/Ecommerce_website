@@ -6,7 +6,8 @@
     <title>Product List</title>
 
     <!-- Swiper.js Styles -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.0/swiper-bundle.min.js"></script>    {% load static %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.0/swiper-bundle.min.js"></script>
+    {% load static %}
     <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
 </head>
 <body>
@@ -18,8 +19,8 @@
     <a href="{% url 'store:cart' %}" class="cart-link">🛒 Cart ({{ cart_items.count }})</a>
 </header>
 
-<!-- Dropdown Menu -->
-<div class="dropdown">
+<!-- Navigation Menu -->
+<nav class="dropdown">
     <button type="button" class="dropbtn">Menu</button>
     <div class="dropdown-content">
         <ul>
@@ -40,15 +41,15 @@
             <li><a href="{% url 'admin:index' %}" class="admin-link">Admin Panel</a></li>
         </ul>
     </div>
-</div>
+</nav>
 
 <!-- Hero Slider -->
-<!-- Swiper Slider Container -->
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-            <video autoplay muted loop>
-                <source src="{% static 'store/images/products/video1.mp4' %}" type="video/mp4">
+            <video autoplay muted loop playsinline controls>
+                <source src="{% static 'store/videos/sample.mp4' %}" type="video/mp4">
+                Your browser does not support the video tag.
             </video>
         </div>
         <div class="swiper-slide">
@@ -57,7 +58,6 @@
     </div>
     <div class="swiper-pagination"></div>
 </div>
-
 
 <footer>
     <div class="footer-container">
@@ -85,8 +85,6 @@
         </div>
     </div>
 </footer>
-
-
 
 <script src="{% static 'store/js/script.js' %}"></script>
 </body>
