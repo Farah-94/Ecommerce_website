@@ -108,10 +108,10 @@ header {
 /* Footer - Reduced Height */
 footer {
     height: 20%;
-    background-color: rgba(51, 51, 51, 0.8);
+    background-color: rgba(87, 86, 86, 0.8);
     color: white;
     text-align: center;
-    padding: 10px; /* Reduced height */
+    padding: 15px; /* Reduced height */
     position: absolute;
     bottom: 0;
     width: 100%;
