@@ -143,12 +143,24 @@ document.addEventListener("DOMContentLoaded", function () {
 // -----------------
 
 document.addEventListener("DOMContentLoaded", function () {
-    const menuButton = document.querySelector(".dropbtn");
-    const menuContent = document.querySelector(".dropdown-content");
+    // Select menu items
+    const latestItem = document.querySelector(".has-submenu > a");
+    const womanMenu = document.querySelector(".submenu .has-submenu > a");
+    const submenu = document.querySelector(".submenu");
+    const subDropdown = document.querySelector(".sub-dropdown");
 
-    menuButton.addEventListener("click", function () {
-        menuContent.classList.toggle("open"); // Toggles menu visibility
+    // Toggle "Women" when "Latest Items" is clicked
+    latestItem.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent default link behavior
+        submenu.classList.toggle("open");
+    });
+
+    // Toggle subcategories when "Women" is clicked
+    womanMenu.addEventListener("click", function (event) {
+        event.preventDefault();
+        subDropdown.classList.toggle("open");
     });
 });
+
 
 

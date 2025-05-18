@@ -66,7 +66,7 @@ header {
     margin-top: 10px; /* Space between logo and title */
 }
 
-/* Positioning Menu (Left) & Cart (Right) Over Slider */
+/* Positioning Menu (Left) & Cart (Right) Over Slider
 .dropdown-content {
     display: none;
     position: absolute;
@@ -76,7 +76,7 @@ header {
     padding: 10px;
     min-width: 150px;
     z-index: 10;
-}
+} */
 
 .dropdown-content.open {
     display: block; /* Shows menu when toggled */
@@ -89,16 +89,22 @@ header {
     display: none;
     position: absolute;
     left: 20px;
-    background: white;
+    background: rgb(109, 105, 105);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     padding: 10px;
     min-width: 150px;
     z-index: 10;
 }
 
-.dropdown-content.open {
-    display: block; /* Shows menu when toggled */
+.submenu, .sub-dropdown {
+    display: none;
+    padding-left: 15px;
 }
+
+.submenu.open, .sub-dropdown.open {
+    display: block; /* Shows when toggled */
+}
+
 
 .cart-link {
     position: absolute;
