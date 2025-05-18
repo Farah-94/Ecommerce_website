@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     font-style: italic;
-    overflow: hidden; /* Prevents scrolling */
+    overflow: hidden; /* Prevent scrolling */
 }
 
 /* Fullscreen Swiper Slider as Background */
@@ -44,8 +44,7 @@ header {
     height: auto;
 }
 
-/* Cart Positioned on the Right Corner */
-/* Cart Positioned in the Top-Right Corner */
+/* Properly Positioned Cart in the Top-Right Corner */
 .cart-link {
     position: absolute;
     top: 20px;
@@ -60,7 +59,6 @@ header {
     align-items: center;
     justify-content: center;
 }
-
 
 /* Menu Positioned on the Left */
 .dropbtn {
@@ -78,7 +76,7 @@ header {
 
 /* Ensure the dropdown is hidden until clicked */
 .dropdown-content {
-    display: none; /* Hidden by default */
+    display: none;
     position: absolute;
     left: 20px;
     background: white;
@@ -87,7 +85,8 @@ header {
     min-width: 150px;
     z-index: 10;
 }
-/* Toggle dropdown visibility when opened */
+
+/* Opens when toggled */
 .dropdown-content.open {
     display: block; 
 }
@@ -125,7 +124,7 @@ footer {
     background-color: rgba(223, 213, 213, 0.8);
     color: white;
     text-align: center;
-    padding: 10px;
+    padding: 15px;
     position: absolute;
     bottom: 0;
     width: 100%;
