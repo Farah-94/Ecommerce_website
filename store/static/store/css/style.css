@@ -54,11 +54,9 @@ header {
     padding: 10px 15px;
     border-radius: 5px;
     text-decoration: none;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    z-index: 100; /* Ensure it stays on top */
 }
+
 
 /* Menu Positioned on the Left */
 .dropbtn {

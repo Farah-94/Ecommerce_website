@@ -6,8 +6,7 @@
     <title>Product List</title>
 
     <!-- Swiper.js Styles -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.0/swiper-bundle.min.js"></script>
-    {% load static %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.0/swiper-bundle.min.js"></script>    {% load static %}
     <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
 </head>
 <body>
@@ -44,6 +43,7 @@
 </div>
 
 <!-- Hero Slider -->
+<<!-- Swiper Slider Container -->
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
@@ -55,11 +55,9 @@
             <img src="{% static 'store/images/products/pro1.jpg' %}" alt="Product 1">
         </div>
     </div>
-    <!-- Pagination & Navigation -->
     <div class="swiper-pagination"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
 </div>
+
 
 <footer>
     <div class="footer-container">
