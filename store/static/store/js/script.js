@@ -51,15 +51,19 @@ console.log("javascript is loading")
 document.addEventListener("DOMContentLoaded", function () {
     const slider = document.querySelector(".slider-container");
     const slides = document.querySelectorAll(".hero-slide");
+    const videos = document.querySelectorAll("video");
     let currentIndex = 0;
 
-    function slideImages() {
+    function slideVideos() {
+        videos.forEach(video => video.pause()); // Pause all videos
         currentIndex = (currentIndex + 1) % slides.length;
         slider.style.transform = `translateX(-${currentIndex * 100}vw)`;
+        videos[currentIndex].play(); // Play only the current video
     }
 
-    setInterval(slideImages, 10000); // Change image every 10 seconds
+    setInterval(slideVideos, 10000); // Change video every 10 seconds
 });
+
 
 
 
