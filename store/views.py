@@ -5,8 +5,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.views import LoginView
+from django.http import HttpResponse
+from django.db.models import Q
 from .models import Category, Product, CartItem, Order
-
 
 # --- Authentication Views ---
 def signup(request):
@@ -41,30 +42,28 @@ class CustomLoginView(LoginView):
 
 
 # --- Homepage & Product Views ---
-
-
-from django.http import HttpResponse
-
 def index(request):
-     return render(request, "store/index.html")
-  # Quick test  # Ensure this template exists
+    return render(request, "store/index.html")
 
-
-from store.models import Category
 
 def product_list(request):
     category_name = request.GET.get('category', None)
+    print(f"🔍 Requested Category: {category_name}")  # ✅ Debugging output
 
     if category_name:
-        category = Category.objects.filter(name__icontains=category_name).first()  # ✅ Case-insensitive match
+        category = Category.objects.filter(Q(name__icontains=category_name) | Q(name__iexact=category_name)).first()
+        print(f"✅ Matched Category: {category}")  # Debugging output
+
         if category:
             products = Product.objects.filter(category=category)
         else:
-            products = Product.objects.none()  # No matching category found
+            products = Product.objects.none()
     else:
         products = Product.objects.all()
 
+    print(f"🛒 Products Found: {products}")  # ✅ Check if products exist
     return render(request, "store/productlist.html", {"products": products})
+
 
 @login_required
 def buy_product(request, product_id):
@@ -83,11 +82,7 @@ def buy_product(request, product_id):
 def category_products(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     products = Product.objects.filter(category=category)
-    return render(
-        request,
-        "store/category_products.html",
-        {"products": products, "category": category},
-    )
+    return render(request, "store/category_products.html", {"products": products, "category": category})
 
 
 # --- Cart & Order Management ---
