@@ -52,15 +52,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const slider = document.querySelector(".slider-container");
     const slides = document.querySelectorAll(".hero-slide");
     let currentIndex = 0;
-    const slideCount = slides.length;
 
     function slideImages() {
-        currentIndex = (currentIndex + 1) % slideCount;
+        currentIndex = (currentIndex + 1) % slides.length;
         slider.style.transform = `translateX(-${currentIndex * 100}vw)`;
     }
 
-    setInterval(slideImages, 10000); // Changes image every 10 seconds
+    setInterval(slideImages, 10000); // Change image every 10 seconds
 });
+
 
 
 
