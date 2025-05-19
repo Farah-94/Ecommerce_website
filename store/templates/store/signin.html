@@ -12,20 +12,20 @@
         <h1>Sign In</h1>
     </header>
 
-    <main class="form-container">
-        <form method="POST">
-            {% csrf_token %}
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+  <main class="auth-form-container">
+ 
+    <form method="POST">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
 
-            <button type="submit">Sign In</button>
+        <button type="submit">Sign In</button>
 
-            <p>Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
-
-        </form>
-    </main>
+        <p>Don't have an account? <a href="{% url 'store:signup' %}">Sign Up</a></p>
+    </form>
+</main>
 </body>
 </html>
