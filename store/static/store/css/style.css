@@ -196,13 +196,14 @@ footer a {
 /* ----buyproduct---- */
 
 .product-details {
-    width: 80%;
+    width: 50%;
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
     background: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
 }
 
 /* Product Name */
@@ -224,25 +225,8 @@ footer a {
     border-radius: 5px;
 }
 
-/* Navigation Buttons */
-button.prev, button.next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-}
 
-button.prev {
-    left: 10px;
-}
 
-button.next {
-    right: 10px;
-}
 
 /* Form Styles */
 form {

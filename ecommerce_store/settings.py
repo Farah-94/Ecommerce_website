@@ -152,7 +152,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'store/static')
 ]
 
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # For production

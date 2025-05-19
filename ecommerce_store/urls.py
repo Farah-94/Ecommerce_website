@@ -25,3 +25,4 @@ urlpatterns = [
     path('', index, name='index'),  # ✅ Homepage route
     path('store/', include('store.urls', namespace='store')),  # ✅ Includes store URLs
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -17,29 +17,10 @@
        <div class="product-slider">
     <div class="product-slides">
         <!-- Main Image -->
-        <img src="{% static 'store/images/products/tshirts.jpg' %}{{ product.image_code }}.jpg" 
-             alt="{{ product.name }}" 
-             class="slide active">
-        
-        <!-- Additional Images -->
-        {% if product.image_code_alt1 %}
-        <img src="{% static 'store/images/products/pro1.jpg' %}{{ product.image_code_alt1 }}.jpg" 
-             alt="{{ product.name }} alternate view" 
-             class="slide">
-        {% endif %}
-        
-        {% if product.image_code_alt2 %}
-        <img src="{% static 'store/images/products/pro2.jpg' %}{{ product.image_code_alt2 }}.jpg" 
-             alt="{{ product.name }} detail view" 
-             class="slide">
-        {% endif %}
-    </div>
+<img src="{% static 'store/images/products/tshirt.jpg' %}" alt="T-shirt">             
+             </div>
     
-    <!-- Navigation arrows (only show if alternate images exist) -->
-    {% if product.image_code_alt1 or product.image_code_alt2 %}
-    <button class="prev" onclick="moveSlide(-1)">❮</button>
-    <button class="next" onclick="moveSlide(1)">❯</button>
-    {% endif %}
+  
 </div>
         <p>Price: ${{ product.price }}</p>
 

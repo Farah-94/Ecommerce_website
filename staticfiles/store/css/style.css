@@ -158,25 +158,116 @@ footer a {
     text-decoration: none;
     font-size: large;
 }
+.product-container {
+    padding: 15px;;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* ✅ Centers content */
+    gap: 20px; /* ✅ Adds space between cards */
+}
+
 .product-card {
-    border: 1px solid #ddd;
+    width: 250px; /* ✅ Sets consistent card width */
     padding: 15px;
-    margin: 10px;
-    background: #f9f9f9;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
 .product-card img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: 5px;
+}
+.product-link {
+    text-decoration: none; /* ✅ Removes underline */
+    color: inherit; /* ✅ Keeps text color normal */
+    display: block; /* ✅ Makes the whole card clickable */
 }
 
-.product-card a {
-    display: inline-block;
-    padding: 8px 12px;
-    background: #007bff;
-    color: white;
-    text-decoration: none;
+.product-card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.product-card:hover {
+    transform: scale(1.05); /* ✅ Adds a hover effect */
+}
+/* ----buyproduct---- */
+
+.product-details {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Product Name */
+.product-details h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #0073e6;
+}
+
+/* Product Image Slider */
+.product-slider {
+    position: relative;
+    text-align: center;
+}
+
+.product-slides img {
+    width: 100%;
+    max-height: 400px;
     border-radius: 5px;
+}
+
+/* Navigation Buttons */
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button.prev {
+    left: 10px;
+}
+
+button.next {
+    right: 10px;
+}
+
+/* Form Styles */
+form {
+    text-align: center;
+}
+
+form label {
+    display: block;
+    margin-top: 10px;
+}
+
+form input, form select {
+    padding: 5px;
+    margin: 5px 0;
+}
+
+button[type="submit"] {
+    background: #0073e6;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background: #005bb5;
 }
