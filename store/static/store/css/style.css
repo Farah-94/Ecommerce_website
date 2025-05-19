@@ -327,11 +327,11 @@ button[type="submit"]:hover {
     margin-top: 20px;
 }
 
-.checkout-btn:hover {
+.checkout-btn .back-btn:hover {
     background-color: #218838;
 }
 
-a:hover {
+.cart-container a:hover {
     opacity: 0.8;
 }
 /* ------checkout----------- */
@@ -397,4 +397,30 @@ a:hover {
     .checkout-container {
         width: 90%;
     }
+}
+/* -----success-------- */
+.order-success {
+    text-align: center;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.order-success h1 {
+    color: #28a745;
+}
+
+.order-success a {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.order-success a:hover {
+    background-color: #0056b3;
 }
