@@ -43,7 +43,7 @@
 </div>
         <p>Price: ${{ product.price }}</p>
 
-        <form method="post" action="{% url 'add_to_cart' product.id %}">
+        <form method="post" action="{% url 'store:add_to_cart' product.id %}">
             {% csrf_token %}
             
             <!-- Quantity -->
