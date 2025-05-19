@@ -255,3 +255,146 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background: #005bb5;
 }
+
+/* -------cart------- */
+/* Cart Page Styles */
+/* Cart Page Flexbox Styles */
+.cart-container {
+    display: flex;
+    flex-direction: row; /* Ensures horizontal alignment */
+    gap: 20px;
+    justify-content: flex-start; /* Aligns items from left to right */
+    max-width: 100%;
+    overflow-x: auto; /* Allows scrolling if items overflow */
+    padding: 10px;
+
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    min-width: 280px; /* Ensures consistent width */
+    flex-shrink: 0; /* Prevents items from shrinking */
+}
+
+.cart-item img {
+    width: 50px;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.cart-details {
+    text-align: left;
+}
+
+.cart-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Scoped button styles to prevent conflicts */
+.cart-actions a,
+.remove-btn,
+.back-btn,
+.checkout-btn {
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.remove-btn {
+    color: white;
+    background-color: #dc3545;
+}
+
+.back-btn {
+    color: white;
+    background-color: #007bff;
+}
+
+.checkout-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.checkout-btn:hover {
+    background-color: #218838;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+/* ------checkout----------- */
+/* Checkout Page Styles */
+.checkout-container {
+    max-width: 500px;
+    margin: 50px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Scoped heading styles */
+.checkout-container h1, 
+.checkout-container h2 {
+    color: #333;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+/* Form styling */
+.checkout-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkout-container label {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.checkout-container input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Button Styling */
+.checkout-container button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.checkout-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .checkout-container {
+        width: 90%;
+    }
+}
