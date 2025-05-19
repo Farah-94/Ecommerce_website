@@ -113,18 +113,18 @@ def cart(request):
 def checkout(request):
     cart_items = CartItem.objects.filter(user=request.user)
     if not cart_items.exists():
-        return redirect("cart")
+        return redirect("store:cart")
 
     if request.method == "POST":
         order = Order.objects.create(
             user=request.user,
             shipping_address=request.POST.get("address"),
             payment_method=request.POST.get("payment_method"),
-            total=sum(item.total_price for item in cart_items),
+            total_price=sum(item.total_price for item in cart_items),
         )
         order.items.set(cart_items)
         cart_items.delete()
-        return redirect("order_success", order_id=order.id)
+        return redirect("store:order_success", order_id=order.id)
 
     return render(request, "store/checkout.html", {"cart_items": cart_items, "total": sum(item.total_price for item in cart_items)})
 
