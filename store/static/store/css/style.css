@@ -12,7 +12,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1;
+    z-index: -2; /* ✅ Lowered to prevent overlap issues */
 }
 
 /* 🎥 Ensure Swiper videos fit properly */
@@ -23,18 +23,7 @@
     position: absolute;
     top: 0;
     left: 0;
-}
-
-
-/* 🔧 Fix Background Video Placement */
-.background-video {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -2; /* ✅ Keep background behind everything */
+    z-index: -1; /* ✅ Videos should be behind content */
 }
 
 /* ✅ Fix Swiper transition to avoid blank spaces */
@@ -51,7 +40,7 @@
     transform: translateX(-50%);
     width: 120px;
     height: auto;
-    z-index: 100;
+    z-index: 200; /* ✅ Ensures logo appears above swiper */
 }
 
 /* 🛒 Cart in Top-Right */
@@ -64,7 +53,7 @@
     padding: 10px 15px;
     border-radius: 5px;
     text-decoration: none;
-    z-index: 100;
+    z-index: 200; /* ✅ Keeps cart link above other elements */
 }
 
 /* 📌 Menu on Top-Left */
@@ -77,7 +66,7 @@
     padding: 12px 20px;
     font-size: 16px;
     border-radius: 5px;
-    z-index: 100;
+    z-index: 200; /* ✅ Ensures menu is always clickable */
 }
 .dropdown-content {
     position: absolute;
@@ -87,7 +76,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 10px;
     width: 200px;
-    z-index: 150; /* ✅ Increased z-index to appear above swiper */
+    z-index: 250; /* ✅ Ensures dropdown appears above swiper */
     display: none;
     opacity: 0;
     transform: translateY(-10px);
@@ -115,7 +104,18 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    z-index: 100;
+    z-index: 200; /* ✅ Ensure footer stays above swiper */
+}
+
+#mainVideo {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    display: block !important;
 }
 
 

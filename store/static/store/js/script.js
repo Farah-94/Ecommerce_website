@@ -1,46 +1,32 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ JavaScript loaded successfully!");
 
-    if (typeof Swiper !== "undefined") {
-        const swiper = new Swiper(".mySwiper", {
-            loop: true,
-            autoplay: {
-                delay: 10000, // ✅ Each video plays for 10 seconds before switching
-                disableOnInteraction: false
-            },
-            effect: "fade",
-            speed: 1000,
-            slidesPerView: 1,
-            allowTouchMove: false,
-            on: {
-                slideChange: function () {
-                    console.log(`✅ Switching to slide ${swiper.activeIndex}`);
+    const mainVideo = document.getElementById("mainVideo");
 
-                    // ✅ Pause all videos first
-                    const videos = document.querySelectorAll(".background-video");
-                    videos.forEach(video => {
-                        video.pause();
-                        video.currentTime = 0;
-                    });
-
-                    // ✅ Play only the active slide's video after a small delay
-                    setTimeout(() => {
-                        const activeVideo = swiper.slides[swiper.activeIndex].querySelector("video");
-                        if (activeVideo) {
-                            activeVideo.play();
-                            console.log("✅ Playing video:", activeVideo.src);
-                        }
-                    }, 500);
-                }
-            }
+    if (mainVideo) {
+        mainVideo.play().then(() => {
+            console.log("✅ Video playing successfully!");
+        }).catch(error => {
+            console.warn("⚠️ Autoplay blocked. Waiting for user interaction:", error);
         });
 
-        console.log("✅ Swiper initialized successfully.");
+        // ✅ Allow manual playback when user clicks anywhere
+        document.addEventListener("click", () => {
+            mainVideo.play();
+            console.log("✅ Video manually played by user.");
+        });
+
+        // ✅ Restart video when it ends
+        mainVideo.addEventListener("ended", () => {
+            mainVideo.currentTime = 0;
+            mainVideo.play();
+        });
+
+        console.log("✅ Video playback logic initialized.");
     } else {
-        console.error("⚠️ Swiper.js not found. Ensure it's properly loaded.");
+        console.error("⚠️ Video element not found!");
     }
 });
-
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -81,6 +67,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 // ✅ Open the specific submenu
                 const submenu = this.nextElementSibling;
                 submenu.classList.toggle("open");
+            });
+
+            // ✅ Enable hover effect for submenu expansion
+            item.addEventListener("mouseenter", function () {
+                const submenu = this.nextElementSibling;
+                if (submenu) {
+                    submenu.classList.add("open");
+                }
+            });
+
+            item.addEventListener("mouseleave", function () {
+                const submenu = this.nextElementSibling;
+                if (submenu) {
+                    submenu.classList.remove("open");
+                }
             });
         });
 
