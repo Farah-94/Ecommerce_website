@@ -25,6 +25,8 @@ def signup(request):
     return render(request, "store/signup.html", {"form": form})
 
 # ✅ SIGNIN: Authenticate user & redirect after login
+from django.urls import reverse
+
 def signin(request):
     if request.method == "POST":
         username = request.POST.get("username")
@@ -33,11 +35,10 @@ def signin(request):
 
         if user:
             login(request, user)
-            print("✅ User Logged In:", user)  # Debugging output
+            print("✅ User logged in:", user)  # Debugging output
             messages.success(request, "Login successful!")
-            return redirect("store:index")  # Redirects to index page
+            return redirect(reverse("store:index"))  # Redirects to index page
         else:
-            print("❌ Authentication Failed")  # Debugging output
             messages.error(request, "Invalid username or password.")
     
     return render(request, "store/signin.html")
