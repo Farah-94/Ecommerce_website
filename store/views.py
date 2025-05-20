@@ -24,13 +24,28 @@ def signup(request):
     return render(request, "store/signup.html", {"form": form})
 
 
+# ✅ SIGNIN: Authenticate user & redirect after login
 def signin(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = authenticate(request, username=username, password=password)
+
+        if user:
+            login(request, user)
+            messages.success(request, "You are now signed in!")
+            return redirect("store:index")  # Redirect to home after signin
+        else:
+            messages.error(request, "Invalid username or password. Try again.")
+    
     return render(request, "store/signin.html")
 
-
+# ✅ LOGOUT: Ends session & redirects user
 def logout_view(request):
     logout(request)
-    return redirect("signin")
+    messages.success(request, "You have logged out successfully!")
+    return redirect("store:signin")
+
 
 
 class CustomLoginView(LoginView):

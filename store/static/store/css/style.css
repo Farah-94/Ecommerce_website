@@ -424,46 +424,40 @@ button[type="submit"]:hover {
 .order-success a:hover {
     background-color: #0056b3;
 }
-/* ---------------------- */
+/* --------signin/signup-------------- */
 
-/* FORM STYLING - Specific class for sign-in & sign-up forms */
-
-body .signin-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+.signin-body  .signup.bodyy{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-
-.auth-form-container {
+/* Signup & Signin Forms */
+.signup-form-container, .signin-form-container {
     background-color: #fff;
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 340px;
+    width: 350px;
     text-align: center;
-    padding: 15px
 }
 
 /* Headings */
-.auth-form-container h1 {
+.signup-form-container h1, .signin-form-container h1 {
     font-size: 24px;
     color: #333;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 /* Labels & Inputs */
-.auth-form-container label {
+.signup-form-container label, .signin-form-container label {
     display: block;
     margin: 10px 0 5px;
     font-size: 14px;
     color: #555;
 }
 
-.auth-form-container input {
+.signup-form-container input, .signin-form-container input {
     width: 100%;
     padding: 10px;
     margin-bottom: 12px;
@@ -472,8 +466,8 @@ body .signin-body {
     font-size: 16px;
 }
 
-/* Button styling */
-.auth-form-container button {
+/* Buttons */
+.signup-form-container button, .signin-form-container button {
     background-color: #5c67f2;
     color: white;
     border: none;
@@ -485,115 +479,6 @@ body .signin-body {
     transition: background-color 0.3s;
 }
 
-.auth-form-container button:hover {
+.signup-form-container button:hover, .signin-form-container button:hover {
     background-color: #4854c8;
-}
-
-/* Signup link paragraph */
-.auth-form-container p {
-    margin-top: 15px;
-    font-size: 14px;
-}
-
-.auth-form-container a {
-    color: #5c67f2;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.auth-form-container a:hover {
-    text-decoration: underline;
-}
-/* ---------signup---------- */
-body .signup-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-/* FORM STYLING - Specific class for sign-in & sign-up forms */
-.auth-form-container {
-    background-color: #fff;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 340px;
-    text-align: center;
-}
-
-/* Headings */
-.auth-form-container h1 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 15px;
-     
-}
-
-/* Labels & Inputs */
-.auth-form-container label {
-    display: block;
-    margin: 10px 0 5px;
-    font-size: 14px;
-    color: #555;
-}
-
-.auth-form-container input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-/* Button styling */
-.auth-form-container button {
-    background-color: #5c67f2;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    width: 100%;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-.auth-form-container button:hover {
-    background-color: #4854c8;
-}
-
-/* Signup link paragraph */
-.auth-form-container p {
-    margin-top: 15px;
-    font-size: 14px;
-}
-
-.auth-form-container a {
-    color: #5c67f2;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.auth-form-container a:hover {
-    text-decoration: underline;
-}
-.redirect-btn {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    width: 100%;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-    margin-top: 15px;
-}
-
-.redirect-btn:hover {
-    background-color: #45a049;
 }

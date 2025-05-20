@@ -7,30 +7,36 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
 </head>
-<body class="signup-body">
+<body>
     <header>
-  
+        <h1>Create an Account</h1>
     </header>
 
     <main class="signup-form-container">
-  
-    <form method="POST">
-        {% csrf_token %}
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+        <!-- ✅ Display success/error messages -->
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <form method="POST" action="{% url 'store:signup' %}">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
 
-        <button type="submit">Sign Up</button>
-    </form>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
 
-    <!-- Redirect Button -->
-    <a href="{% url 'store:index' %}" class="redirect-btn">Go to Home</a>
-</main>
-
+            <button type="submit">Sign Up</button>
+        </form>
+        
+        <p>Already have an account? <a href="{% url 'store:signin' %}">Sign In</a></p>
+    </main>
 </body>
 </html>
