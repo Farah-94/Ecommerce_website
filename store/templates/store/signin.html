@@ -15,18 +15,19 @@
     <main class="signin-form-container">
   
 
-        <form method="POST" action="{% url 'store:signin' %}">
-            {% csrf_token %}
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+       <form method="POST" action="{% url 'store:signin' %}">
+    {% csrf_token %}
+    
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required autocomplete="username">
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required autocomplete="current-password">
 
-            <button type="submit">Sign In</button>
-        </form>
+    <button type="submit">Sign In</button>
+</form>
 
-        <p>Don't have an account? <a href="{% url 'store:signup' %}">Sign Up</a></p>
+<p>Don't have an account? <a href="{% url 'store:signup' %}">Sign Up</a></p>
     </main>
 </body>
 </html>

@@ -14,7 +14,7 @@ urlpatterns = [
     # Products
     # path('product/<int:pk>/', views.product_detail, name='product_detail'),
     # path('category/<int:category_id>/', views.category_products, name='category_products'),
-    path('', index, name='index'),
+    path("", views.index, name="index"),  # Homepage route
     path('products/', product_list, name='product_list'),
     path("buy/<int:product_id>/", buy_product, name="buy_product"),
 

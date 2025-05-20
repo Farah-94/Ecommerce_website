@@ -27,19 +27,20 @@ def signup(request):
 # ✅ SIGNIN: Authenticate user & redirect after login
 def signin(request):
     if request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
+        username = request.POST.get("username")
+        password = request.POST.get("password")
         user = authenticate(request, username=username, password=password)
 
-        if user is not None:
+        if user:
             login(request, user)
+            print("✅ User Logged In:", user)  # Debugging output
             messages.success(request, "Login successful!")
-            return redirect("store:index")  # Redirect to index page
+            return redirect("store:index")  # Redirects to index page
         else:
+            print("❌ Authentication Failed")  # Debugging output
             messages.error(request, "Invalid username or password.")
     
     return render(request, "store/signin.html")
-
 
 # ✅ LOGOUT: Ends session & redirects user
 def logout_view(request):
