@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product List</title>
+    <title>Home </title>
 
     <!-- Swiper.js Styles -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.0/swiper-bundle.min.js"></script>
@@ -25,10 +25,10 @@
     <div class="dropdown-content">
         <ul>
             <li class="has-submenu">
-                <a href="#">Latest Items ▼</a>
+                <a href="#" class="submenu-toggle">Latest Items ▼</a>
                 <ul class="submenu">
                     <li class="has-submenu">
-                        <a href="#">Women ▼</a>
+                        <a href="#" class="submenu-toggle">Women ▼</a>
                         <ul class="sub-dropdown">
                             <li><a href="{% url 'store:product_list' %}?category=woman">Women T-Shirts</a></li>
                         </ul>
@@ -43,17 +43,23 @@
     </div>
 </nav>
 
-<!-- Hero Slider -->
+
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-            <video src="{% static 'store/images/products/video1.mp4' %}" autoplay loop muted></video>
+            <video class="background-video" src="{% static 'store/images/products/video1.mp4' %}" muted playsinline></video>
         </div>
         <div class="swiper-slide">
-            <img src="{% static 'store/images/products/pro1.jpg' %}" alt="Featured Product">
+            <video class="background-video" src="{% static 'store/images/products/video2.mp4' %}" muted playsinline></video>
         </div>
     </div>
 </div>
+
+
+
+
+
+
 <footer>
     <div class="footer-container">
         <div class="footer-section">

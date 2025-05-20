@@ -12,14 +12,16 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1; /* Keep it in the background */
+    z-index: -1; /* Keep Swiper in the background */
 }
 
-.swiper-slide img,
 .swiper-slide video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* ✅ Prevents blank space */
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 /* 🔝 Centered Logo */
@@ -58,7 +60,53 @@
     border-radius: 5px;
     z-index: 100;
 }
+.dropdown-content {
+    position: absolute;
+    left: 20px;
+    top: 50px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    width: 200px;
+    z-index: 150; /* ✅ Increased z-index to appear above swiper */
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
 
+/* Ensure dropdown opens correctly */
+.dropdown-content.open {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Ensure footer sticks to bottom */
+footer {
+    background-color: rgba(223, 213, 213, 0.9);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+    position: fixed; /* ✅ Keep footer at the bottom */
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    z-index: 100;
+}
+
+
+
+
+
+
+
+
+/* ------------------------------------------- */
 .product-container {
     padding: 15px;;
     display: flex;
