@@ -13,15 +13,7 @@
     </header>
 
     <main class="signup-form-container">
-        <!-- ✅ Display success/error messages -->
-        {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                    <li class="{{ message.tags }}">{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-
+  
         <form method="POST" action="{% url 'store:signup' %}">
             {% csrf_token %}
             <label for="username">Username:</label>
