@@ -15,24 +15,35 @@ from .models import Category, Product, CartItem, Order
 
 from django.shortcuts import render, redirect
 
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+from django.shortcuts import render, redirect
+
 def signup(request):
+    print("🚀 Signup view accessed!")  # Debugging check
+
     if request.method == "POST":
+        print("✅ Received POST request!")  # Debugging check
         form = UserCreationForm(request.POST)
+        
         if form.is_valid():
+            print("✅ Form is valid!")  # Debugging check
             user = form.save()
-            
-            # ✅ Ensure new customers are NOT staff or superusers
+
+            # ✅ Ensure new users are customers
             user.is_staff = False  
             user.is_superuser = False  
             user.save()
 
-            print(f"🚀 New user created: {user.username}")  # Debugging check
+            print(f"✅ New customer created: {user.username}")  # Debugging check
             login(request, user)
-            return redirect("store:index")  # Redirect customer to store homepage
+            return redirect("store:index")  # Redirect to homepage
+        
         else:
             print("❌ Form errors:", form.errors)  # Debugging check
     else:
         form = UserCreationForm()
+        print("ℹ️ Rendering signup form")  # Debugging check
 
     return render(request, "store/signup.html", {"form": form})
 # ✅ SIGNIN: Authenticate user & redirect after login
