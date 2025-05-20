@@ -427,6 +427,17 @@ button[type="submit"]:hover {
 /* ---------------------- */
 
 /* FORM STYLING - Specific class for sign-in & sign-up forms */
+
+body .signin-body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
 .auth-form-container {
     background-color: #fff;
     padding: 25px;
@@ -434,6 +445,7 @@ button[type="submit"]:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 340px;
     text-align: center;
+    padding: 15px
 }
 
 /* Headings */
