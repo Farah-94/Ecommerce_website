@@ -15,14 +15,14 @@ def signup(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)
-            messages.success(request, "Registration successful!")
-            return redirect("index")
+            login(request, user)  # Automatically logs in the user
+            messages.success(request, "Registration successful! Please sign in.")
+            return redirect("store:signin")  # Redirects to Sign In page
         messages.error(request, "Registration failed. Please correct the errors.")
     else:
         form = UserCreationForm()
+    
     return render(request, "store/signup.html", {"form": form})
-
 
 # ✅ SIGNIN: Authenticate user & redirect after login
 def signin(request):
