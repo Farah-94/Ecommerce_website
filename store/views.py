@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
+
 from django.urls import reverse
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.forms import UserCreationForm
@@ -10,26 +12,38 @@ from django.db.models import Q
 from .models import Category, Product, CartItem, Order
 
 # --- Authentication Views ---
+
+from django.shortcuts import render, redirect
+
 def signup(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)  # Automatically logs in the user
-            messages.success(request, "Registration successful! Please sign in.")
-            return redirect("store:signin")  # Redirects to Sign In page
-        messages.error(request, "Registration failed. Please correct the errors.")
+            
+            # ✅ Ensure new customers are NOT staff or superusers
+            user.is_staff = False  
+            user.is_superuser = False  
+            user.save()
+
+            print(f"🚀 New user created: {user.username}")  # Debugging check
+            login(request, user)
+            return redirect("store:index")  # Redirect customer to store homepage
+        else:
+            print("❌ Form errors:", form.errors)  # Debugging check
     else:
         form = UserCreationForm()
-    
-    return render(request, "store/signup.html", {"form": form})
 
+    return render(request, "store/signup.html", {"form": form})
 # ✅ SIGNIN: Authenticate user & redirect after login
 
 
 
 
 from django.contrib import messages
+
+
+
 
 def signin(request):
     if request.method == "POST":
@@ -38,18 +52,17 @@ def signin(request):
         user = authenticate(request, username=username, password=password)
 
         if user:
+            # ✅ Ensure the user is always a customer
+            user.is_staff = False  
+            user.is_superuser = False  
+            user.save()
+
             login(request, user)
-            messages.success(request, f"Welcome back, {user.username}!")  # Improved success message
-            print(f"✅ User logged in: {user.username}")  # Debugging check
-            return redirect(reverse("store:index"))  # Redirect to index page
+            return redirect("store:index")  # Redirect customers to store homepage
         else:
             messages.error(request, "Invalid username or password. Try again.")
-            print("❌ Authentication Failed")  # Debugging check
     
     return render(request, "store/signin.html")
-
-
-
 
 
 # ✅ LOGOUT: Ends session & redirects user
