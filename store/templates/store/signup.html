@@ -7,25 +7,32 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
 </head>
-<body>
+<body class="signup-body">
     <header>
         <h1>Create an Account</h1>
     </header>
 
-    <main class="form-container">
-        <form method="POST">
-            {% csrf_token %}
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+    <main class="signup-form-container">
+  
+    <form method="POST">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
 
-            <button type="submit">Sign Up</button>
-        </form>
-    </main>
+        <button type="submit">Sign Up</button>
+    </form>
+
+    <!-- Redirect Button -->
+    <a href="{% url 'store:index' %}">
+        <button type="button" class="redirect-btn">Go to Home</button>
+    </a>
+</main>
+
 </body>
 </html>

@@ -504,3 +504,96 @@ body .signin-body {
 .auth-form-container a:hover {
     text-decoration: underline;
 }
+/* ---------signup---------- */
+body .signup-body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* FORM STYLING - Specific class for sign-in & sign-up forms */
+.auth-form-container {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 340px;
+    text-align: center;
+}
+
+/* Headings */
+.auth-form-container h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+     
+}
+
+/* Labels & Inputs */
+.auth-form-container label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+.auth-form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Button styling */
+.auth-form-container button {
+    background-color: #5c67f2;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.auth-form-container button:hover {
+    background-color: #4854c8;
+}
+
+/* Signup link paragraph */
+.auth-form-container p {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.auth-form-container a {
+    color: #5c67f2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-form-container a:hover {
+    text-decoration: underline;
+}
+.redirect-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+.redirect-btn:hover {
+    background-color: #45a049;
+}
