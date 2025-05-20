@@ -65,22 +65,7 @@
 }
 
 /* Ensure footer sticks to bottom */
-footer {
-    display: flex; /* ✅ Enables Flexbox */
-    flex-direction: column; /* ✅ Stacks items vertically */
-    justify-content: center; /* ✅ Centers items vertically */
-    align-items: center; /* ✅ Centers items horizontally */
-    gap: 10px; /* ✅ Adds space between sections */
-    background-color: rgba(223, 213, 213, 0.9);
-    color: white;
-    text-align: center;
-    padding: 15px;
-    width: 100%;
-    position: fixed; /* ✅ Keeps footer at the bottom */
-    bottom: 0;
-    left: 0;
-    z-index: 100;
-}
+
 
 
 #backgroundVideo {
@@ -92,6 +77,57 @@ footer {
     left: 0;
     z-index: -1; /* ✅ Keeps video behind other elements */
 }
+
+footer {
+    display: flex;
+    flex-direction: column; /* ✅ Stack items vertically */
+    align-items: center; /* ✅ Center the heading & paragraph */
+    padding: 10px;
+    background-color: rgba(248, 243, 243, 0.2);
+    opacity: 0.9;
+    color: rgb(79, 17, 66);
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+}
+
+/* ✅ Center Heading and Paragraph */
+.footer-container > h4,
+.footer-container > p {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* ✅ Align Footer Sections Properly */
+.footer-section {
+    display: flex;
+    justify-content: space-evenly; /* ✅ Positions left & right */
+ 
+    max-width: 1200px;
+}
+
+/* ✅ Left Section (Follow Us) */
+.footer-section:first-child {
+    align-items: flex-start; /* ✅ Aligns content to the left */
+    width: 45%;
+}
+
+/* ✅ Right Section (Quick Links) */
+.footer-section:last-child {
+    align-items: flex-end; /* ✅ Aligns content to the right */
+    width: 45%;
+}
+
+/* ✅ Center Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    width: 100%;
+    padding-top: 10px;
+}
+
+
 
 
 
