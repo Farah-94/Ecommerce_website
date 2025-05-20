@@ -5,32 +5,6 @@
     box-sizing: border-box;
 }
 
-/* 🖥️ Fullscreen Swiper Background */
-.swiper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -2; /* ✅ Lowered to prevent overlap issues */
-}
-
-/* 🎥 Ensure Swiper videos fit properly */
-.swiper-slide video {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1; /* ✅ Videos should be behind content */
-}
-
-/* ✅ Fix Swiper transition to avoid blank spaces */
-.swiper-wrapper {
-    display: flex;
-    overflow: hidden;
-}
 
 /* 🔝 Centered Logo */
 .logo {
@@ -92,31 +66,33 @@
 
 /* Ensure footer sticks to bottom */
 footer {
+    display: flex; /* ✅ Enables Flexbox */
+    flex-direction: column; /* ✅ Stacks items vertically */
+    justify-content: center; /* ✅ Centers items vertically */
+    align-items: center; /* ✅ Centers items horizontally */
+    gap: 10px; /* ✅ Adds space between sections */
     background-color: rgba(223, 213, 213, 0.9);
     color: white;
     text-align: center;
     padding: 15px;
     width: 100%;
-    position: fixed; /* ✅ Keep footer at the bottom */
+    position: fixed; /* ✅ Keeps footer at the bottom */
     bottom: 0;
     left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    z-index: 200; /* ✅ Ensure footer stays above swiper */
+    z-index: 100;
 }
 
-#mainVideo {
+
+#backgroundVideo {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
-    z-index: -1;
-    display: block !important;
+    z-index: -1; /* ✅ Keeps video behind other elements */
 }
+
 
 
 
