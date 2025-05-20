@@ -12,16 +12,35 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1; /* Keep Swiper in the background */
+    z-index: -1;
 }
 
+/* 🎥 Ensure Swiper videos fit properly */
 .swiper-slide video {
     width: 100vw;
     height: 100vh;
-    object-fit: cover; /* ✅ Prevents blank space */
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
+}
+
+
+/* 🔧 Fix Background Video Placement */
+.background-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2; /* ✅ Keep background behind everything */
+}
+
+/* ✅ Fix Swiper transition to avoid blank spaces */
+.swiper-wrapper {
+    display: flex;
+    overflow: hidden;
 }
 
 /* 🔝 Centered Logo */

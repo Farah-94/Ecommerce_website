@@ -1,14 +1,11 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
+/* 🌍 General Styles */
+* {
     margin: 0;
     padding: 0;
-    font-style: italic;
-    min-height: 100vh;
-    overflow: hidden; /* Prevent scrolling */
+    box-sizing: border-box;
 }
 
-/* ✅ Fullscreen Swiper Background */
+/* 🖥️ Fullscreen Swiper Background */
 .swiper {
     position: fixed;
     top: 0;
@@ -18,35 +15,46 @@ body {
     z-index: -1;
 }
 
-/* ✅ Ensure video and images fill the background */
-.swiper-slide img,
+/* 🎥 Ensure Swiper videos fit properly */
 .swiper-slide video {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 0;
 }
 
-/* ✅ Header - Centered Logo */
-header {
+
+/* 🔧 Fix Background Video Placement */
+.background-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2; /* ✅ Keep background behind everything */
+}
+
+/* ✅ Fix Swiper transition to avoid blank spaces */
+.swiper-wrapper {
+    display: flex;
+    overflow: hidden;
+}
+
+/* 🔝 Centered Logo */
+.logo {
     position: absolute;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    text-align: center;
-    z-index: 100;
-    color: white;
-}
-
-.logo {
     width: 120px;
     height: auto;
+    z-index: 100;
 }
 
-/* ✅ Cart Positioned in the Top-Right Corner */
+/* 🛒 Cart in Top-Right */
 .cart-link {
     position: absolute;
     top: 20px;
@@ -59,7 +67,7 @@ header {
     z-index: 100;
 }
 
-/* ✅ Menu Positioned on the Left */
+/* 📌 Menu on Top-Left */
 .dropbtn {
     position: absolute;
     top: 20px;
@@ -70,10 +78,7 @@ header {
     font-size: 16px;
     border-radius: 5px;
     z-index: 100;
-    cursor: pointer;
 }
-
-/* ✅ Dropdown Menu - Hidden Initially */
 .dropdown-content {
     position: absolute;
     left: 20px;
@@ -82,54 +87,28 @@ header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 10px;
     width: 200px;
-    z-index: 100;
+    z-index: 150; /* ✅ Increased z-index to appear above swiper */
     display: none;
     opacity: 0;
     transform: translateY(-10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* ✅ Opens when toggled */
+/* Ensure dropdown opens correctly */
 .dropdown-content.open {
     display: block;
     opacity: 1;
     transform: translateY(0);
 }
 
-/* ✅ Ensure submenu toggles correctly */
-.submenu, .sub-dropdown {
-    display: none;
-    padding-left: 15px;
-}
-
-.submenu.open, .sub-dropdown.open {
-    display: block;
-}
-
-/* ✅ Swiper Navigation Buttons */
-.swiper-button-next,
-.swiper-button-prev {
-    color: #fff;
-    background: rgba(0, 0, 0, 0.5);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    transition: 0.3s;
-}
-
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-    background: rgba(255, 102, 0, 0.8);
-}
-
-/* ✅ Footer Fix */
+/* Ensure footer sticks to bottom */
 footer {
     background-color: rgba(223, 213, 213, 0.9);
     color: white;
     text-align: center;
     padding: 15px;
     width: 100%;
-    position: absolute;
+    position: fixed; /* ✅ Keep footer at the bottom */
     bottom: 0;
     left: 0;
     display: flex;
@@ -139,25 +118,14 @@ footer {
     z-index: 100;
 }
 
-/* ✅ Footer Sections */
-.footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    width: 100%;
-}
 
-.footer-section {
-    flex: 1;
-    padding: 10px;
-    min-width: 150px;
-}
 
-footer a {
-    color: rgb(88, 24, 59);
-    text-decoration: none;
-    font-size: large;
-}
+
+
+
+
+
+/* ------------------------------------------- */
 .product-container {
     padding: 15px;;
     display: flex;
@@ -423,4 +391,62 @@ button[type="submit"]:hover {
 
 .order-success a:hover {
     background-color: #0056b3;
+}
+/* --------signin/signup-------------- */
+
+.signin-body  .signup.bodyy{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Signup & Signin Forms */
+.signup-form-container, .signin-form-container {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+}
+
+/* Headings */
+.signup-form-container h1, .signin-form-container h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Labels & Inputs */
+.signup-form-container label, .signin-form-container label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+.signup-form-container input, .signin-form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Buttons */
+.signup-form-container button, .signin-form-container button {
+    background-color: #5c67f2;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.signup-form-container button:hover, .signin-form-container button:hover {
+    background-color: #4854c8;
 }

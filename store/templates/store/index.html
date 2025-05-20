@@ -14,7 +14,7 @@
 
 <header>
     <img src="{% static 'store/images/products/logo1.png' %}" alt="brand logo" class="logo">
-    <h1>Welcome to Our Store</h1>     
+       
 
     <a href="{% url 'store:cart' %}" class="cart-link">🛒 Cart ({{ cart_items.count }})</a>
 </header>
@@ -43,17 +43,18 @@
     </div>
 </nav>
 
-
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-            <video class="background-video" src="{% static 'store/images/products/video1.mp4' %}" muted playsinline></video>
+            <video class="background-video" src="{% static 'store/images/products/video1.mp4' %}" autoplay muted playsinline></video>
         </div>
         <div class="swiper-slide">
-            <video class="background-video" src="{% static 'store/images/products/video2.mp4' %}" muted playsinline></video>
+            <video class="background-video" src="{% static 'store/images/products/video2.mp4' %}" autoplay muted playsinline></video>
         </div>
     </div>
 </div>
+
+
 
 
 
