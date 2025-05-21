@@ -61,6 +61,8 @@
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     z-index: 1;
     padding: 10px;
+    top: 50px; /* Adjust as needed */
+    left: 10px; /* Aligns with the dropdown button */
 }
 
 .dropdown-content.active {
