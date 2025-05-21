@@ -151,7 +151,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 
 # settings.py
-LOGIN_URL = '/signin/'
+
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -191,4 +191,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 ACCOUNT_ADAPTER = "store.adapters.CustomAccountAdapter"  
-LOGIN_REDIRECT_URL = "/store/"
+
+
+LOGIN_URL = "/signin/"
+LOGIN_REDIRECT_URL = "/index/"  # Redirect users after login
