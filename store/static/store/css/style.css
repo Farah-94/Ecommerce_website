@@ -34,12 +34,14 @@
 
 /* ------ Main Button & Container ------ */
 .dropbtn {
-    background-color: #4CAF50;  /* Customize as needed */
+    background-color:rgba(112, 41, 85, 0.8); /* Customize as needed */
     color: white;
     padding: 10px 16px;
     font-size: 16px;
     border: none;
     cursor: pointer;
+      top: 20px;
+    left: 20px;
 }
 
 .dropdown {
@@ -79,7 +81,7 @@
     display: block;
     padding: 12px 16px;
     text-decoration: none;
-    color: #333;
+    color: #4d2342;
 }
 
 .dropdown-content a:hover {
