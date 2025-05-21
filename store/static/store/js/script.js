@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.addEventListener('DOMContentLoaded', function() {
   // Grab references to the links and footer
+  console.log("Footer toggled:", footer.classList.contains("active"));
   const aboutLink = document.getElementById('about-link');
   const contactLink = document.getElementById('contact-link');
   const footer = document.getElementById('info-footer');

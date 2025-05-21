@@ -165,25 +165,27 @@
 }
 
 #info-footer {
+    min-height: 200px;
     display: flex;
     flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center the heading & paragraph */
+    align-items: center;    /* Center the heading & paragraph */
     padding: 10px;
     background-color: rgba(248, 243, 243, 0.2); /* Semi-transparent background */
     opacity: 0.9;
     color: rgb(79, 17, 66);
     width: 100%;
     position: fixed;
-    bottom: -300px; /* Initially hide footer off-screen (adjust value to your footer's height) */
+    bottom: -300px; /* Initially hide footer off-screen */
     left: 0;
     z-index: 100;
     transition: bottom 0.5s ease; /* Smooth slide effect */
 }
 
-/* When the footer shows, add the active class */
+/* When the footer is activated, set bottom to 0 to slide it into view */
 #info-footer.active {
     bottom: 0;
 }
+
 
 /* Center Heading and Paragraph */
 .footer-container > h4,
@@ -229,7 +231,10 @@ footer a:hover {
     background-color: white;
 }
 
-
+#info-footer.active {
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8); /* Light background */
+}
 
 
 /* ------------------------------------------- */
