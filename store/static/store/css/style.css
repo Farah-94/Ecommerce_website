@@ -293,7 +293,7 @@ form input, form select {
     margin: 5px 0;
 }
 
-button[type="submit"] {
+form button[type="submit"] {
     background: #0073e6;
     color: white;
     padding: 10px 15px;
