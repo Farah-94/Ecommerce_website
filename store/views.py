@@ -1,6 +1,4 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.shortcuts import render, redirect
-
 from django.urls import reverse
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.forms import UserCreationForm
@@ -13,21 +11,20 @@ from .models import Category, Product, CartItem, Order
 
 # --- Authentication Views ---
 
-from django.shortcuts import render, redirect
+
 
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
+
 from django.shortcuts import render, redirect
 
-def signup(request):
-    print("🚀 Signup view accessed!")  # Debugging check
+from django.contrib.auth import login, get_backends
 
+
+def signup(request):
     if request.method == "POST":
-        print("✅ Received POST request!")  # Debugging check
         form = UserCreationForm(request.POST)
         
         if form.is_valid():
-            print("✅ Form is valid!")  # Debugging check
             user = form.save()
 
             # ✅ Ensure new users are customers
@@ -35,15 +32,15 @@ def signup(request):
             user.is_superuser = False  
             user.save()
 
-            print(f"✅ New customer created: {user.username}")  # Debugging check
-            login(request, user)
-            return redirect("store:index")  # Redirect to homepage
-        
-        else:
-            print("❌ Form errors:", form.errors)  # Debugging check
+            # ✅ Explicitly set authentication backend for the new user
+            backend = get_backends()[0]  # Uses the first authentication backend
+            user.backend = backend.__module__ + "." + backend.__class__.__name__
+
+            login(request, user)  # ✅ Prevents authentication backend errors
+            return redirect("store:index")  # Redirect customer to homepage
+
     else:
         form = UserCreationForm()
-        print("ℹ️ Rendering signup form")  # Debugging check
 
     return render(request, "store/signup.html", {"form": form})
 # ✅ SIGNIN: Authenticate user & redirect after login
