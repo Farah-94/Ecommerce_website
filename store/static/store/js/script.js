@@ -56,6 +56,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const aboutLink = document.getElementById('about-link');
   const contactLink = document.getElementById('contact-link');
 
+  // Make sure footer starts hidden
+  footer.classList.remove('active');
+
   function showFooter() {
     footer.classList.add('active');
   }
@@ -77,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Hide footer when clicking anywhere on the page except the footer itself
   document.addEventListener('click', function(e) {
-    if (!footer.contains(e.target)) {
+    if (!footer.contains(e.target) && footer.classList.contains('active')) {
       hideFooter();
     }
   });
