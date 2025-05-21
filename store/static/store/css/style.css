@@ -164,18 +164,25 @@
     z-index: -1; /* ✅ Keeps video behind other elements */
 }
 
-footer {
+#info-footer {
     display: flex;
     flex-direction: column; /* Stack items vertically */
     align-items: center; /* Center the heading & paragraph */
     padding: 10px;
-    background: transparent; /* Fully transparent background */
+    background-color: rgba(248, 243, 243, 0.2); /* Semi-transparent background */
+    opacity: 0.9;
     color: rgb(79, 17, 66);
     width: 100%;
     position: fixed;
-    bottom: 0;
+    bottom: -300px; /* Initially hide footer off-screen (adjust value to your footer's height) */
     left: 0;
     z-index: 100;
+    transition: bottom 0.5s ease; /* Smooth slide effect */
+}
+
+/* When the footer shows, add the active class */
+#info-footer.active {
+    bottom: 0;
 }
 
 /* Center Heading and Paragraph */
@@ -188,7 +195,7 @@ footer {
 /* Align Footer Sections Properly */
 .footer-section {
     display: flex;
-    justify-content: space-evenly; /* Positions left & right */
+    justify-content: space-evenly; /* Positions sections left & right */
     max-width: 1200px;
 }
 
@@ -218,10 +225,9 @@ footer a {
 
 footer a:hover {
     text-decoration: none;
-    color: #8f3d75;
+    color: #c355a0;
     background-color: white;
 }
-
 
 
 

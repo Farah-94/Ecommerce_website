@@ -51,24 +51,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-
 document.addEventListener('DOMContentLoaded', function() {
   // Grab references to the links and footer
   const aboutLink = document.getElementById('about-link');
   const contactLink = document.getElementById('contact-link');
   const footer = document.getElementById('info-footer');
 
-  // Function to show the footer
-  function showFooter() {
-    footer.classList.add('active');
+  // Function to toggle the footer visibility
+  function toggleFooter() {
+    footer.classList.toggle('active');
   }
 
-  // Add click event listeners to About Us and Contact Us links
+  // Ensure About Us and Contact Us links trigger the footer display
   if (aboutLink) {
     aboutLink.addEventListener('click', function(e) {
-      e.preventDefault(); // Prevent default anchor behavior
-      e.stopPropagation(); // Stop the event from bubbling up
-      showFooter();
+      e.preventDefault();
+      e.stopPropagation();
+      toggleFooter();
     });
   }
 
@@ -76,18 +75,18 @@ document.addEventListener('DOMContentLoaded', function() {
     contactLink.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      showFooter();
+      toggleFooter();
     });
   }
 
-  // Hide the footer by removing the "active" class when clicking anywhere else outside the footer
+  // Close footer when clicking outside
   document.addEventListener('click', function(e) {
-    if (!e.target.closest('#info-footer')) {
+    if (!e.target.closest('#info-footer') && footer.classList.contains('active')) {
       footer.classList.remove('active');
     }
   });
 
-  // Prevent clicks inside the footer from closing it immediately
+  // Prevent footer clicks from closing it immediately
   footer.addEventListener('click', function(e) {
     e.stopPropagation();
   });
