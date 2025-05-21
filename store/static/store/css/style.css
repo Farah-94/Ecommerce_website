@@ -128,7 +128,14 @@
     display: block;
 }
 
+.logout-form button{
 
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #4d2342;
+
+}
 
 #backgroundVideo {
     width: 100vw;
