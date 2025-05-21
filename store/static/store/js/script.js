@@ -29,67 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// document.addEventListener("DOMContentLoaded", function () {
-//     console.log("✅ Menu script loaded successfully!");
 
-//     const menuButton = document.querySelector(".dropbtn");
-//     const menuContent = document.querySelector(".dropdown-content");
-//     const submenuItems = document.querySelectorAll(".has-submenu > a");
-
-//     if (menuButton && menuContent) {
-//         // ✅ Toggle main menu visibility on click
-//         menuButton.addEventListener("click", (event) => {
-//             event.stopPropagation();
-//             menuContent.classList.toggle("open");
-//         });
-
-//         // ✅ Close menu when clicking outside
-//         document.addEventListener("click", (event) => {
-//             if (!menuButton.contains(event.target) && !menuContent.contains(event.target)) {
-//                 menuContent.classList.remove("open");
-//                 document.querySelectorAll(".submenu, .sub-dropdown").forEach(sub => sub.classList.remove("open"));
-//             }
-//         });
-
-//         // ✅ Toggle only the clicked submenu instead of opening all
-//         submenuItems.forEach(item => {
-//             item.addEventListener("click", function (event) {
-//                 event.preventDefault();
-//                 event.stopPropagation();
-
-//                 // ✅ Close all other submenus before opening a new one
-//                 document.querySelectorAll(".submenu, .sub-dropdown").forEach(sub => {
-//                     if (sub !== this.nextElementSibling) {
-//                         sub.classList.remove("open");
-//                     }
-//                 });
-
-//                 // ✅ Open the specific submenu
-//                 const submenu = this.nextElementSibling;
-//                 submenu.classList.toggle("open");
-//             });
-
-//             // ✅ Enable hover effect for submenu expansion
-//             item.addEventListener("mouseenter", function () {
-//                 const submenu = this.nextElementSibling;
-//                 if (submenu) {
-//                     submenu.classList.add("open");
-//                 }
-//             });
-
-//             item.addEventListener("mouseleave", function () {
-//                 const submenu = this.nextElementSibling;
-//                 if (submenu) {
-//                     submenu.classList.remove("open");
-//                 }
-//             });
-//         });
-
-//         console.log("✅ Dropdown functionality refined.");
-//     } else {
-//         console.error("⚠️ Dropdown elements not found. Check your HTML structure.");
-//     }
-// });
 
 document.addEventListener("DOMContentLoaded", function() {
     const menuBtn = document.getElementById("menu-btn");
@@ -107,4 +47,48 @@ document.addEventListener("DOMContentLoaded", function() {
             dropdownMenu.classList.remove("active");
         }
     });
+});
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Grab references to the links and footer
+  const aboutLink = document.getElementById('about-link');
+  const contactLink = document.getElementById('contact-link');
+  const footer = document.getElementById('info-footer');
+
+  // Function to show the footer
+  function showFooter() {
+    footer.classList.add('active');
+  }
+
+  // Add click event listeners to About Us and Contact Us links
+  if (aboutLink) {
+    aboutLink.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent default anchor behavior
+      e.stopPropagation(); // Stop the event from bubbling up
+      showFooter();
+    });
+  }
+
+  if (contactLink) {
+    contactLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      showFooter();
+    });
+  }
+
+  // Hide the footer by removing the "active" class when clicking anywhere else outside the footer
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('#info-footer')) {
+      footer.classList.remove('active');
+    }
+  });
+
+  // Prevent clicks inside the footer from closing it immediately
+  footer.addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
 });

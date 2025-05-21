@@ -148,7 +148,7 @@
 
 .logout-form button:hover {
     background-color: #ccc2cc;
-    color: #190213;
+    color: #39052b;
     
 }
 
@@ -166,11 +166,10 @@
 
 footer {
     display: flex;
-    flex-direction: column; /* ✅ Stack items vertically */
-    align-items: center; /* ✅ Center the heading & paragraph */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center the heading & paragraph */
     padding: 10px;
-    background-color: rgba(248, 243, 243, 0.2);
-    opacity: 0.9;
+    background: transparent; /* Fully transparent background */
     color: rgb(79, 17, 66);
     width: 100%;
     position: fixed;
@@ -179,34 +178,33 @@ footer {
     z-index: 100;
 }
 
-/* ✅ Center Heading and Paragraph */
+/* Center Heading and Paragraph */
 .footer-container > h4,
 .footer-container > p {
     text-align: center;
     margin-bottom: 15px;
 }
 
-/* ✅ Align Footer Sections Properly */
+/* Align Footer Sections Properly */
 .footer-section {
     display: flex;
-    justify-content: space-evenly; /* ✅ Positions left & right */
- 
+    justify-content: space-evenly; /* Positions left & right */
     max-width: 1200px;
 }
 
-/* ✅ Left Section (Follow Us) */
+/* Left Section (Follow Us) */
 .footer-section:first-child {
-    align-items: flex-start; /* ✅ Aligns content to the left */
+    align-items: flex-start; /* Aligns content to the left */
     width: 45%;
 }
 
-/* ✅ Right Section (Quick Links) */
+/* Right Section (Quick Links) */
 .footer-section:last-child {
-    align-items: flex-end; /* ✅ Aligns content to the right */
+    align-items: flex-end; /* Aligns content to the right */
     width: 45%;
 }
 
-/* ✅ Center Footer Bottom */
+/* Center Footer Bottom */
 .footer-bottom {
     text-align: center;
     width: 100%;
@@ -218,14 +216,11 @@ footer a {
     text-decoration: none;
 }
 
-
-footer a:hover{
-
+footer a:hover {
     text-decoration: none;
-    color: #c355a0;
+    color: #8f3d75;
     background-color: white;
 }
-
 
 
 
