@@ -21,26 +21,37 @@
 
 <!-- Navigation Menu -->
 <nav class="dropdown">
-    <button type="button" class="dropbtn">Menu</button>
-    <div class="dropdown-content">
-        <ul>
-            <li class="has-submenu">
-                <a href="#" class="submenu-toggle">Latest Items ▼</a>
-                <ul class="submenu">
-                    <li class="has-submenu">
-                        <a href="#" class="submenu-toggle">Women ▼</a>
-                        <ul class="sub-dropdown">
-                            <li><a href="{% url 'store:product_list' %}?category=woman">Women T-Shirts</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="{% url 'store:signin' %}" class="signin-btn">Sign In</a></li>
-            <li><a href="{% url 'admin:index' %}" class="admin-link">Admin Panel</a></li>
+  <button type="button" class="dropbtn">Menu</button>
+  <div class="dropdown-content">
+    <ul>
+      <li class="has-submenu">
+        <a href="#" class="submenu-toggle">Latest Items ▼</a>
+        <ul class="submenu">
+          <li class="has-submenu">
+            <a href="#" class="submenu-toggle">Women ▼</a>
+            <ul class="sub-dropdown">
+              <li>
+                <a href="{% url 'store:product_list' %}?category=woman">Women T-Shirts</a>
+              </li>
+            </ul>
+          </li>
         </ul>
-    </div>
+      </li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact Us</a></li>
+      {% if user.is_authenticated %}
+        <li>
+          <form action="{% url 'store:logout' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="logout-btn">Logout</button>
+          </form>
+        </li>
+      {% else %}
+        <li><a href="{% url 'store:signin' %}" class="signin-btn">Sign In</a></li>
+      {% endif %}
+      <li><a href="{% url 'admin:index' %}" class="admin-link">Admin Panel</a></li>
+    </ul>
+  </div>
 </nav>
 
 <video id="backgroundVideo" src="{% static 'store/images/products/video1.mp4' %}" autoplay muted loop playsinline></video>
