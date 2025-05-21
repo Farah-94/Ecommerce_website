@@ -13,23 +13,45 @@
     </header>
 
     <main class="signup-form-container">
+
+{% if form.non_field_errors %}
+    <ul class="error-messages">
+        {% for error in form.non_field_errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+
 <form method="POST" action="{% url 'store:signup' %}">
 
 
     {% csrf_token %}  <!-- ✅ Prevents CSRF attacks -->
 
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required autocomplete="username">
+  <label for="username">Username:</label>
+<input type="text" id="username" name="username" required autocomplete="username">
+{% if form.username.errors %}
+    <p class="error">{{ form.username.errors }}</p> <!-- ✅ Shows username error -->
+{% endif %}
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required autocomplete="email">
+<label for="email">Email:</label>
+<input type="email" id="email" name="email" required autocomplete="email">
+{% if form.email.errors %}
+    <p class="error">{{ form.email.errors }}</p> <!-- ✅ Shows email error -->
+{% endif %}
 
-    <label for="password1">Password:</label>
-    <input type="password" id="password1" name="password1" required autocomplete="new-password">
+<label for="password1">Password:</label>
+<input type="password" id="password1" name="password1" required autocomplete="new-password">
+{% if form.password1.errors %}
+    <p class="error">{{ form.password1.errors }}</p> <!-- ✅ Shows password error -->
+{% endif %}
 
-    <label for="password2">Confirm Password:</label>
-    <input type="password" id="password2" name="password2" required autocomplete="new-password">
-
+<label for="password2">Confirm Password:</label>
+<input type="password" id="password2" name="password2" required autocomplete="new-password">
+{% if form.password2.errors %}
+    <p class="error">{{ form.password2.errors }}</p> <!-- ✅ Shows confirm password error -->
+{% endif %}
     <button type="submit">Sign Up</button>
 </form>
 <p>Already have an account? <a href="{% url 'store:signin' %}">Sign In</a></p>

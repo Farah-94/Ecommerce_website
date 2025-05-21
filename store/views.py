@@ -17,7 +17,7 @@ from django.contrib.auth import login
 def signup(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
-        
+
         if form.is_valid():
             user = form.save()
 
@@ -29,11 +29,13 @@ def signup(request):
             messages.success(request, "Signup successful! Please log in.")
             return redirect("store:signin")  # ✅ Redirects users to sign-in page
 
+        else:
+            messages.error(request, "Signup failed! Please check your details.")  # ✅ Show error message
+
     else:
         form = UserCreationForm()
 
     return render(request, "store/signup.html", {"form": form})
-
 
 # ✅ SIGNIN: Authenticate user & redirect after login
 def signin(request):
