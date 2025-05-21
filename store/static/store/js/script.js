@@ -52,42 +52,37 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Grab references to the links and footer
-  console.log("Footer toggled:", footer.classList.contains("active"));
+  const footer = document.getElementById('info-footer');
   const aboutLink = document.getElementById('about-link');
   const contactLink = document.getElementById('contact-link');
-  const footer = document.getElementById('info-footer');
 
-  // Function to toggle the footer visibility
-  function toggleFooter() {
-    footer.classList.toggle('active');
+  function showFooter() {
+    footer.classList.add('active');
   }
 
-  // Ensure About Us and Contact Us links trigger the footer display
-  if (aboutLink) {
-    aboutLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      toggleFooter();
-    });
+  function hideFooter() {
+    footer.classList.remove('active');
   }
 
-  if (contactLink) {
-    contactLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      toggleFooter();
-    });
-  }
-
-  // Close footer when clicking outside
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('#info-footer') && footer.classList.contains('active')) {
-      footer.classList.remove('active');
+  // Ensure About Us and Contact Us trigger the footer display
+  [aboutLink, contactLink].forEach(link => {
+    if (link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        showFooter();
+      });
     }
   });
 
-  // Prevent footer clicks from closing it immediately
+  // Hide footer when clicking anywhere on the page except the footer itself
+  document.addEventListener('click', function(e) {
+    if (!footer.contains(e.target)) {
+      hideFooter();
+    }
+  });
+
+  // Prevent clicks inside the footer from closing it
   footer.addEventListener('click', function(e) {
     e.stopPropagation();
   });
