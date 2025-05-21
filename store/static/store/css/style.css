@@ -54,16 +54,21 @@
 
 /* ------ Main Dropdown Content ------ */
 .dropdown-content {
-    display: none; /* Hidden by default */
+    display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: rgba(248, 243, 243, 0.8); /* Slight transparency */
     min-width: 200px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     z-index: 1;
-    top: 60px; /* Adjust based on button height */
-    left: 10px; /* Align with the button */
-
+    padding: 10px;
 }
+
+.dropdown-content.active {
+    display: block;
+}
+
+
+
 
 /* Show dropdown when hovering over the container 
    (for click behavior, JavaScript can toggle a class) */

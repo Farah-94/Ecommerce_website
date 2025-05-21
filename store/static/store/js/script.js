@@ -90,3 +90,21 @@ document.addEventListener("DOMContentLoaded", function () {
 //         console.error("⚠️ Dropdown elements not found. Check your HTML structure.");
 //     }
 // });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const menuBtn = document.getElementById("menu-btn");
+    const dropdownMenu = document.getElementById("dropdown-menu");
+
+    // Toggle dropdown visibility when menu button is clicked
+    menuBtn.addEventListener("click", function(event) {
+        event.stopPropagation(); // Prevent clicks inside from closing
+        dropdownMenu.classList.toggle("active");
+    });
+
+    // Close dropdown when clicking anywhere else on the page
+    document.addEventListener("click", function(event) {
+        if (!dropdownMenu.contains(event.target) && event.target !== menuBtn) {
+            dropdownMenu.classList.remove("active");
+        }
+    });
+});
