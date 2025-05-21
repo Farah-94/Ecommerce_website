@@ -39,7 +39,7 @@
             <li><a href="#">Contact Us</a></li>
             {% if user.is_authenticated %}
                 <li>
-                    <form action="{% url 'store:logout' %}" method="post">
+                    <form class="logout-form" action="{% url 'store:logout' %}" method="post">
                         {% csrf_token %}
                         <button type="submit" class="logout-btn">Logout</button>
                     </form>
