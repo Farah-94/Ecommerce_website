@@ -200,7 +200,7 @@
 }
 
 /* Left Section (Follow Us) */
-.footer-section:first-child {
+.footer-section .about {
     /* Aligns content to the left */
     width: 45%;
    /* Centers the section */
@@ -208,7 +208,7 @@
 }
 
 /* Right Section (Quick Links) */
-.footer-section:last-child {
+.footer-section .contact {
     /* Aligns content to the right */
     width: 45%;
     text-align: right; /* Aligns text to the right */
