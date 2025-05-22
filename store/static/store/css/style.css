@@ -247,6 +247,7 @@ footer a:hover {
 #info-footer {
     opacity: 0; /* Completely hide it */
     transition: opacity 0.5s ease, bottom 0.5s ease;
+    bottom: -300px; 
 }
 
 /* When active, make it visible */
