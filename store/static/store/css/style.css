@@ -251,10 +251,12 @@ footer a:hover {
 
 @media (max-width: 768px) {
     #info-footer {
-        bottom: -300px !important; /* Ensure it stays hidden */
-        opacity: 0; /* Make it completely invisible */
+        height: auto; /* Allows it to resize dynamically */
+        max-height: 80vh; /* Prevents it from covering too much screen space */
+        overflow-y: auto; /* Ensures scrolling works */
     }
 }
+
 
 
 #info-footer {
