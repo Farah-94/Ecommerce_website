@@ -173,7 +173,7 @@
     align-items: center;    /* Center the heading & paragraph */
     padding: 20px;
     background-color: rgba(231, 226, 226, 0.2); /* Semi-transparent background */
-    opacity: 0.5;
+    opacity: 0.2;
     color: rgb(79, 17, 66);
     width: 100%;
     position: fixed;
