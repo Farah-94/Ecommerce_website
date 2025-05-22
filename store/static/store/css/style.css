@@ -19,6 +19,7 @@
 
 /* 🛒 Cart in Top-Right */
 .cart-link {
+    font-style: italic;
     position: absolute;
     top: 20px;
     right: 20px;
