@@ -165,11 +165,13 @@
 }
 
 #info-footer {
+    margin: auto;
     min-height: 200px;
     display: flex;
-    flex-direction: column; /* Stack items vertically */
+    justify-content: space-between;
+    flex-direction: row; /* Stack items vertically */
     align-items: center;    /* Center the heading & paragraph */
-    padding: 10px;
+    padding: 20px;
     background-color: rgba(231, 226, 226, 0.2); /* Semi-transparent background */
     opacity: 0.5;
     color: rgb(79, 17, 66);
@@ -196,9 +198,9 @@
 
 /* Align Footer Sections Properly */
 .footer-section {
+    flex:1;
+    padding: 10px;
     display: flex;
-    justify-content: space-evenly; /* Positions sections left & right */
-    max-width: 1200px;
 }
 
 /* Left Section (Follow Us) */
@@ -211,6 +213,10 @@
 .footer-section:last-child {
     align-items: flex-end; /* Aligns content to the right */
     width: 45%;
+}
+.footer-section.about,
+.footer-section.contact {
+    text-align: left; /* Aligns text left for better readability */
 }
 
 /* Center Footer Bottom */
