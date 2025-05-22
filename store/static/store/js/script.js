@@ -51,7 +51,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //---------------------footer----------------------------------
 
-
 document.addEventListener('DOMContentLoaded', function() {
   const footer = document.getElementById('info-footer');
   const aboutLink = document.getElementById('about-link');
@@ -61,11 +60,11 @@ document.addEventListener('DOMContentLoaded', function() {
   footer.style.bottom = "-300px"; // Directly setting this prevents flickering
 
   function showFooter() {
-    footer.classList.add('active');
+    footer.style.bottom = "0"; // Moves footer up
   }
 
   function hideFooter() {
-    footer.classList.remove('active');
+    footer.style.bottom = "-300px"; // Moves footer down
   }
 
   // Ensure About Us and Contact Us trigger the footer display
@@ -81,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Hide footer when clicking anywhere else on the page
   document.addEventListener('click', function(e) {
-    if (!footer.contains(e.target) && footer.classList.contains('active')) {
+    if (!footer.contains(e.target)) {
       hideFooter();
     }
   });
@@ -91,3 +90,4 @@ document.addEventListener('DOMContentLoaded', function() {
     e.stopPropagation();
   });
 });
+
