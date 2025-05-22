@@ -183,11 +183,6 @@
     transition: bottom 0.5s ease; /* Smooth slide effect */
 }
 
-/* When the footer is activated, set bottom to 0 to slide it into view */
-#info-footer.active {
-    bottom: 0;
-}
-
 
 /* Center Heading and Paragraph */
 .footer-container > h4,
@@ -205,18 +200,18 @@
 
 /* Left Section (Follow Us) */
 .footer-section:first-child {
-    align-items: flex-start; /* Aligns content to the left */
+    /* Aligns content to the left */
     width: 45%;
-    margin: 0 auto; /* Centers the section */
+   /* Centers the section */
     text-align: left; /* Aligns text to the left */
 }
 
 /* Right Section (Quick Links) */
 .footer-section:last-child {
-    align-items: flex-end; /* Aligns content to the right */
+    /* Aligns content to the right */
     width: 45%;
     text-align: right; /* Aligns text to the right */
-    margin-left: auto; /* Pushes it to the right */
+    /* Pushes it to the right */
 }
 
 
