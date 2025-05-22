@@ -36,8 +36,9 @@
                 </ul>
             </li>
             
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact Us</a></li>
+           <li><a id="about-link" href="#about">About Us</a></li>
+           <li><a id="contact-link" href="#contact">Contact Us</a></li>
+
             {% if user.is_authenticated %}
                 <li>
                     <form class="logout-form" action="{% url 'store:logout' %}" method="post">
