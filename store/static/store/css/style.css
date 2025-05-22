@@ -180,7 +180,7 @@
     overflow: scroll;
 }
 .footer-container{
-    display: flexbox;
+    display: flex;
     flex-direction: column;
 
 }
