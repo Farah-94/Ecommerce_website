@@ -179,10 +179,11 @@
     transition: bottom 0.5s ease; /* Smooth slide effect */
     overflow: scroll;
 }
-.footer-container{
+.footer-container {
     display: flex;
-    flex-direction: column;
-
+    justify-content: space-between; /* Positions sections on opposite sides */
+    align-items: center;
+    width: 100%;
 }
 
 /* Center Heading and Paragraph */
@@ -201,18 +202,14 @@
 
 /* Left Section (Follow Us) */
 .footer-section.about {
-    /* Aligns content to the left */
-    width: 45%;
-   /* Centers the section */
-    text-align: left; /* Aligns text to the left */
+    flex: 1;
+    text-align: left; /* Ensures content is aligned to the left */
 }
 
 /* Right Section (Quick Links) */
 .footer-section.contact {
-    /* Aligns content to the right */
-    width: 45%;
-    text-align: right; /* Aligns text to the right */
-    /* Pushes it to the right */
+    flex: 1;
+    text-align: right; /* Ensures content is aligned to the right */
 }
 
 
