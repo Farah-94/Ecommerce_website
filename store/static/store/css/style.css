@@ -240,9 +240,11 @@ footer a:hover {
 
 @media (max-width: 768px) {
     #info-footer {
-        bottom: -300px; /* Ensure it stays hidden on smaller screens */
+        bottom: -300px !important; /* Ensure it stays hidden */
+        opacity: 0; /* Make it completely invisible */
     }
 }
+
 
 #info-footer {
     opacity: 0; /* Completely hide it */
