@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
+// ---------------------menu----------------------------------
 
 document.addEventListener("DOMContentLoaded", function() {
     const menuBtn = document.getElementById("menu-btn");
@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+//---------------------footer----------------------------------
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -56,8 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const aboutLink = document.getElementById('about-link');
   const contactLink = document.getElementById('contact-link');
 
-  // Make sure footer starts hidden
-  footer.classList.remove('active');
+  // Ensure footer starts hidden on page load
+  footer.style.bottom = "-300px"; // Directly setting this prevents flickering
 
   function showFooter() {
     footer.classList.add('active');
@@ -78,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Hide footer when clicking anywhere on the page except the footer itself
+  // Hide footer when clicking anywhere else on the page
   document.addEventListener('click', function(e) {
     if (!footer.contains(e.target) && footer.classList.contains('active')) {
       hideFooter();
