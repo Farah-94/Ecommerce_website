@@ -207,12 +207,16 @@
 .footer-section:first-child {
     align-items: flex-start; /* Aligns content to the left */
     width: 45%;
+    text-align: left;
+    flex: 1 ;
 }
 
 /* Right Section (Quick Links) */
 .footer-section:last-child {
     align-items: flex-end; /* Aligns content to the right */
     width: 45%;
+    text-align: right;
+    flex: 1 ;
 }
 .footer-section.about,
 .footer-section.contact {
