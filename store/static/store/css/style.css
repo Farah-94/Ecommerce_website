@@ -168,10 +168,6 @@
 #info-footer {
     margin: auto;
     min-height: 200px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center;    /* Center the heading & paragraph */
     padding: 20px;
     background-color: rgba(231, 226, 226, 0.271); /* Semi-transparent background */
     opacity: 0.2;
@@ -181,8 +177,13 @@
     bottom: -300px; /* Initially hide footer off-screen */
     z-index: 100;
     transition: bottom 0.5s ease; /* Smooth slide effect */
+    overflow: scroll;
 }
+.footer-container{
+    display: flex;
+    flex-direction: column;
 
+}
 
 /* Center Heading and Paragraph */
 .footer-container > h4,
