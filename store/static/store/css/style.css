@@ -172,13 +172,12 @@
     flex-direction: row; /* Stack items vertically */
     align-items: center;    /* Center the heading & paragraph */
     padding: 20px;
-    background-color: rgba(231, 226, 226, 0.2); /* Semi-transparent background */
+    background-color: rgba(231, 226, 226, 0.271); /* Semi-transparent background */
     opacity: 0.2;
     color: rgb(79, 17, 66);
     width: 100%;
     position: fixed;
     bottom: -300px; /* Initially hide footer off-screen */
-    left: 0;
     z-index: 100;
     transition: bottom 0.5s ease; /* Smooth slide effect */
 }
@@ -207,17 +206,16 @@
 .footer-section:first-child {
     align-items: flex-start; /* Aligns content to the left */
     width: 45%;
-
+    margin: 0 auto; /* Centers the section */
+    text-align: left; /* Aligns text to the left */
 }
 
 /* Right Section (Quick Links) */
 .footer-section:last-child {
     align-items: flex-end; /* Aligns content to the right */
     width: 45%;
-}
-.footer-section.about,
-.footer-section.contact {
-    text-align: left; /* Aligns text left for better readability */
+    text-align: right; /* Aligns text to the right */
+    margin-left: auto; /* Pushes it to the right */
 }
 
 
