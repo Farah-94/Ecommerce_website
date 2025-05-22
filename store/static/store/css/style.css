@@ -188,11 +188,17 @@
 }
 
 /* Center Heading and Paragraph */
-.footer-container > h4,
+
 .footer-container > p {
     text-align: center;
     margin-bottom: 15px;
     display: block;
+    gap: 5px;
+}
+.footer-container h4{
+    font-size: 20px;
+    color: #431033;
+    width: 50px;
 }
 
 /* Align Footer Sections Properly */
