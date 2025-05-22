@@ -202,12 +202,14 @@
 
 /* Left Section (Follow Us) */
 .footer-section.about {
+    width:50%;
     flex: 1;
     text-align: left; /* Ensures content is aligned to the left */
 }
 
 /* Right Section (Quick Links) */
 .footer-section.contact {
+    width:50%;
     flex: 1;
     text-align: right; /* Ensures content is aligned to the right */
 }
