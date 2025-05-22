@@ -168,59 +168,44 @@
     margin: auto;
     min-height: 200px;
     display: flex;
-    justify-content: space-between;
-    flex-direction: row; /* Stack items vertically */
-    align-items: center;    /* Center the heading & paragraph */
+    justify-content: space-between; /* Ensures left & right positioning */
+    align-items: center;
     padding: 20px;
-    background-color: rgba(231, 226, 226, 0.2); /* Semi-transparent background */
-    opacity: 0.2;
-    color: rgb(79, 17, 66);
+    background-color: transparent; /* Fully transparent */
+    opacity: 1; /* Ensure visibility */
     width: 100%;
     position: fixed;
-    bottom: -300px; /* Initially hide footer off-screen */
+    bottom: -300px; /* Initially hidden */
     left: 0;
     z-index: 100;
-    transition: bottom 0.5s ease; /* Smooth slide effect */
+    transition: bottom 0.5s ease;
 }
 
-/* When the footer is activated, set bottom to 0 to slide it into view */
+/* When active, make sure it stays in place */
 #info-footer.active {
     bottom: 0;
+    backdrop-filter: blur(5px); /* Adds a soft blur for readability */
 }
 
-
-/* Center Heading and Paragraph */
-.footer-container > h4,
-.footer-container > p {
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-/* Align Footer Sections Properly */
-.footer-section {
-    flex:1;
-    padding: 10px;
+/* Footer Container: Align content properly */
+.footer-container {
     display: flex;
+    flex-direction: row; /* Ensures horizontal alignment */
+    justify-content: space-between; /* Keeps sections separate */
+    align-items: center;
+    width: 100%;
 }
 
-/* Left Section (Follow Us) */
-.footer-section:first-child {
-    align-items: flex-start; /* Aligns content to the left */
-    width: 45%;
-    text-align: left;
-    flex: 1 ;
+/* Left Section (About Us) */
+.footer-section.about {
+    flex: 1;
+    text-align: left; /* Ensures content is aligned to the left */
 }
 
-/* Right Section (Quick Links) */
-.footer-section:last-child {
-    align-items: flex-end; /* Aligns content to the right */
-    width: 45%;
-    text-align: right;
-    flex: 1 ;
-}
-.footer-section.about,
+/* Right Section (Contact Us) */
 .footer-section.contact {
-    text-align: left; /* Aligns text left for better readability */
+    flex: 1;
+    text-align: right; /* Ensures content is aligned to the right */
 }
 
 /* Center Footer Bottom */
@@ -230,22 +215,16 @@
     padding-top: 10px;
 }
 
+/* Footer Links */
 footer a {
     color: #431033;
     text-decoration: none;
-    transition: color 0.3s ease; 
-    background-color: 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 footer a:hover {
-    text-decoration: none;
     color: #c355a0;
-    background-color: white;
-}
-
-#info-footer.active {
-    bottom: 0;
-    background-color: rgba(255, 255, 255, 0.8); /* Light background */
+    background-color: transparent; /* No background color change */
 }
 
 @media (max-width: 768px) {
