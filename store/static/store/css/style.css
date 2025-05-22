@@ -177,7 +177,7 @@
     bottom: -300px; /* Initially hide footer off-screen */
     z-index: 100;
     transition: bottom 0.5s ease; /* Smooth slide effect */
-    overflow: scroll;
+    overflow: hidden;
 }
 .footer-container {
     display: flex;
@@ -218,7 +218,6 @@
 /* Center Footer Bottom */
 .footer-bottom {
     text-align: center;
-   
     padding-top: 10px;
 }
 
