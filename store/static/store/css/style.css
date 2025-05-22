@@ -217,6 +217,7 @@
 
 /* Right Section (Quick Links) */
 .footer-section.contact {
+    right : 20px;
     width:50%;
     flex: 1;
     text-align: right; /* Ensures content is aligned to the right */
