@@ -177,7 +177,8 @@
     bottom: -300px; /* Initially hide footer off-screen */
     z-index: 100;
     transition: bottom 0.5s ease; /* Smooth slide effect */
-    overflow: hidden;
+     overflow-y: auto; /* Enables vertical scrolling */
+    max-height: 80vh;
 }
 .footer-container {
     display: flex;
