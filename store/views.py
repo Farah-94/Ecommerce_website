@@ -138,13 +138,14 @@ def checkout(request):
             user=request.user,
             shipping_address=request.POST.get("address"),
             payment_method=request.POST.get("payment_method"),
-            total_price=sum(item.product.price * item.quantity for item in cart_items),  # ✅ Fixes price calculation
+            total_price=sum(item.product.price * item.quantity for item in cart_items),
         )
         order.items.set(cart_items)
         cart_items.delete()
-        return redirect("store:order_success", order_id=order.id)
+        return redirect("store:order_success", order.id)  # ✅ Fixed redirect
 
     return render(request, "store/checkout.html", {"cart_items": cart_items, "total": sum(item.product.price * item.quantity for item in cart_items)})
+
 
 @login_required
 def order_success(request, order_id):
