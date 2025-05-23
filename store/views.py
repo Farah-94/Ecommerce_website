@@ -127,22 +127,39 @@ def cart(request):
     total = sum(item.product.price * item.quantity for item in cart_items)  # ✅ Fixes checkout pricing calculation
     return render(request, "store/cart.html", {"cart_items": cart_items, "total": total})
 
+
+
 @login_required
 def checkout(request):
     cart_items = CartItem.objects.filter(user=request.user)
+
+    # Redirect to cart if no items exist
     if not cart_items.exists():
         return redirect("store:cart")
 
     if request.method == "POST":
+        # Retrieve form data
+        shipping_address = request.POST.get("address")
+        payment_method = request.POST.get("payment_method")
+
+        # Validate required fields
+        if not shipping_address or not payment_method:
+            error_message = "Shipping address and payment method are required."
+            return render(request, "store/checkout.html", {"cart_items": cart_items, "total": sum(item.product.price * item.quantity for item in cart_items), "error_message": error_message})
+
+        # Create order
         order = Order.objects.create(
             user=request.user,
-            shipping_address=request.POST.get("address"),
-            payment_method=request.POST.get("payment_method"),
-            total_price=sum(item.product.price * item.quantity for item in cart_items),  # ✅ Fixes price calculation
+            shipping_address=shipping_address,
+            payment_method=payment_method,
+            total_price=sum(item.product.price * item.quantity for item in cart_items),
         )
+
         order.items.set(cart_items)
-        cart_items.delete()
-        return redirect("store:order_success", order_id=order.id)
+        cart_items.delete()  # Clear cart after successful order
+
+        # Redirect with order_id if needed
+        return redirect("store:order_success", order.id)
 
     return render(request, "store/checkout.html", {"cart_items": cart_items, "total": sum(item.product.price * item.quantity for item in cart_items)})
 

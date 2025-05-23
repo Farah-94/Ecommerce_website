@@ -454,68 +454,73 @@ button[type="submit"]:hover {
 }
 /* ------checkout----------- */
 /* Checkout Page Styles */
+
 .checkout-container {
-    max-width: 500px;
-    margin: 50px auto;
-    background: white;
+    width: 90%;
+    max-width: 600px;
+    background: #fff;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-/* Scoped heading styles */
-.checkout-container h1, 
-.checkout-container h2 {
-    color: #333;
-    font-size: 22px;
-    margin-bottom: 15px;
-}
-
-/* Form styling */
-.checkout-container form {
+/* Form styles specific to checkout */
+.checkout-form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 
-.checkout-container label {
-    font-size: 14px;
+/* Label, input, and select elements */
+.checkout-form label {
     font-weight: bold;
     text-align: left;
-    display: block;
-    margin-bottom: 5px;
 }
 
-.checkout-container input {
+.checkout-form input,
+.checkout-form select {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px;
 }
 
-/* Button Styling */
-.checkout-container button {
-    background-color: #007bff;
+/* Button styling */
+.checkout-form button {
+    background-color: #c355a0;
     color: white;
     padding: 12px;
-    font-size: 18px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 15px;
+    font-size: 16px;
+    transition: background 0.3s ease;
 }
 
-.checkout-container button:hover {
-    background-color: #0056b3;
+.checkout-form button:hover {
+    background-color: #a94482;
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
+/* Success & Error Messages */
+.checkout-container .success {
+    color: green;
+    font-weight: bold;
+}
+
+.checkout-container .error {
+    color: red;
+    font-weight: bold;
+}
+
+/* Responsive design */
+@media (max-width: 500px) {
     .checkout-container {
-        width: 90%;
+        width: 95%;
+        padding: 15px;
     }
 }
+
 /* -----success-------- */
 .order-success {
     text-align: center;
