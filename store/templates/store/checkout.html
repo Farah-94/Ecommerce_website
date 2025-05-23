@@ -12,7 +12,7 @@
   <div class="checkout-container">
     <h1>Checkout</h1>
 
-    <form method="post" class ="checkout-form" action="{% url 'store:order_success' %}">
+    <form method="post" class ="checkout-form">
       {% if error_message %}
         <p class="error">{{ error_message }}</p>
       {% endif %}
