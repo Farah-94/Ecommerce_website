@@ -377,7 +377,7 @@ button[type="submit"]:hover {
 
 .back-button {
     display: inline-block;
-    margin-top: 20px;
+
     padding: 10px 15px;
     background-color: #3e2235;
     color: white;
@@ -390,7 +390,7 @@ button[type="submit"]:hover {
 
 .back-button:hover {
     background-color: #5b4f56;
-    
+
 }
 
 
