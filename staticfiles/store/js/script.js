@@ -1,91 +1,95 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ JavaScript loaded successfully!");
 
-    if (typeof Swiper !== "undefined") {
-        const swiper = new Swiper(".mySwiper", {
-            loop: true,
-            autoplay: {
-                delay: 10000, // ✅ Each video plays for 10 seconds before switching
-                disableOnInteraction: false
-            },
-            effect: "fade",
-            speed: 1000,
-            slidesPerView: 1,
-            allowTouchMove: false,
-            on: {
-                slideChange: function () {
-                    console.log(`✅ Switching to slide ${swiper.activeIndex}`);
+    const mainVideo = document.getElementById("mainVideo");
 
-                    // ✅ Pause all videos first
-                    const videos = document.querySelectorAll(".background-video");
-                    videos.forEach(video => {
-                        video.pause();
-                        video.currentTime = 0;
-                    });
-
-                    // ✅ Play only the active slide's video after a small delay
-                    setTimeout(() => {
-                        const activeVideo = swiper.slides[swiper.activeIndex].querySelector("video");
-                        if (activeVideo) {
-                            activeVideo.play();
-                            console.log("✅ Playing video:", activeVideo.src);
-                        }
-                    }, 500);
-                }
-            }
+    if (mainVideo) {
+        mainVideo.play().then(() => {
+            console.log("✅ Video playing successfully!");
+        }).catch(error => {
+            console.warn("⚠️ Autoplay blocked. Waiting for user interaction:", error);
         });
 
-        console.log("✅ Swiper initialized successfully.");
+        // ✅ Allow manual playback when user clicks anywhere
+        document.addEventListener("click", () => {
+            mainVideo.play();
+            console.log("✅ Video manually played by user.");
+        });
+
+        // ✅ Restart video when it ends
+        mainVideo.addEventListener("ended", () => {
+            mainVideo.currentTime = 0;
+            mainVideo.play();
+        });
+
+        console.log("✅ Video playback logic initialized.");
     } else {
-        console.error("⚠️ Swiper.js not found. Ensure it's properly loaded.");
+        console.error("⚠️ Video element not found!");
     }
 });
 
 
+// ---------------------menu----------------------------------
 
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("✅ Menu script loaded successfully!");
+document.addEventListener("DOMContentLoaded", function() {
+    const menuBtn = document.getElementById("menu-btn");
+    const dropdownMenu = document.getElementById("dropdown-menu");
 
-    const menuButton = document.querySelector(".dropbtn");
-    const menuContent = document.querySelector(".dropdown-content");
-    const submenuItems = document.querySelectorAll(".has-submenu > a");
+    // Toggle dropdown visibility when menu button is clicked
+    menuBtn.addEventListener("click", function(event) {
+        event.stopPropagation(); // Prevent clicks inside from closing
+        dropdownMenu.classList.toggle("active");
+    });
 
-    if (menuButton && menuContent) {
-        // ✅ Toggle main menu visibility on click
-        menuButton.addEventListener("click", (event) => {
-            event.stopPropagation();
-            menuContent.classList.toggle("open");
-        });
+    // Close dropdown when clicking anywhere else on the page
+    document.addEventListener("click", function(event) {
+        if (!dropdownMenu.contains(event.target) && event.target !== menuBtn) {
+            dropdownMenu.classList.remove("active");
+        }
+    });
+});
 
-        // ✅ Close menu when clicking outside
-        document.addEventListener("click", (event) => {
-            if (!menuButton.contains(event.target) && !menuContent.contains(event.target)) {
-                menuContent.classList.remove("open");
-                document.querySelectorAll(".submenu, .sub-dropdown").forEach(sub => sub.classList.remove("open"));
-            }
-        });
+//---------------------footer----------------------------------
 
-        // ✅ Toggle only the clicked submenu instead of opening all
-        submenuItems.forEach(item => {
-            item.addEventListener("click", function (event) {
-                event.preventDefault();
-                event.stopPropagation();
+document.addEventListener('DOMContentLoaded', function() {
+  const footer = document.getElementById('info-footer');
+  const aboutLink = document.getElementById('about-link');
+  const contactLink = document.getElementById('contact-link');
 
-                // ✅ Close all other submenus before opening a new one
-                document.querySelectorAll(".submenu, .sub-dropdown").forEach(sub => {
-                    if (sub !== this.nextElementSibling) {
-                        sub.classList.remove("open");
-                    }
-                });
+  // Completely hide the footer initially
+  footer.style.bottom = "-300px";
+  footer.style.opacity = "0";
 
-                // ✅ Open the specific submenu
-                const submenu = this.nextElementSibling;
-                submenu.classList.toggle("open");
-            });
-        });
+  function showFooter() {
+    footer.style.bottom = "0";
+    footer.style.opacity = "1";
+  }
 
-        console.log("✅ Dropdown functionality refined.");
-    } else {
-        console.error("⚠️ Dropdown elements not found. Check your HTML structure.");
+  function hideFooter() {
+    footer.style.bottom = "-300px";
+    footer.style.opacity = "0";
+  }
+
+  // Ensure About Us and Contact Us trigger the footer display
+  [aboutLink, contactLink].forEach(link => {
+    if (link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        showFooter();
+      });
     }
+  });
+
+  // Hide footer when clicking anywhere else on the page
+  document.addEventListener('click', function(e) {
+    if (!footer.contains(e.target) && e.target !== aboutLink && e.target !== contactLink) {
+      hideFooter();
+    }
+  });
+
+  // Prevent clicks inside the footer from closing it
+  footer.addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
 });

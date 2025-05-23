@@ -5,43 +5,6 @@
     box-sizing: border-box;
 }
 
-/* 🖥️ Fullscreen Swiper Background */
-.swiper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-}
-
-/* 🎥 Ensure Swiper videos fit properly */
-.swiper-slide video {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-
-/* 🔧 Fix Background Video Placement */
-.background-video {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -2; /* ✅ Keep background behind everything */
-}
-
-/* ✅ Fix Swiper transition to avoid blank spaces */
-.swiper-wrapper {
-    display: flex;
-    overflow: hidden;
-}
 
 /* 🔝 Centered Logo */
 .logo {
@@ -49,13 +12,14 @@
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 120px;
+    width: 100px;
     height: auto;
-    z-index: 100;
+    z-index: 200; /* ✅ Ensures logo appears above swiper */
 }
 
 /* 🛒 Cart in Top-Right */
 .cart-link {
+    font-style: italic;
     position: absolute;
     top: 20px;
     right: 20px;
@@ -64,63 +28,249 @@
     padding: 10px 15px;
     border-radius: 5px;
     text-decoration: none;
-    z-index: 100;
+    z-index: 200; /* ✅ Keeps cart link above other elements */
 }
 
 /* 📌 Menu on Top-Left */
+
+/* ------ Main Button & Container ------ */
 .dropbtn {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: rgba(98, 44, 85, 0.8);
+    background-color:rgba(112, 41, 85, 0.8); /* Customize as needed */
     color: white;
-    padding: 12px 20px;
+    padding: 10px 16px;
     font-size: 16px;
-    border-radius: 5px;
-    z-index: 100;
-}
-.dropdown-content {
-    position: absolute;
+    border: none;
+    cursor: pointer;
+    top: 10px;
     left: 20px;
-    top: 50px;
-    background: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 10px;
-    width: 200px;
-    z-index: 150; /* ✅ Increased z-index to appear above swiper */
+    border-radius: 5px;
+    position: absolute;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    font-style: italic;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* ------ Main Dropdown Content ------ */
+.dropdown-content {
     display: none;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    position: absolute;
+    background-color: rgba(248, 243, 243, 0.8); /* Slight transparency */
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 10px;
+    top: 50px; /* Adjust as needed */
+    left: 10px; /* Aligns with the dropdown button */
 }
 
-/* Ensure dropdown opens correctly */
-.dropdown-content.open {
+.dropdown-content.active {
     display: block;
-    opacity: 1;
-    transform: translateY(0);
 }
 
-/* Ensure footer sticks to bottom */
-footer {
-    background-color: rgba(223, 213, 213, 0.9);
-    color: white;
-    text-align: center;
-    padding: 15px;
-    width: 100%;
-    position: fixed; /* ✅ Keep footer at the bottom */
-    bottom: 0;
+
+
+
+/* Show dropdown when hovering over the container 
+   (for click behavior, JavaScript can toggle a class) */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* ------ Unordered List & Items Reset ------ */
+.dropdown-content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-content li {
+    position: relative; /* Needed for submenus positioning */
+}
+
+/* ------ Links Inside Dropdown ------ */
+.dropdown-content a {
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #4d2342;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* ------ First-Level Submenu ("Latest Items") ------ */
+.dropdown-content li.has-submenu > .submenu {
+    display: none; /* Hide by default */
+    position: absolute;
+    top: 0;
+    left: 100%;  /* Position to the right */
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Display first-level submenu on hover over its parent list item */
+.dropdown-content li.has-submenu:hover > .submenu {
+    display: block;
+}
+
+/* ------ Second-Level Submenu ("Women T-Shirts") ------ */
+.dropdown-content li.has-submenu > .sub-dropdown {
+    display: none; /* Hide by default */
+    position: absolute;
+    top: 0;
+    left: 100%;  /* Position to the right */
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Display second-level submenu when hovering over its parent list item */
+.dropdown-content li.has-submenu:hover > .sub-dropdown {
+    display: block;
+}
+
+.logout-form button{
+
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #4d2342;
+    font-weight: bold;
+   
+}
+
+.logout-form button:hover {
+    background-color: #ccc2cc;
+    color: #39052b;
+    
+}
+
+
+
+#backgroundVideo {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
     left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+    z-index: -1; /* ✅ Keeps video behind other elements */
+}
+
+#info-footer {
+    margin: auto;
+    min-height: 200px;
+    padding: 20px;
+    background-color: rgba(87, 85, 87, 0.271); /* Semi-transparent background */
+    opacity: 0.2;
+    color: rgb(79, 17, 66);
+    width: 100%;
+    position: fixed;
+    bottom: -300px; /* Initially hide footer off-screen */
     z-index: 100;
+    transition: bottom 0.5s ease; /* Smooth slide effect */
+     overflow-y: auto; /* Enables vertical scrolling */
+    max-height: 80vh;
+}
+.footer-container {
+    display: flex;
+    justify-content: space-between; /* Positions sections on opposite sides */
+  
+    width: 100%;
+}
+
+/* Center Heading and Paragraph */
+
+.footer-container p {
+    text-align: center;
+    margin-bottom: 15px;
+    display: block;
+    gap: 15px;
+    justify-content: space-between;
+}
+.footer-container h4{
+    
+    color: #431033;
+    width: 50px;
+}
+
+/* Align Footer Sections Properly */
+.footer-section {
+    flex:1;
+    padding: 10px;
+    display: flex;
+}
+
+/* Left Section (Follow Us) */
+.footer-section.about {
+    width:50%;
+    flex: 1;
+    text-align: left; /* Ensures content is aligned to the left */
+}
+
+/* Right Section (Quick Links) */
+.footer-section.contact {
+    right : 0;
+    width:50%;
+    flex: 1;
+    text-align: right; /* Ensures content is aligned to the right */
+}
+
+
+/* Center Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding-top: 10px;
+}
+
+footer a {
+    color: #431033;
+    text-decoration: none;
+    transition: color 0.3s ease; 
+    background-color: 0.3s ease;
+}
+
+footer a:hover {
+    text-decoration: none;
+    color: #c355a0;
+    background-color: white;
+}
+
+#info-footer.active {
+   
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8); /* Light background */
+}
+
+@media (max-width: 768px) {
+    #info-footer {
+        height: auto; /* Allows it to resize dynamically */
+        max-height: 80vh; /* Prevents it from covering too much screen space */
+        overflow-y: auto; /* Ensures scrolling works */
+    }
 }
 
 
 
+#info-footer {
+    opacity: 0; /* Completely hide it */
+    transition: opacity 0.5s ease, bottom 0.5s ease;
+    bottom: -300px; 
+}
 
+/* When active, make it visible */
+#info-footer.active {
+    opacity: 1;
+    bottom: 0;
+}
 
 
 
@@ -211,7 +361,7 @@ form input, form select {
     margin: 5px 0;
 }
 
-button[type="submit"] {
+.buy-form button[type="submit"] {
     background: #0073e6;
     color: white;
     padding: 10px 15px;
@@ -223,6 +373,26 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background: #005bb5;
 }
+
+
+.back-button {
+    display: inline-block;
+  left:10px;
+    padding: 10px 15px;
+    background-color: #3e2235;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #5b4f56;
+
+}
+
 
 /* -------cart------- */
 /* Cart Page Styles */
@@ -304,68 +474,75 @@ button[type="submit"]:hover {
 }
 /* ------checkout----------- */
 /* Checkout Page Styles */
+
 .checkout-container {
-    max-width: 500px;
-    margin: 50px auto;
-    background: white;
+    width: 90%;
+    max-width: 600px;
+    background: #fff;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-/* Scoped heading styles */
-.checkout-container h1, 
-.checkout-container h2 {
-    color: #333;
-    font-size: 22px;
-    margin-bottom: 15px;
-}
-
-/* Form styling */
-.checkout-container form {
+/* Form styles specific to checkout */
+.checkout-form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 
-.checkout-container label {
-    font-size: 14px;
+/* Label, input, and select elements */
+.checkout-form label {
     font-weight: bold;
     text-align: left;
-    display: block;
-    margin-bottom: 5px;
 }
 
-.checkout-container input {
+.checkout-form input,
+.checkout-form select {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px;
 }
 
-/* Button Styling */
-.checkout-container button {
-    background-color: #007bff;
+/* Button styling */
+.checkout-form button {
+    background-color: #c355a0;
     color: white;
     padding: 12px;
-    font-size: 18px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 15px;
+    font-size: 16px;
+    transition: background 0.3s ease;
 }
 
-.checkout-container button:hover {
-    background-color: #0056b3;
+.checkout-form button:hover {
+    background-color: #a94482;
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
+/* Success & Error Messages */
+.checkout-container .success {
+    color: green;
+    font-weight: bold;
+}
+
+.checkout-container .error {
+    color: red;
+    font-weight: bold;
+}
+
+/* Responsive design */
+@media (max-width: 500px) {
     .checkout-container {
-        width: 90%;
+        width: 95%;
+        padding: 15px;
     }
 }
+
+
+
 /* -----success-------- */
 .order-success {
     text-align: center;
@@ -449,4 +626,15 @@ button[type="submit"]:hover {
 
 .signup-form-container button:hover, .signin-form-container button:hover {
     background-color: #4854c8;
+}
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+.error-messages {
+    background-color: #ffdddd;
+    padding: 10px;
+    border-left: 4px solid red;
+    list-style: none;
 }
