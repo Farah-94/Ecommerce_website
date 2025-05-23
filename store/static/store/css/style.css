@@ -374,6 +374,26 @@ button[type="submit"]:hover {
     background: #005bb5;
 }
 
+
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #3e2235;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #5b4f56;
+    
+}
+
+
 /* -------cart------- */
 /* Cart Page Styles */
 /* Cart Page Flexbox Styles */
@@ -520,6 +540,8 @@ button[type="submit"]:hover {
         padding: 15px;
     }
 }
+
+
 
 /* -----success-------- */
 .order-success {
