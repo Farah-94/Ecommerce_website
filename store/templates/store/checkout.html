@@ -13,7 +13,7 @@
   <div class="checkout-container">
     <h1>Checkout</h1>
 
-    <form method="post" class ="checkout-form">
+    <form method="post" class="checkout-form" autocomplete="on">
       {% if error_message %}
         <p class="error">{{ error_message }}</p>
       {% endif %}
@@ -25,20 +25,20 @@
       
       <h2>Shipping Address</h2>
       
-   <label for="name">Name:</label>
-<input id="name" type="text" name="name" placeholder="Full Name" required>
+      <label for="name">Name:</label>
+      <input id="name" type="text" name="name" placeholder="Full Name" autocomplete="name" required>
       
       <label for="email">Email:</label>
-      <input type="email" name="email" placeholder="Email" required>
+      <input id="email" type="email" name="email" placeholder="Email" autocomplete="email" required>
 
       <label for="phone">Contact Number:</label>
-      <input type="text" name="phone" placeholder="Contact Number" required>
+      <input id="phone" type="tel" name="phone" placeholder="Contact Number" autocomplete="tel" required>
       
       <label for="address">Street Address:</label>
-      <input type="text" name="address" placeholder="Street Address" required>
+      <input id="address" type="text" name="address" placeholder="Street Address" autocomplete="street-address" required>
       
       <label for="city">City:</label>
-      <input type="text" name="city" placeholder="City" required>
+      <input id="city" type="text" name="city" placeholder="City" autocomplete="address-level2" required>
 
       <h2>Payment</h2>
 
@@ -50,10 +50,10 @@
       </select>
 
       <label for="card_number">Card Number:</label>
-      <input type="text" name="card_number" placeholder="Card Number" required>
+      <input id="card_number" type="text" name="card_number" placeholder="Card Number" required>
 
       <label for="expiry">Expiry Date:</label>
-      <input type="text" name="expiry" placeholder="MM/YY" required>
+      <input id="expiry" type="text" name="expiry" placeholder="MM/YY" required>
 
       <button type="submit">Place Order</button>
     </form>
