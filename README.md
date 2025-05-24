@@ -23,16 +23,18 @@
   1. Admin and user authentication  
   2. Admin panel for managing products & orders
   3. Shopping cart functionality (Add, remove, update items)
-  4. Checkout with payment integration
+  4. Checkout with shipping address and payment 
+  5. order success message with order number
 
   ### Website 
-     -   
+     - ![index.html](../store/static/store/images/products/index.html.png)  
      - 
      - 
 
 # Purpose
 - The purpose of this website is to enhance the product sale by attracting user. It has user-friendly features to ensure a seamless and enjoyable shopping experience.
 - Website has eye catching visuals to attarct users. Clear and high resolution pictures of an actual product encourages user to purchase. 
-- Website has 
+- Website serves a meaningful purpose by catering to individuals with sensitive skin, allergies, or personal preferences for natural fabrics.
+- This website eliminate the hassle of filtering through synthetic options, ensuring a straightforward, stress-free shopping experience for those who prioritize comfort, breathability, and natural fibers.
 
 
