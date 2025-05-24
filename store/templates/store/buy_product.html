@@ -43,7 +43,7 @@
             <button type="submit">Add to Cart</button>
         </form>
 <br><br>
-         <button onclick="history.back()" class="back-button">Go Back</button>
+<button type="button" href="{% url 'store:index' %}" >Go Back</button>
     </div>
     
     <script src="{% static 'store/js/script.js' %}" defer></script>
