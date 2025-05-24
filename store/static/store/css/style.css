@@ -474,7 +474,9 @@ button[type="submit"]:hover {
 }
 /* ------checkout----------- */
 /* Checkout Page Styles */
-
+.checkout-body{
+    text-align: center;
+}
 .checkout-container {
     width: 90%;
     max-width: 600px;
