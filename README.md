@@ -17,7 +17,7 @@
 
 
 # Introduction
-- Welcome to [Kafshay](https://kafshay-d69b561b1669.herokuapp.com/),  This website is responsive on all devices.The Django-powered ecommerce platform which is responsible to provide you smooth shopping experience, user can enjoy variety of products, add them to cart, user can edit product quantity and remove the product from the cart, and securely checkout. Bassically the website is divided into two parts the admin and the user. There is a admin panel inside the menu button on the index.html. Admin log in using their credentials. Admin can access the Django Admin interface to create, update and delete the product. 
+- Welcome to [Kafshay](https://kafshay-915bff3a430d.herokuapp.com/),  This website is responsive on all devices.The Django-powered ecommerce platform which is responsible to provide you smooth shopping experience, user can enjoy variety of products, add them to cart, user can edit product quantity and remove the product from the cart, and securely checkout. Bassically the website is divided into two parts the admin and the user. There is a admin panel inside the menu button on the index.html. Admin log in using their credentials. Admin can access the Django Admin interface to create, update and delete the product. 
 
 ## Key Feature
   1. Admin and user authentication  
