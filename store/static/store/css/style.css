@@ -633,18 +633,6 @@ button[type="submit"]:hover {
 .signup-form-container button:hover, .signin-form-container button:hover {
     background-color: #4854c8;
 }
-.error {
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
-}
-.error-messages {
-    background-color: #ffdddd;
-    padding: 10px;
-    border-left: 4px solid red;
-    list-style: none;
-}
-
 .messages {
     position: fixed;
     top: 10px;
@@ -654,5 +642,7 @@ button[type="submit"]:hover {
     color: white;
     padding: 10px;
     border-radius: 5px;
-    display: inline-block;
+}
+.messages .error {
+    background-color: #ff4d4d;
 }
