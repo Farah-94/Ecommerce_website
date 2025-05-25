@@ -17,7 +17,7 @@ SECURE_SSL_REDIRECT = False
 SITE_ID = 1
 
 
-X_FRAME_OPTIONS = 'ALLOWALL'
+# X_FRAME_OPTIONS = 'ALLOWALL'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -66,7 +66,7 @@ MIDDLEWARE = [
     "allauth.account.middleware.AccountMiddleware",
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
-    'store.middleware.DisableXFrameOptionsMiddleware',  # ✅ Custom middleware to disable X-Frame-Options
+    # 'store.middleware.DisableXFrameOptionsMiddleware',  # ✅ Custom middleware to disable X-Frame-Options
 
 ]
 
