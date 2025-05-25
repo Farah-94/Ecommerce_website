@@ -1,4 +1,4 @@
-/* 🌍 General Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -234,9 +234,13 @@
 footer a {
     color: #431033;
     text-decoration: none;
-    transition: color 0.3s ease; 
-    background-color: 0.3s ease;
+
+  
+    text-decoration: none;
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
+
+
 
 footer a:hover {
     text-decoration: none;
@@ -639,4 +643,16 @@ button[type="submit"]:hover {
     padding: 10px;
     border-left: 4px solid red;
     list-style: none;
+}
+
+.messages {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
 }
