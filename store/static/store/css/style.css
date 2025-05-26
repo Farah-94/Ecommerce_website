@@ -417,9 +417,11 @@ button[type="submit"]:hover {
     overflow-x: auto; /* Allows scrolling if items overflow */
     padding: 10px;
 
+
 }
 
 .cart-item {
+
     display: flex;
     align-items: center;
     background: #ffffff;
@@ -428,6 +430,7 @@ button[type="submit"]:hover {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     min-width: 280px; /* Ensures consistent width */
     flex-shrink: 0; /* Prevents items from shrinking */
+    
 }
 
 .cart-item img {

@@ -12,7 +12,8 @@
 
 <header>
     <h1 class="heading">Your Cart</h1>
-    
+    <a href="{% url 'store:buy_product' item.product.id %}" class="back-btn">🔙 Back to Products</a>
+
 </header>
 <div class="cart-container">
     {% for item in cart_items %}
