@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product List</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
 </head>
 <body>
-<h3>Products</h3>
+<h3 class="heading">Products</h3>
 <div class="product-container">
     {% for product in products %}
         <a href="{% url 'store:buy_product' product.id %}" class="product-link">

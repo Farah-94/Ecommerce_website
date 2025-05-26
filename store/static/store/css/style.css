@@ -279,13 +279,20 @@ footer a:hover {
 
 
 
-/* ------------------------------------------- */
+/* --------------------productlist----------------------- */
 .product-container {
     padding: 15px;;
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /* ✅ Centers content */
     gap: 20px; /* ✅ Adds space between cards */
+}
+
+.heading{
+    text-align: center;
+    color: #531932;
+    font-size: 32px;
+    margin-bottom: 20px;
 }
 
 .product-card {
@@ -332,7 +339,7 @@ footer a:hover {
 .product-details h1 {
     text-align: center;
     font-size: 24px;
-    color: #0073e6;
+    color: #531932;
 }
 
 /* Product Image Slider */
