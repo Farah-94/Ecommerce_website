@@ -31,7 +31,7 @@
             {% if item.product.id %}
                 <a href="{% url 'store:buy_product' item.product.id %}" class="back-btn">🔙 Back to Products</a>
             {% else %}
-                <a href="{% url 'store:product_list' %}" class="back-btn">🔙 Back to Products</a>
+                <a href="{% url 'store:checkout' %}" class="back-btn">Checkout</a>
             {% endif %}
         </div>
     </div>
