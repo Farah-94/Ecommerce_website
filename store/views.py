@@ -167,3 +167,11 @@ def remove_from_cart(request, cart_item_id):
     cart_item = get_object_or_404(CartItem, id=cart_item_id, user=request.user)
     cart_item.delete()
     return redirect(reverse("store:cart"))
+
+def place_order(request):
+    if not request.user.is_authenticated:
+        messages.warning(request, "You need to sign in before placing an order.")
+        return redirect("store:signin")  # Redirect to sign-in page
+
+    # Process the order if the user is logged in
+    return redirect("store:cart")
