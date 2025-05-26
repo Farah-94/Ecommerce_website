@@ -170,8 +170,8 @@ def remove_from_cart(request, cart_item_id):
 
 def place_order(request):
     if not request.user.is_authenticated:
-        messages.warning(request, "You need to sign in before placing an order.")
+        messages.warning(request, "Please sign in first to complete your order!")
         return redirect("store:signin")  # Redirect to sign-in page
 
-    # Process the order if the user is logged in
+    # If logged in, proceed directly to checkout
     return redirect("store:cart")
