@@ -14,26 +14,28 @@
 
 <div class="cart-container">
     {% for item in cart_items %}
-        <div class="cart-item">
-            <img src="{% static 'store/images/products/tshirt.jpg' %}" alt="{{ item.product.name }}">
-            <div class="cart-details">
-                <h3>{{ item.product.name }}</h3>
-                <p>Size: {{ item.size }}</p>
-                <p>Quantity: {{ item.quantity }}</p>
-                <p>Total: ${{ item.total_price }}</p>
-                <div class="cart-actions">
-                    <a href="{% url 'store:update_cart' item.id 'decrease' %}">➖</a>
-                    <span>{{ item.quantity }}</span>
-                    <a href="{% url 'store:update_cart' item.id 'increase' %}">➕</a>
-                </div>
-                <a href="{% url 'store:remove_from_cart' item.id %}" class="remove-btn">🗑️ Remove</a>
-
+    <div class="cart-item">
+        <img src="{% static 'store/images/products/tshirt.jpg' %}" alt="{{ item.product.name }}">
+        <div class="cart-details">
+            <h3>{{ item.product.name }}</h3>
+            <p>Size: {{ item.size }}</p>
+            <p>Quantity: {{ item.quantity }}</p>
+            <p>Total: ${{ item.total_price }}</p>
+            <div class="cart-actions">
+                <a href="{% url 'store:update_cart' item.id 'decrease' %}">➖</a>
+                <span>{{ item.quantity }}</span>
+                <a href="{% url 'store:update_cart' item.id 'increase' %}">➕</a>
             </div>
+            <a href="{% url 'store:remove_from_cart' item.id %}" class="remove-btn">🗑️ Remove</a>
+
+            {% if item.product.id %}
+                <a href="{% url 'store:buy_product' item.product.id %}" class="back-btn">🔙 Back to Products</a>
+            {% else %}
+                <a href="{% url 'store:product_list' %}" class="back-btn">🔙 Back to Products</a>
+            {% endif %}
         </div>
-    {% endfor %}
+    </div>
+{% endfor %}
 </div>
-{% if item.product.id %}
-<a href="{% url 'store:buy_product' item.product.id %}" class="back-btn">🔙 Back to Products</a>
-<a href="{% url 'store:checkout' %}" class="checkout-btn">Proceed to Checkout</a>
 </body>
 </html>
