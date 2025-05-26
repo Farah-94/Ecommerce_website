@@ -45,18 +45,12 @@ def signin(request):
         user = authenticate(request, username=username, password=password)
 
         if user:
-            # ✅ Ensure the user is always a customer
-            user.is_staff = False  
-            user.is_superuser = False  
-            user.save()
-
-            login(request, user)
-            return redirect("store:index")  # ✅ Redirects customers to homepage
+            login(request, user)  # ✅ Logs in the user without modifying roles
+            return redirect("store:index")  # ✅ Redirects to homepage (ensure this exists in urls.py)
         else:
             messages.error(request, "Invalid username or password. Try again.")
-            return redirect("store:signin")
-    
-    return render(request, "store/signin.html")
+
+    return render(request, "store/signin.html")  # ✅ Reloads sign-in page to show errors
 
 # ✅ LOGOUT: Ends session & redirects user
 def logout_view(request):
