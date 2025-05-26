@@ -460,21 +460,15 @@ button[type="submit"]:hover {
 
 .remove-btn {
     color: white;
-    background-color: #dc3545;
+    background-color: #463043;
 }
 
 .back-btn {
     color: white;
-    background-color: #007bff;
+    background-color:#463043;
 }
 
-.checkout-btn {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    margin-top: 20px;
-}
+
 
 .checkout-btn .back-btn:hover {
     background-color: #218838;
