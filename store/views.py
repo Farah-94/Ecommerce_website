@@ -100,7 +100,7 @@ def category_products(request, category_id):
     return render(request, "store/category_products.html", {"products": products, "category": category})
 
 # --- Cart & Order Management ---
-@login_required(login_url=reverse_lazy("store:signin"))  # ✅ Uses the correct sign-in URL
+@login_required
 def add_to_cart(request, product_id):
     if not request.user.is_authenticated:
         messages.warning(request, "Please sign in to add products to your cart.")
