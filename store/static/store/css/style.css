@@ -468,7 +468,10 @@ button[type="submit"]:hover {
     color: white;
     background-color:#782347;
 }
-
+.checkout-btn{
+    background-color: #782347;
+    color: white;
+}
 
 
 .checkout-btn .back-btn:hover {
