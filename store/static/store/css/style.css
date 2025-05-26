@@ -475,7 +475,8 @@ button[type="submit"]:hover {
 
 
 .checkout-btn .back-btn:hover {
-    background-color: #218838;
+    background-color: rgb(100, 78, 102);
+    color: black;
 }
 
 .cart-container a:hover {
