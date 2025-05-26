@@ -100,11 +100,11 @@ def category_products(request, category_id):
     return render(request, "store/category_products.html", {"products": products, "category": category})
 
 # --- Cart & Order Management ---
-@login_required
+
 def add_to_cart(request, product_id):
     if not request.user.is_authenticated:
-        messages.warning(request, "Please sign in to add products to your cart.")
-        return redirect(reverse("store:signin"))  # ✅ Redirects user to sign-in with a message
+        messages.warning(request, "Please sign in to view your cart.")  # ✅ Add warning message
+        return redirect(f"{reverse('store:signin')}?next={reverse('store:cart')}")  # ✅ Redirects to sign-in & then to cart
     
     product = get_object_or_404(Product, id=product_id)
     cart_item, created = CartItem.objects.get_or_create(
