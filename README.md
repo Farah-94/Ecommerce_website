@@ -188,7 +188,7 @@
 
 
  # Testing 
-   - [Test Plan]()
+   - [Test Plan](https://1drv.ms/w/c/e1af83f369e97fb7/Eel16z3ZXNpCupDJL3FzS3UBx07wiTjeCjkNx4OziEHMSg?e=RHglP9)
 
    ### HTML Validation
    - [index](store/static/store/images/products/index_kafshay%20validation.png)
@@ -209,12 +209,11 @@
  2. [githUb](https://github.com/)
  3. [Figma](https://www.figma.com/)
  4. [django -allauth](https://docs.allauth.org/en/latest/)
- 5. [Freepik](https://www.freepik.com/)
- 6. 
- 7. [w3school](https://www.w3schools.com/)
- 8. [Gantt Chart](https://create.microsoft.com/en-us/templates/gantt-charts)
- 9. [W3C](https://validator.w3.org/)
- 10. [Jestjs](https://jestjs.io/)
+ 5. [Freepik](https://www.freepik.com/) 
+ 6. [w3school](https://www.w3schools.com/)
+ 7. [Gantt Chart](https://create.microsoft.com/en-us/templates/gantt-charts)
+ 8. [W3C](https://validator.w3.org/)
+ 9. [Jestjs](https://jestjs.io/)
 
 
  ## Help used
