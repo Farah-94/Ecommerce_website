@@ -33,12 +33,10 @@
             <!-- <a href="{% url 'store:buy_product' item.product.id %}" class="back-btn">🔙 Back to Products</a> -->
         </div>
     </div>
-{% endfor %}
-</div>
-
  <a href="{% url 'store:buy_product' item.product.id %}" class="back-btn">🔙 Back to Products</a>
 <!-- ✅ Ensure the Checkout Button is ALWAYS visible -->
 <a href="{% url 'store:checkout' %}" class="checkout-btn">Proceed to Checkout</a>
-
+{% endfor %}
+</div>
 </body>
 </html>
