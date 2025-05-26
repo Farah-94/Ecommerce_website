@@ -9,10 +9,10 @@
 </head>
 <body>
 <header>
-    <h1>Product List</h1>
+    <h1 class="heading">Products</h1>
 <a href="{% url 'store:index' %}" class="back-button">Go Back</a>
     </header>
-<h3 class="heading">Products</h3>
+
 <div class="product-container">
     {% for product in products %}
         <a href="{% url 'store:buy_product' product.id %}" class="product-link">
