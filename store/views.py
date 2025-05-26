@@ -123,9 +123,18 @@ def add_to_cart(request, product_id):
 
 @login_required
 def cart(request):
+    # Redirect user to sign-in page if they are not authenticated
+    if not request.user.is_authenticated:
+        messages.warning(request, "Please sign in to view your cart.")
+        return redirect("store:signin")
+
+    # Fetch cart items for the logged-in user
     cart_items = CartItem.objects.filter(user=request.user)
-    total = sum(item.product.price * item.quantity for item in cart_items)  # ✅ Fixes checkout pricing calculation
+    total = sum(item.product.price * item.quantity for item in cart_items)
+
     return render(request, "store/cart.html", {"cart_items": cart_items, "total": total})
+
+
 
 @login_required
 def checkout(request):
@@ -167,11 +176,3 @@ def remove_from_cart(request, cart_item_id):
     cart_item = get_object_or_404(CartItem, id=cart_item_id, user=request.user)
     cart_item.delete()
     return redirect(reverse("store:cart"))
-
-def place_order(request):
-    if not request.user.is_authenticated:
-        messages.warning(request, "Please sign in first to complete your order!")
-        return redirect("store:signin")  # Redirect to sign-in page
-
-    # If logged in, proceed directly to checkout
-    return redirect("store:cart")

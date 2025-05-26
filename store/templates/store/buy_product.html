@@ -41,15 +41,10 @@
       </select>
 
       <br>
-      <button type="submit">Add to Cart</button>
+      {% csrf_token %}
+    <button type="submit">Add to Cart</button>
     </form>
 
-    <!-- Place Order Form -->
-    <br>
-    <form method="POST" action="{% url 'store:place_order' %}">
-      {% csrf_token %}
-      <button type="submit">Place Order</button>
-    </form>
 
     <br><br>
     <!-- Updated Go Back Button -->
