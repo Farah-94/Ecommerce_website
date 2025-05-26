@@ -51,9 +51,10 @@ def signin(request):
             user.save()
 
             login(request, user)
-            return redirect("index")  # ✅ Redirects customers to homepage
+            return redirect("store:index")  # ✅ Redirects customers to homepage
         else:
             messages.error(request, "Invalid username or password. Try again.")
+            return redirect("store:signin")
     
     return render(request, "store/signin.html")
 
