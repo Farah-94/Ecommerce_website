@@ -8,7 +8,7 @@ from django.contrib.auth.views import LoginView
 from django.http import HttpResponse
 from django.db.models import Q
 from .models import Category, Product, CartItem, Order
-
+from django.urls import reverse_lazy
 # --- Authentication Views ---
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
@@ -100,7 +100,7 @@ def category_products(request, category_id):
     return render(request, "store/category_products.html", {"products": products, "category": category})
 
 # --- Cart & Order Management ---
-@login_required
+@login_required(login_url=reverse_lazy("store:signin"))  # ✅ Uses the correct sign-in URL
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     cart_item, created = CartItem.objects.get_or_create(
@@ -114,7 +114,13 @@ def add_to_cart(request, product_id):
     if not created:
         cart_item.quantity += 1
         cart_item.save()
+
+    messages.success(request, f"{product.name} added to your cart successfully!")
     return redirect(reverse("store:cart"))
+
+
+
+
 
 @login_required
 def cart(request):
