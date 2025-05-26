@@ -102,6 +102,10 @@ def category_products(request, category_id):
 # --- Cart & Order Management ---
 @login_required(login_url=reverse_lazy("store:signin"))  # ✅ Uses the correct sign-in URL
 def add_to_cart(request, product_id):
+    if not request.user.is_authenticated:
+        messages.warning(request, "Please sign in to add products to your cart.")
+        return redirect(reverse("store:signin"))  # ✅ Redirects user to sign-in with a message
+    
     product = get_object_or_404(Product, id=product_id)
     cart_item, created = CartItem.objects.get_or_create(
         user=request.user,
