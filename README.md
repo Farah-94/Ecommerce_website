@@ -21,7 +21,7 @@
 
 
 # Introduction
-- Welcome to [Kafshay](https://kafshay-d69b561b1669.herokuapp.com/),  This website is responsive on all devices.The Django-powered ecommerce platform which is responsible to provide you smooth shopping experience, fully-featured e-commerce website designed to deliver an enjoyable shopping experience for customers while offering a comprehensive administration system for managing products. The site is split into two major parts: one for regular users (customers) and another for administrators.
+- Welcome to [Kafshay](https://kafshay-915bff3a430d.herokuapp.com/),  This website is responsive on all devices.The Django-powered ecommerce platform which is responsible to provide you smooth shopping experience, fully-featured e-commerce website designed to deliver an enjoyable shopping experience for customers while offering a comprehensive administration system for managing products. The site is split into two major parts: one for regular users (customers) and another for administrators.
 
 ## For Customers
 #### Product Exploration:
