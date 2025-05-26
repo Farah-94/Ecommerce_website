@@ -198,3 +198,4 @@ ACCOUNT_ADAPTER = "store.adapters.CustomAccountAdapter"
 
 LOGIN_URL = "/signin/"
 LOGIN_REDIRECT_URL = "/index/"  # Redirect users after login
+MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
