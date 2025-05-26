@@ -24,7 +24,7 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     
     # Cart
-    path("place-order/", views.place_order, name="place_order"), 
+ 
     path('cart/', views.cart, name='cart'),
     path('add-to-cart/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
     path('cart/update/<int:cart_item_id>/<str:action>/', views.update_cart, name='update_cart'),
