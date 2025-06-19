@@ -101,23 +101,37 @@ def category_products(request, category_id):
 
 # --- Cart & Order Management ---
 
+
+
 def add_to_cart(request, product_id):
     if not request.user.is_authenticated:
-        messages.warning(request, "Please sign in to view your cart.")  # ✅ Add warning message
-        return redirect(f"{reverse('store:signin')}?next={reverse('store:cart')}")  # ✅ Redirects to sign-in & then to cart
+        messages.warning(request, "Please sign in to view your cart.")
+        return redirect(f"{reverse('store:signin')}?next={reverse('store:cart')}")
     
     product = get_object_or_404(Product, id=product_id)
-    cart_item, created = CartItem.objects.get_or_create(
-        user=request.user,
-        product=product,
-        defaults={
-            "quantity": 1,
-            "size": request.POST.get("size", "M"),
-        },
-    )
-    if not created:
-        cart_item.quantity += 1
+
+    # ✅ Fetch quantity and size from POST
+    quantity_str = request.POST.get("quantity", "1")
+    size_value = request.POST.get("size", "M")
+
+    try:
+        quantity = max(1, int(quantity_str))  # Prevent negative or zero quantities
+    except ValueError:
+        quantity = 1  # fallback if conversion fails
+
+    # ✅ Look for an existing cart item with same product & size
+    cart_item = CartItem.objects.filter(user=request.user, product=product, size=size_value).first()
+
+    if cart_item:
+        cart_item.quantity += quantity
         cart_item.save()
+    else:
+        CartItem.objects.create(
+            user=request.user,
+            product=product,
+            quantity=quantity,
+            size=size_value
+        )
 
     messages.success(request, f"{product.name} added to your cart successfully!")
     return redirect(reverse("store:cart"))
