@@ -40,37 +40,42 @@ document.addEventListener("DOMContentLoaded", function () {
     dropdownMenu.classList.toggle("active");
   });
 
-  // 🔼 Close menu on outside click
+  // 🔁 Submenu toggle on mobile/touch devices
+  const submenuToggles = document.querySelectorAll('.submenu-toggle');
+
+  submenuToggles.forEach(toggle => {
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const parent = this.parentElement;
+      const isOpen = parent.classList.contains('open');
+
+      document.querySelectorAll('.has-submenu.open').forEach(item => {
+        if (item !== parent) item.classList.remove('open');
+      });
+
+      parent.classList.toggle('open', !isOpen);
+    });
+  });
+
+  // 🔒 Close both menu and submenus if clicking outside
   document.addEventListener("click", function (event) {
-    if (!dropdownMenu.contains(event.target) && event.target !== menuBtn) {
+    const isMenuClick =
+      dropdownMenu.contains(event.target) || event.target === menuBtn;
+
+    const isSubmenuClick = event.target.classList.contains("submenu-toggle");
+
+    if (!isMenuClick) {
       dropdownMenu.classList.remove("active");
     }
+
+    if (!isSubmenuClick) {
+      document.querySelectorAll('.has-submenu.open').forEach(item =>
+        item.classList.remove('open')
+      );
+    }
   });
-
-  // 🔁 Submenu toggle on mobile
-const submenuToggles = document.querySelectorAll('.submenu-toggle');
-
-submenuToggles.forEach(toggle => {
-  toggle.addEventListener('click', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    const parent = this.parentElement;
-    const isOpen = parent.classList.contains('open');
-
-    document.querySelectorAll('.has-submenu.open').forEach(item => {
-      if (item !== parent) item.classList.remove('open');
-    });
-
-    parent.classList.toggle('open', !isOpen);
-  });
-});
-
-document.addEventListener('click', () => {
-  document.querySelectorAll('.has-submenu.open').forEach(item =>
-    item.classList.remove('open')
-  );
-});
 });
 
 //---------------------footer----------------------------------
