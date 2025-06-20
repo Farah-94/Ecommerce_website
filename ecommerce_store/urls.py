@@ -19,12 +19,16 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from store.views import index
+from django.contrib.auth import views as auth_views
+
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),  # ✅ Homepage route
     path('store/', include('store.urls', namespace='store')),  
-    
+    path('signin/', auth_views.LoginView.as_view(template_name='store/signin.html'), name='signin'),
     path("accounts/", include("allauth.urls")),
 
 ]
