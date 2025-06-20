@@ -41,23 +41,24 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // 🔁 Submenu toggle on mobile/touch devices
-  const submenuToggles = document.querySelectorAll('.submenu-toggle');
+const submenuToggles = document.querySelectorAll('.submenu-toggle');
 
-  submenuToggles.forEach(toggle => {
-    toggle.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
+submenuToggles.forEach(toggle => {
+  toggle.addEventListener('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
 
-      const parent = this.parentElement;
-      const isOpen = parent.classList.contains('open');
+    const parent = this.parentElement;
+    const isOpen = parent.classList.contains('open');
 
-      document.querySelectorAll('.has-submenu.open').forEach(item => {
-        if (item !== parent) item.classList.remove('open');
-      });
-
-      parent.classList.toggle('open', !isOpen);
+    document.querySelectorAll('.has-submenu.open').forEach(item => {
+      if (item !== parent) item.classList.remove('open');
     });
+
+    parent.classList.toggle('open', !isOpen);
   });
+});
+
 
   // 🔒 Close both menu and submenus if clicking outside
   document.addEventListener("click", function (event) {
