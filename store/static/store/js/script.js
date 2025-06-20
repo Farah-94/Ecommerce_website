@@ -51,9 +51,11 @@ submenuToggles.forEach(toggle => {
     const parent = this.parentElement;
     const isOpen = parent.classList.contains('open');
 
-    document.querySelectorAll('.has-submenu.open').forEach(item => {
-      if (item !== parent) item.classList.remove('open');
-    });
+ const openItems = parent.parentElement.querySelectorAll('.has-submenu.open');
+openItems.forEach(item => {
+  if (item !== parent) item.classList.remove('open');
+});
+
 
     parent.classList.toggle('open', !isOpen);
   });
