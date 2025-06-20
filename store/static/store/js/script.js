@@ -48,32 +48,29 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // 🔁 Submenu toggle on mobile
-  const submenuToggles = document.querySelectorAll('.submenu-toggle');
+const submenuToggles = document.querySelectorAll('.submenu-toggle');
 
-  submenuToggles.forEach(toggle => {
-    toggle.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
+submenuToggles.forEach(toggle => {
+  toggle.addEventListener('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
 
-      const parent = this.parentElement;
-      const isOpen = parent.classList.contains('open');
+    const parent = this.parentElement;
+    const isOpen = parent.classList.contains('open');
 
-      // Close others
-      document.querySelectorAll('.has-submenu.open').forEach(item => {
-        if (item !== parent) item.classList.remove('open');
-      });
-
-      // Toggle current
-      parent.classList.toggle('open', !isOpen);
+    document.querySelectorAll('.has-submenu.open').forEach(item => {
+      if (item !== parent) item.classList.remove('open');
     });
-  });
 
-  // 🔒 Close open submenus if clicking outside
-  document.addEventListener('click', () => {
-    document.querySelectorAll('.has-submenu.open').forEach(item =>
-      item.classList.remove('open')
-    );
+    parent.classList.toggle('open', !isOpen);
   });
+});
+
+document.addEventListener('click', () => {
+  document.querySelectorAll('.has-submenu.open').forEach(item =>
+    item.classList.remove('open')
+  );
+});
 });
 
 //---------------------footer----------------------------------
