@@ -131,10 +131,12 @@ body, html {
   z-index: 1;
 }
 
-.dropdown-content li.has-submenu:hover > .submenu,
-.dropdown-content li.has-submenu:hover > .sub-dropdown {
+.has-submenu.open > .submenu,
+.has-submenu.open > .sub-dropdown {
   display: block;
 }
+
+
 
 .dropdown:hover .dropdown-content {
   display: block;

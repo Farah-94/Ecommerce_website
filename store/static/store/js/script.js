@@ -30,23 +30,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // ---------------------menu----------------------------------
+document.addEventListener("DOMContentLoaded", function () {
+  const menuBtn = document.getElementById("menu-btn");
+  const dropdownMenu = document.getElementById("dropdown-menu");
 
-document.addEventListener("DOMContentLoaded", function() {
-    const menuBtn = document.getElementById("menu-btn");
-    const dropdownMenu = document.getElementById("dropdown-menu");
+  // 🔽 Toggle main menu visibility
+  menuBtn.addEventListener("click", function (event) {
+    event.stopPropagation();
+    dropdownMenu.classList.toggle("active");
+  });
 
-    // Toggle dropdown visibility when menu button is clicked
-    menuBtn.addEventListener("click", function(event) {
-        event.stopPropagation(); // Prevent clicks inside from closing
-        dropdownMenu.classList.toggle("active");
+  // 🔼 Close menu on outside click
+  document.addEventListener("click", function (event) {
+    if (!dropdownMenu.contains(event.target) && event.target !== menuBtn) {
+      dropdownMenu.classList.remove("active");
+    }
+  });
+
+  // 🔁 Submenu toggle on mobile
+  const submenuToggles = document.querySelectorAll('.submenu-toggle');
+
+  submenuToggles.forEach(toggle => {
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const parent = this.parentElement;
+      const isOpen = parent.classList.contains('open');
+
+      // Close others
+      document.querySelectorAll('.has-submenu.open').forEach(item => {
+        if (item !== parent) item.classList.remove('open');
+      });
+
+      // Toggle current
+      parent.classList.toggle('open', !isOpen);
     });
+  });
 
-    // Close dropdown when clicking anywhere else on the page
-    document.addEventListener("click", function(event) {
-        if (!dropdownMenu.contains(event.target) && event.target !== menuBtn) {
-            dropdownMenu.classList.remove("active");
-        }
-    });
+  // 🔒 Close open submenus if clicking outside
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.has-submenu.open').forEach(item =>
+      item.classList.remove('open')
+    );
+  });
 });
 
 //---------------------footer----------------------------------
