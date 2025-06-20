@@ -51,26 +51,63 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //---------------------footer----------------------------------
 
+// document.addEventListener('DOMContentLoaded', function() {
+//   const footer = document.getElementById('info-footer');
+//   const aboutLink = document.getElementById('about-link');
+//   const contactLink = document.getElementById('contact-link');
+
+//   // Completely hide the footer initially
+//   footer.style.bottom = "-300px";
+//   footer.style.opacity = "0";
+
+//   function showFooter() {
+//     footer.style.bottom = "0";
+//     footer.style.opacity = "1";
+//   }
+
+//   function hideFooter() {
+//     footer.style.bottom = "-300px";
+//     footer.style.opacity = "0";
+//   }
+
+//   // Ensure About Us and Contact Us trigger the footer display
+//   [aboutLink, contactLink].forEach(link => {
+//     if (link) {
+//       link.addEventListener('click', function(e) {
+//         e.preventDefault();
+//         e.stopPropagation();
+//         showFooter();
+//       });
+//     }
+//   });
+
+//   // Hide footer when clicking anywhere else on the page
+//   document.addEventListener('click', function(e) {
+//     if (!footer.contains(e.target) && e.target !== aboutLink && e.target !== contactLink) {
+//       hideFooter();
+//     }
+//   });
+
+//   // Prevent clicks inside the footer from closing it
+//   footer.addEventListener('click', function(e) {
+//     e.stopPropagation();
+//   });
+// });
+// -------------------
+
 document.addEventListener('DOMContentLoaded', function() {
   const footer = document.getElementById('info-footer');
   const aboutLink = document.getElementById('about-link');
   const contactLink = document.getElementById('contact-link');
 
-  // Completely hide the footer initially
-  footer.style.bottom = "-300px";
-  footer.style.opacity = "0";
-
   function showFooter() {
-    footer.style.bottom = "0";
-    footer.style.opacity = "1";
+    footer.classList.add('active');
   }
 
   function hideFooter() {
-    footer.style.bottom = "-300px";
-    footer.style.opacity = "0";
+    footer.classList.remove('active');
   }
 
-  // Ensure About Us and Contact Us trigger the footer display
   [aboutLink, contactLink].forEach(link => {
     if (link) {
       link.addEventListener('click', function(e) {
@@ -81,16 +118,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Hide footer when clicking anywhere else on the page
-  document.addEventListener('click', function(e) {
-    if (!footer.contains(e.target) && e.target !== aboutLink && e.target !== contactLink) {
-      hideFooter();
-    }
+  ['click', 'touchstart'].forEach(eventType => {
+    document.addEventListener(eventType, function(e) {
+      if (!footer.contains(e.target) && e.target !== aboutLink && e.target !== contactLink) {
+        hideFooter();
+      }
+    });
   });
 
-  // Prevent clicks inside the footer from closing it
   footer.addEventListener('click', function(e) {
     e.stopPropagation();
   });
 });
-// -------------------
+
