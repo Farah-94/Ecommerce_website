@@ -9,11 +9,11 @@ body, html {
   width: 100%;
   height: 100%;
   font-family: Arial, sans-serif;
-  position: relative;
   overflow-x: hidden;
+  position: relative;
 }
 
-/* 🎥 Background video */
+/* 🎥 Background Video */
 #backgroundVideo {
   width: 100vw;
   height: 100vh;
@@ -35,18 +35,34 @@ body, html {
   z-index: 200;
 }
 
-/* 🛒 Cart */
+/* 🛒 Cart Link */
 .cart-link {
   position: absolute;
   top: 20px;
   right: 20px;
   background: rgba(112, 41, 85, 0.8);
   color: white;
-  padding: 10px 15px;
-  border-radius: 5px;
+  padding: 12px 18px;
+  font-size: 16px;
+  border-radius: 6px;
   text-decoration: none;
   font-style: italic;
   z-index: 200;
+}
+
+/* 🔐 Signin Button (add .signin-button class where needed) */
+.signin-button {
+  font-size: 16px;
+  padding: 12px 18px;
+  background-color: rgba(112, 41, 85, 0.8);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.signin-button:hover {
+  background-color: rgba(112, 41, 85, 1);
 }
 
 /* 📁 Menu Button */
@@ -61,11 +77,11 @@ body, html {
   position: absolute;
   top: 10px;
   left: 20px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   font-style: italic;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* 📂 Dropdown */
+/* 📂 Dropdown Menu */
 .dropdown {
   position: relative;
   display: inline-block;
@@ -102,7 +118,7 @@ body, html {
   background-color: #ddd;
 }
 
-/* Submenus */
+/* 🌿 Submenus */
 .dropdown-content li.has-submenu > .submenu,
 .dropdown-content li.has-submenu > .sub-dropdown {
   display: none;
@@ -120,7 +136,6 @@ body, html {
   display: block;
 }
 
-/* Toggle menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
 }
@@ -140,7 +155,7 @@ body, html {
   color: #39052b;
 }
 
-/* ⬆️ Footer */
+/* ⬆️ Animated Slide-Up Footer */
 #info-footer {
   position: fixed;
   bottom: -300px;
@@ -162,13 +177,13 @@ body, html {
   background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* Footer layout */
+/* 📦 Footer Content Layout */
 .footer-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 20px;
   width: 100%;
+  gap: 20px;
 }
 
 .footer-section {
@@ -205,7 +220,7 @@ footer a:hover {
   background-color: white;
 }
 
-/* 📱 Responsive tweaks */
+/* 📱 Responsive Adjustments */
 @media (max-width: 768px) {
   .logo {
     width: 80px;
@@ -213,10 +228,10 @@ footer a:hover {
   }
 
   .cart-link,
-  .dropbtn {
+  .dropbtn,
+  .signin-button {
     font-size: 14px;
-    padding: 8px 12px;
-    top: 10px;
+    padding: 10px 14px;
   }
 
   .footer-container {
@@ -240,9 +255,10 @@ footer a:hover {
   }
 
   .cart-link,
-  .dropbtn {
+  .dropbtn,
+  .signin-button {
     font-size: 13px;
-    padding: 6px 10px;
+    padding: 8px 12px;
   }
 
   .footer-container {
