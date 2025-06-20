@@ -135,6 +135,10 @@ body, html {
   z-index: 1;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+.submenu a,
+.sub-dropdown a {
+  padding-left: 24px;
+}
 
 /* 🌱 Submenus visible when parent has .open */
 .has-submenu.open > .submenu,
@@ -229,7 +233,18 @@ footer a:hover {
     width: 80px;
     top: 10px;
   }
-
+  .submenu,
+  .sub-dropdown {
+    position: static; /* removes absolute positioning */
+    display: none;
+    background-color: #f9f9f9;
+    box-shadow: none;
+    width: 100%;
+  }
+  .has-submenu.open > .submenu,
+  .has-submenu.open > .sub-dropdown {
+    display: block;
+  }
   .cart-link,
   .dropbtn,
   .signin-button {
