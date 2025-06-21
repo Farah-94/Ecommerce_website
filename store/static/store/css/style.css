@@ -228,24 +228,26 @@ footer a:hover {
   background-color: white;
 }
 
-/* 📱 Responsive Adjustments */
 @media (max-width: 768px) {
   .logo {
     width: 80px;
     top: 10px;
   }
+
   .submenu,
   .sub-dropdown {
-    position: static; /* removes absolute positioning */
+    position: static;
     display: none;
-    background-color: #f9f9f9;
-    box-shadow: none;
     width: 100%;
+    box-shadow: none;
+    background-color: #f9f9f9;
   }
+
   .has-submenu.open > .submenu,
   .has-submenu.open > .sub-dropdown {
     display: block;
   }
+
   .cart-link,
   .dropbtn,
   .signin-button {
@@ -266,16 +268,18 @@ footer a:hover {
     padding: 15px;
     font-size: 14px;
   }
+
   body::before {
-  content: "📱 Mobile styles loaded";
-  display: block;
-  background: #ffcccb;
-  color: black;
-  text-align: center;
-  padding: 6px;
-  font-weight: bold;
+    content: "📱 Mobile styles loaded";
+    display: block;
+    background: #ffcccb;
+    color: black;
+    text-align: center;
+    padding: 6px;
+    font-weight: bold;
+  }
 }
-}
+
 
 @media (max-width: 480px) {
   .logo {
