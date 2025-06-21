@@ -1,112 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home </title>
-
-    <!-- Swiper.js Styles -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.0/swiper-bundle.min.js"></script>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
 </head>
 <body>
 
-<header>
-    <img src="{% static 'store/images/products/logo1.png' %}" alt="brand logo" class="logo">
-       
+  <!-- HEADER -->
+  <header>
+    <img
+      src="{% static 'store/images/products/logo1.png' %}"
+      alt="Kafshay logo"
+      class="logo"
+    />
+    <a href="{% url 'store:cart' %}" class="cart-link">
+      🛒 Cart ({{ cart_items.count }})
+    </a>
+  </header>
 
-    <a href="{% url 'store:cart' %}" class="cart-link">🛒 Cart ({{ cart_items.count }})</a>
-</header>
+  <!-- NAVIGATION MENU -->
+  <nav class="dropdown" aria-label="Main navigation">
+    <button
+      id="menu-btn"
+      class="dropbtn"
+      aria-controls="menu-list"
+      aria-expanded="false"
+      type="button"
+    >
+      Menu
+    </button>
 
-<!-- Navigation Menu -->
-<nav class="dropdown">
-    <button type="button" class="dropbtn" id="menu-btn">Menu</button>
-    <div class="dropdown-content" id="dropdown-menu">
-        <ul>
-            <li class="has-submenu">
-                <a href="#" class="submenu-toggle">Latest Items ▼</a>
-                <ul class="submenu">
-                    <li class="has-submenu">
-                        <a href="#" class="submenu-toggle">Women ▼</a>
-                        <ul class="sub-dropdown">
-                            <li><a href="{% url 'store:product_list' %}?category=woman">Women T-Shirts</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            
-           <li><a id="about-link" href="#about">About Us</a></li>
-           <li><a id="contact-link" href="#contact">Contact Us</a></li>
-
-            {% if user.is_authenticated %}
-                <li>
-                    <form class="logout-form" action="{% url 'store:logout' %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit" class="logout-btn">Logout</button>
-                    </form>
-                </li>
-            {% else %}
-                <li><a href="{% url 'store:signin' %}" class="signin-btn">Sign In</a></li>
-            {% endif %}
-            <li><a href="{% url 'admin:index' %}" class="admin-link">Admin Panel</a></li>
+    <ul
+      id="menu-list"
+      class="dropdown-content"
+      role="menu"
+      aria-label="Main menu"
+    >
+      <li role="none" class="has-submenu">
+        <a
+          href="#"
+          class="submenu-toggle"
+          role="menuitem"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Latest Items ▼
+        </a>
+        <ul
+          class="submenu"
+          role="menu"
+          aria-label="Latest Items submenu"
+        >
+          <li role="none" class="has-submenu">
+            <a
+              href="#"
+              class="submenu-toggle"
+              role="menuitem"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Women ▼
+            </a>
+            <ul
+              class="sub-dropdown"
+              role="menu"
+              aria-label="Women submenu"
+            >
+              <li role="none">
+                <a
+                  href="{% url 'store:product_list' %}?category=woman"
+                  role="menuitem"
+                >
+                  Women T-Shirts
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
-    </div>
-</nav>
-<video id="backgroundVideo" src="{% static 'store/images/products/video1.mp4' %}" autoplay muted loop playsinline></video>
+      </li>
 
+      <li role="none">
+        <a id="about-link" href="#about" role="menuitem">About Us</a>
+      </li>
+      <li role="none">
+        <a id="contact-link" href="#contact" role="menuitem">Contact Us</a>
+      </li>
 
+      {% if user.is_authenticated %}
+      <li role="none">
+        <form
+          class="logout-form"
+          action="{% url 'store:logout' %}"
+          method="post"
+        >
+          {% csrf_token %}
+          <button
+            type="submit"
+            class="signin-button"
+            role="menuitem"
+          >
+            Logout
+          </button>
+        </form>
+      </li>
+      {% else %}
+      <li role="none">
+        <a
+          href="{% url 'store:signin' %}"
+          class="signin-button"
+          role="menuitem"
+        >
+          Sign In
+        </a>
+      </li>
+      {% endif %}
 
+      <li role="none">
+        <a
+          href="{% url 'admin:index' %}"
+          class="admin-link"
+          role="menuitem"
+        >
+          Admin Panel
+        </a>
+      </li>
+    </ul>
+  </nav>
 
+  <!-- BACKGROUND VIDEO -->
+  <video
+    id="backgroundVideo"
+    src="{% static 'store/images/products/video1.mp4' %}"
+    autoplay
+    muted
+    loop
+    playsinline
+  >
+    Sorry, your browser doesn’t support background video.
+  </video>
 
-
-
-
-<footer id="info-footer">
-  <div class="footer-container">
-    <!-- About Us Section -->
-    <div class="footer-section about">
-     
-      <p><strong>About Us :</strong>
-        Welcome to Kafshay, your premium destination
-        for 100% cotton clothing.<br> Our passion is rooted
-        in providing natural, comfortable, and stylish 
-        garments that cater to every occasion. We believe
-        that quality starts with pure, ethically sourced
-        cotton—ensuring every piece is soft, breathable,
-        and made with timeless elegance.
-      </p>
-      <p>
-        Our collection is a seamless blend of tradition
-        and contemporary design. Each garment is meticulously
-        crafted to give you versatile styles that are perfect
-        for both casual days and special events. Experience the
-        perfect fusion of comfort and style.
-      </p>
-      <p>
-        We are dedicated to sustainable fashion and commit
-        to transparency and care for our community. Thank you
-        for choosing Kafshay—where nature meets modern
-        style.
-      </p>
-    </div>
-    <!-- Contact Us Section -->
-    <div class="footer-section contact">
-       
-      <p> <strong>Contact-Us : </strong>
-        Have questions or need support?<br>
-        Get in touch with us via:
-        <strong>Email :</strong> support@kafshay.com <br>
-        <strong>Phone :</strong> (123) 456-7890
-      </p>
-    </div>
+  <!-- SLIDE-UP FOOTER -->
+  <footer id="info-footer">
+    <div class="footer-container">
+      <div class="footer-section about">
+        <h4>About Us :</h4>
+        <p>
+          Welcome to Kafshay, your premium destination for
+          100% cotton clothing. Our passion is rooted in
+          providing natural, comfortable, and stylish
+          garments that cater to every occasion. We believe
+          quality starts with ethically sourced cotton,
+          ensuring every piece is soft, breathable, and
+          timeless.
+        </p>
+      </div>
+      <div class="footer-section contact">
+        <h4>Contact Us :</h4>
+        <p>
+          Have questions or need support?<br />
+          <strong>Email:</strong> support@kafshay.com<br />
+          <strong>Phone:</strong> (123) 456-7890
+        </p>
+      </div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2025 Kafshay | All Rights Reserved</p>
     </div>
- 
-</footer>
+  </footer>
 
-<script src="{% static 'store/js/script.js' %}"></script>
+  <script defer src="{% static 'store/js/script.js' %}"></script>
 </body>
 </html>
+```
