@@ -215,41 +215,51 @@ footer a:hover {
   background: #fff;
 }
 
-/* final mobile fix – make nested menus 100% width and wrap text */
+
 @media (max-width: 768px) {
-  /* 1) Force container & all lists full-width */
+  /* 1) Flatten every element under #dropdown-menu */
   #dropdown-menu,
-  #dropdown-menu ul,
-  #dropdown-menu li {
-    position: static     !important;
-    width: 100%          !important;
-    max-width: 100%      !important;
-    margin: 0            !important;
-    padding: 0           !important;
+  #dropdown-menu * {
+    position: static      !important;
+    width: 100%           !important;
+    max-width: 100%       !important;
+    margin: 0             !important;
+    padding: 0            !important;
+    box-shadow: none      !important;
+    transform: none       !important;
+    opacity: 1            !important;
+    transition: none      !important;
+    visibility: visible   !important;
   }
 
-  /* 2) Hide sub-lists by default, show only when parent has .open */
-  #dropdown-menu ul ul,
-  #dropdown-menu .submenu,
-  #dropdown-menu .sub-dropdown {
-    display: none        !important;
-    overflow: visible    !important;
+  /* 2) Hide all nested lists by default */
+  #dropdown-menu ul ul {
+    display: none         !important;
   }
+
+  /* 3) Show only the one inside an .open LI */
   #dropdown-menu li.open > ul {
-    display: block       !important;
+    display: block        !important;
   }
 
-  /* 3) Make links wrap instead of extending off-screen */
+  /* 4) Make links full-width, wrap text */
   #dropdown-menu a {
-    display: block       !important;
-    padding: 12px 16px   !important;
-    white-space: normal  !important;
-    word-break: break-word !important;
+    display: block        !important;
+    padding: 12px 16px    !important;
+    white-space: normal   !important;
+    word-break: break-word!important;
+    background: #fff       !important;
+    border-bottom: 1px solid #eee !important;
+    color: #4d2342        !important;
+    text-decoration: none !important;
+  }
+  #dropdown-menu a:hover {
+    background: #f0f0f0   !important;
   }
 
-  /* 4) Optional indent on deeper levels */
+  /* 5) Indent deeper levels */
   #dropdown-menu ul ul a {
-    padding-left: 2rem   !important;
+    padding-left: 2rem    !important;
   }
 }
 
@@ -257,21 +267,36 @@ footer a:hover {
 
 
 
-/* 📱 SMALLER PHONES */
-@media (max-width: 480px) {
+
+/* 📱 EXTRA-SMALL PHONES */
+@media (max-width: 430px) {
+  /* shrink the logo a bit more */
   .logo {
-    width: 70px;
+    width: 65px;
+    top: 8px;
   }
+
+  /* tighter buttons/links */
   .cart-link,
   .dropbtn,
   .signin-button {
-    font-size: 13px;
-    padding: 8px 12px;
+    font-size: 12px;
+    padding: 6px 10px;
   }
-  .footer-container {
-    gap: 10px;
+
+  /* dropdown links wrap nicely */
+  #dropdown-menu a {
+    padding: 10px 14px !important;
+    font-size: 14px;
+    white-space: normal !important;
+  }
+
+  /* indent sub-items less */
+  #dropdown-menu ul ul a {
+    padding-left: 1.2rem !important;
   }
 }
+
 
 
 /* --------------------productlist----------------------- */
