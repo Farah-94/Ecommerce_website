@@ -3,7 +3,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("✅ JS loaded.");
 
-  // ——— Background video (unchanged) ———
+  // — Background video — unchanged —
   const mainVideo = document.getElementById("backgroundVideo");
   if (mainVideo) {
     mainVideo.play().catch(() => {});
@@ -14,23 +14,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ——— Menu & Submenus ———
-  const menuBtn       = document.getElementById("menu-btn");
-  const dropdownMenu  = document.getElementById("dropdown-menu");
-  const submenuToggles = Array.from(document.querySelectorAll(".submenu-toggle"));
-
+  // — Menu & Submenus —
+  const menuBtn      = document.getElementById("menu-btn");
+  const dropdownMenu = document.getElementById("dropdown-menu");
   if (menuBtn && dropdownMenu) {
     menuBtn.setAttribute("aria-expanded", "false");
 
-    // Toggle the main dropdown
+    // Toggle main dropdown
     menuBtn.addEventListener("click", e => {
       e.stopPropagation();
-      const open = dropdownMenu.classList.toggle("active");
-      menuBtn.setAttribute("aria-expanded", open);
-      document.body.classList.toggle("no-scroll", open);
+      const isOpen = dropdownMenu.classList.toggle("active");
+      menuBtn.setAttribute("aria-expanded", isOpen);
+      document.body.classList.toggle("no-scroll", isOpen);
     });
 
-    // Toggle each submenu (mobile + desktop)
+    // Only look for toggles inside the dropdown
+    const submenuToggles = dropdownMenu.querySelectorAll(".submenu-toggle");
     submenuToggles.forEach(link => {
       link.setAttribute("aria-expanded", "false");
       link.addEventListener("click", e => {
@@ -40,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const li       = link.parentElement;
         const willOpen = !li.classList.contains("open");
 
-        // close siblings
+        // close siblings at same level
         li.closest("ul")
           .querySelectorAll(".has-submenu.open")
           .forEach(openLi => {
@@ -55,13 +54,18 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // click outside to close everything
+    // Click outside to close
     document.addEventListener("click", e => {
+      // if dropdown isn’t open, skip
+      if (!dropdownMenu.classList.contains("active")) return;
+
       const outside = !dropdownMenu.contains(e.target) && e.target !== menuBtn;
       if (outside) {
         dropdownMenu.classList.remove("active");
         menuBtn.setAttribute("aria-expanded", "false");
         document.body.classList.remove("no-scroll");
+
+        // close all submenus
         dropdownMenu
           .querySelectorAll(".has-submenu.open")
           .forEach(li => li.classList.remove("open"));
@@ -71,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.warn("⚠️ menu-btn or dropdown-menu not found!");
   }
 
-  // ——— Footer slide-up (unchanged) ———
+  // — Footer slide-up — unchanged —
   const footer      = document.getElementById("info-footer");
   const aboutLink   = document.getElementById("about-link");
   const contactLink = document.getElementById("contact-link");
@@ -88,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
     });
+
     ["click", "touchstart"].forEach(evt =>
       document.addEventListener(evt, e => {
         if (
@@ -99,6 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       })
     );
+
     footer.addEventListener("click", e => e.stopPropagation());
   }
 });
