@@ -172,24 +172,30 @@ footer a {
 }
 footer a:hover { color: #c355a0; background: #fff; }
 
-/* 📱 MOBILE BREAKPOINTS */
 @media (max-width: 768px) {
-  .logo { width: 80px; top: 10px; }
-
-  /* dropdown & submenus stack vertically */
+  /* 1) Make the main dropdown full-width in flow */
   .dropdown-content {
-    position: static;
-    width: 100%;
+    position: static !important;
+    width: 100%    !important;
+    top: auto      !important;
+    left: 0        !important;
     box-shadow: none;
     background: #f9f9f9;
   }
-  .submenu, .sub-dropdown {
-    position: static;
+
+  /* 2) Reset every submenu’s offset */
+  .submenu,
+  .sub-dropdown {
+    position: static    !important;
     display: none;
-    width: 100%;
+    width: 100%         !important;
+    left: 0             !important;
+    top: auto           !important;
     box-shadow: none;
     background: #f9f9f9;
   }
+
+  /* 3) Show the open submenu in the normal flow */
   .has-submenu.open > .submenu,
   .has-submenu.open > .sub-dropdown {
     display: block;
@@ -197,26 +203,16 @@ footer a:hover { color: #c355a0; background: #fff; }
     transform: none;
   }
 
+  /* your other mobile tweaks… */
+  .logo { width: 80px; top: 10px; }
   .cart-link,
   .dropbtn,
-  .signin-button {
-    font-size: 14px;
-    padding: 10px 14px;
-  }
+  .signin-button { font-size: 14px; padding: 10px 14px; }
   .footer-container { flex-direction: column; align-items: stretch; }
   .footer-section { text-align: center; }
   #info-footer { padding: 15px; font-size: 14px; }
-
-  /* debug banner—remove once confirmed */
-  body::before {
-    content: "📱 Mobile styles loaded";
-    display: block;
-    background: #ffcccb;
-    color: #000;
-    text-align: center;
-    padding: 6px;
-  }
 }
+
 
 @media (max-width: 480px) {
   .logo { width: 70px; }
