@@ -270,6 +270,15 @@ footer a:hover {
     padding: 15px;
     font-size: 14px;
   }
+  body::before {
+  content: "📱 Mobile styles loaded";
+  display: block;
+  background: #ffcccb;
+  color: black;
+  text-align: center;
+  padding: 6px;
+  font-weight: bold;
+}
 }
 
 @media (max-width: 480px) {
