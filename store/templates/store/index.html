@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Home</title>
   {% load static %}
+
+  <!-- 1) Swiper CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
+
+  <!-- 2) Your main stylesheet -->
   <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
 </head>
 <body>
@@ -142,7 +150,7 @@
     Sorry, your browser doesn’t support background video.
   </video>
 
-  <!-- SLIDE-UP FOOTER -->
+  <!-- FOOTER -->
   <footer id="info-footer">
     <div class="footer-container">
       <div class="footer-section about">
@@ -151,18 +159,14 @@
           Welcome to Kafshay, your premium destination for
           100% cotton clothing. Our passion is rooted in
           providing natural, comfortable, and stylish
-          garments that cater to every occasion. We believe
-          quality starts with ethically sourced cotton,
-          ensuring every piece is soft, breathable, and
-          timeless.
+          garments that cater to every occasion.
         </p>
       </div>
       <div class="footer-section contact">
         <h4>Contact Us :</h4>
         <p>
-          Have questions or need support?<br />
-          <strong>Email:</strong> support@kafshay.com<br />
-          <strong>Phone:</strong> (123) 456-7890
+          Email: support@kafshay.com<br />
+          Phone: (123) 456-7890
         </p>
       </div>
     </div>
@@ -171,6 +175,16 @@
     </div>
   </footer>
 
+  <!-- 3) Swiper JS -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+  ></script>
+
+  <!-- 4) Your Swiper‐init file -->
+  <script defer src="{% static 'store/js/swiper-init.js' %}"></script>
+
+  <!-- 5) Your main app script -->
   <script defer src="{% static 'store/js/script.js' %}"></script>
 </body>
 </html>
