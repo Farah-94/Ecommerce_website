@@ -1,4 +1,4 @@
-/* 🌐 Reset and Layout */
+
 * {
   margin: 0;
   padding: 0;
@@ -172,7 +172,7 @@ body, html {
   bottom: -300px;
   left: 0;
   width: 100%;
-  background-color: rgba(87, 85, 87, 0.271);
+  background-color: rgba(207, 204, 207, 0.271);
   opacity: 0;
   color: rgb(79, 17, 66);
   padding: 20px;
@@ -213,7 +213,7 @@ body, html {
 
 .footer-section p {
   margin-bottom: 15px;
-  color:white;
+ 
 }
 
 .footer-bottom {
