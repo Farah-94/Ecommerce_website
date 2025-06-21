@@ -19,6 +19,11 @@ body, html {
   position: relative;
 }
 
+/* 🚫 Prevent background scroll when menu is active */
+.no-scroll {
+  overflow: hidden;
+}
+
 /* 🎥 BACKGROUND VIDEO */
 #backgroundVideo {
   position: absolute;
@@ -82,7 +87,7 @@ body, html {
   z-index: 200;
 }
 
-/* 📂 DROPDOWN MENU */
+/* 📂 DROPDOWN MENU (desktop) */
 .dropdown {
   position: relative;
   display: inline-block;
@@ -138,9 +143,6 @@ body, html {
 .submenu a,
 .sub-dropdown a {
   padding-left: 24px;
-}
-.dropdown-content ul ul {
-  margin-top: 4px;
 }
 
 /* 🧾 LOGOUT BUTTON */
@@ -215,37 +217,49 @@ footer a:hover {
 
 /* 📱 MOBILE BREAKPOINTS */
 @media (max-width: 768px) {
-  /* Main dropdown full-width */
+  /* full‐screen, horizontal scroll container */
   .dropdown-content {
-    position: static !important;
-    width: 100% !important;
-    top: auto !important;
-    left: 0 !important;
-    box-shadow: none;
-    background: #f9f9f9;
-  }
-
-  /* Flatten submenus */
-  .submenu,
-  .sub-dropdown {
-    position: static !important;
+    position: fixed !important;
+    top: 0; left: 0 !important;
+    width: 100%; height: 100vh;
+    background: #fff;
+    overflow-x: auto;
+    overflow-y: hidden;
     display: none;
-    width: 100% !important;
-    left: 0 !important;
-    top: auto !important;
-    box-shadow: none;
-    background: #f9f9f9;
+    z-index: 999;
   }
-
-  /* Show open submenu */
-  .has-submenu.open > .submenu,
-  .has-submenu.open > .sub-dropdown {
+  .dropdown-content.active {
     display: block;
-    opacity: 1;
-    transform: none;
   }
 
-  /* UI tweaks */
+  /* flex‐row panels for each <ul> */
+  .mobile-panels {
+    display: flex;
+    height: 100%;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+  }
+  .mobile-panels > ul {
+    flex: 0 0 80%;
+    min-width: 80%;
+    margin-right: 1rem;
+    padding: 60px 20px 20px;
+    list-style: none;
+    overflow-y: auto;
+  }
+
+  /* show nested <ul> in each panel */
+  .mobile-panels ul ul {
+    display: block !important;
+    position: static !important;
+    opacity: 1 !important;
+    transform: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding-left: 1rem;
+  }
+
+  /* other mobile UI tweaks */
   .logo {
     width: 80px;
     top: 10px;
@@ -268,11 +282,6 @@ footer a:hover {
     font-size: 14px;
   }
 }
-/* Prevent background scroll whenever .no-scroll is on <body> */
-.no-scroll {
-  overflow: hidden;
-}
-
 
 /* 📱 SMALLER PHONES */
 @media (max-width: 480px) {
@@ -289,7 +298,6 @@ footer a:hover {
     gap: 10px;
   }
 }
-
 
 
 /* --------------------productlist----------------------- */
