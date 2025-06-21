@@ -4,11 +4,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-html {
-  text-size-adjust: 100%; /* modern standard */
-  -webkit-text-size-adjust: 100%; /* fallback for older iOS browsers */
-  touch-action: manipulation;
-}
+
 body, html {
   width: 100%;
   height: 100%;
